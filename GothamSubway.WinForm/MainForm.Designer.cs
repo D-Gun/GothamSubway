@@ -43,7 +43,7 @@ namespace GothamSubway.WinForm
             this.itmRevenue = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmSatisfaction = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmElectricity = new DevExpress.XtraBars.Navigation.TileBarItem();
-            this.mdiMain = new XtraTabbedMdiManagerExtend(this.components);
+            this.mdiMain = new GothamSubway.WinForm.XtraTabbedMdiManagerExtend(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.mdiMain)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,6 +53,8 @@ namespace GothamSubway.WinForm
             this.tileBar.AllowSelectedItem = true;
             this.tileBar.AppearanceGroupText.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(140)))), ((int)(((byte)(140)))));
             this.tileBar.AppearanceGroupText.Options.UseForeColor = true;
+            this.tileBar.AppearanceItem.Normal.Font = new System.Drawing.Font("맑은 고딕", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.tileBar.AppearanceItem.Normal.Options.UseFont = true;
             this.tileBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.tileBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.tileBar.DropDownButtonWidth = 30;
@@ -93,7 +95,12 @@ namespace GothamSubway.WinForm
             // itmTransferWithMonth
             // 
             this.itmTransferWithMonth.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement1.Text = "itmTransferWithMonth";
+            tileItemElement1.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.승하차_투명_;
+            tileItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            tileItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
+            tileItemElement1.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
+            tileItemElement1.Text = "승하차(월별)";
+            tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
             this.itmTransferWithMonth.Elements.Add(tileItemElement1);
             this.itmTransferWithMonth.Id = 1;
             this.itmTransferWithMonth.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
@@ -102,20 +109,26 @@ namespace GothamSubway.WinForm
             // itmTransferWithDuration
             // 
             this.itmTransferWithDuration.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement2.Text = "itmTransferWithDuration";
+            tileItemElement2.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.승하차_투명_;
+            tileItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            tileItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
+            tileItemElement2.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
+            tileItemElement2.Text = "승하차(기간)";
+            tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
             this.itmTransferWithDuration.Elements.Add(tileItemElement2);
             this.itmTransferWithDuration.Id = 2;
             this.itmTransferWithDuration.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmTransferWithDuration.Name = "itmTransferWithDuration";
             // 
-            // xtraTabbedMdiManager1
-            // 
-            this.mdiMain.MdiParent = this;
-            // 
             // itmRevenue
             // 
             this.itmRevenue.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement3.Text = "itmRevenue";
+            tileItemElement3.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.수입_투명_;
+            tileItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            tileItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
+            tileItemElement3.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
+            tileItemElement3.Text = "수입";
+            tileItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
             this.itmRevenue.Elements.Add(tileItemElement3);
             this.itmRevenue.Id = 3;
             this.itmRevenue.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
@@ -124,7 +137,12 @@ namespace GothamSubway.WinForm
             // itmSatisfaction
             // 
             this.itmSatisfaction.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement4.Text = "itmSatisfaction";
+            tileItemElement4.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.만족도_투명_;
+            tileItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            tileItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
+            tileItemElement4.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
+            tileItemElement4.Text = "만족도";
+            tileItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
             this.itmSatisfaction.Elements.Add(tileItemElement4);
             this.itmSatisfaction.Id = 4;
             this.itmSatisfaction.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
@@ -133,11 +151,20 @@ namespace GothamSubway.WinForm
             // itmElectricity
             // 
             this.itmElectricity.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
-            tileItemElement5.Text = "itmElectricity";
+            tileItemElement5.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.전력량_투명_;
+            tileItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
+            tileItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
+            tileItemElement5.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
+            tileItemElement5.Text = "전력량";
+            tileItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
             this.itmElectricity.Elements.Add(tileItemElement5);
             this.itmElectricity.Id = 5;
             this.itmElectricity.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmElectricity.Name = "itmElectricity";
+            // 
+            // mdiMain
+            // 
+            this.mdiMain.MdiParent = this;
             // 
             // MainForm
             // 
