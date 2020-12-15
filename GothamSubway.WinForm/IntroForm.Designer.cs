@@ -1,7 +1,7 @@
 ﻿
 namespace GothamSubway.WinForm
 {
-    partial class TransferByDurationForm
+    partial class IntroForm
     {
         /// <summary>
         /// Required designer variable.
@@ -38,18 +38,18 @@ namespace GothamSubway.WinForm
             this.labelControl1.Appearance.Options.UseFont = true;
             this.labelControl1.Location = new System.Drawing.Point(229, 207);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(396, 37);
+            this.labelControl1.Size = new System.Drawing.Size(162, 37);
             this.labelControl1.TabIndex = 1;
-            this.labelControl1.Text = "TransferByDurationForm";
+            this.labelControl1.Text = "IntroForm";
             // 
-            // TransferByDurationForm
+            // IntroForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelControl1);
-            this.Name = "TransferByDurationForm";
-            this.Text = "TransferByDurationForm";
+            this.Name = "IntroForm";
+            this.Text = "IntroForm";
             this.ResumeLayout(false);
             this.PerformLayout();
 

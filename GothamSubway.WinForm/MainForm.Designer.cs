@@ -62,19 +62,18 @@ namespace GothamSubway.WinForm
             this.tileBar.IndentBetweenItems = 15;
             this.tileBar.ItemPadding = new System.Windows.Forms.Padding(8, 6, 12, 6);
             this.tileBar.Location = new System.Drawing.Point(0, 0);
-            this.tileBar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
-            this.tileBar.MaxId = 8;
-            this.tileBar.MaximumSize = new System.Drawing.Size(0, 152);
-            this.tileBar.MinimumSize = new System.Drawing.Size(134, 152);
+            this.tileBar.Margin = new System.Windows.Forms.Padding(5);
+            this.tileBar.MaxId = 9;
+            this.tileBar.MaximumSize = new System.Drawing.Size(0, 118);
+            this.tileBar.MinimumSize = new System.Drawing.Size(117, 118);
             this.tileBar.Name = "tileBar";
-            this.tileBar.Padding = new System.Windows.Forms.Padding(39, 15, 39, 15);
+            this.tileBar.Padding = new System.Windows.Forms.Padding(34, 12, 34, 12);
             this.tileBar.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
-            this.tileBar.SelectedItem = this.itmTransferByMonth;
             this.tileBar.SelectionBorderWidth = 3;
             this.tileBar.SelectionColor = System.Drawing.Color.DarkRed;
             this.tileBar.ShowGroupText = false;
             this.tileBar.ShowItemShadow = true;
-            this.tileBar.Size = new System.Drawing.Size(1046, 152);
+            this.tileBar.Size = new System.Drawing.Size(915, 118);
             this.tileBar.TabIndex = 1;
             this.tileBar.Text = "tileBar";
             this.tileBar.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -102,6 +101,7 @@ namespace GothamSubway.WinForm
             this.itmTransferByMonth.Id = 1;
             this.itmTransferByMonth.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmTransferByMonth.Name = "itmTransferByMonth";
+            this.itmTransferByMonth.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmTransferByMonth_ItemClick);
             // 
             // itmTransferByDuration
             // 
@@ -116,6 +116,7 @@ namespace GothamSubway.WinForm
             this.itmTransferByDuration.Id = 2;
             this.itmTransferByDuration.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmTransferByDuration.Name = "itmTransferByDuration";
+            this.itmTransferByDuration.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmTransferByDuration_ItemClick);
             // 
             // itmRevenue
             // 
@@ -166,12 +167,11 @@ namespace GothamSubway.WinForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1046, 777);
+            this.ClientSize = new System.Drawing.Size(915, 604);
             this.Controls.Add(this.tileBar);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
             this.ResumeLayout(false);
 

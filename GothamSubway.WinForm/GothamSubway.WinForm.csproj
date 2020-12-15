@@ -65,6 +65,12 @@
     <Compile Include="Extend\XtraTabbedMdiManagerExtend.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="IntroForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IntroForm.Designer.cs">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MainForm.cs">
@@ -97,6 +103,12 @@
     <Compile Include="TransferByMonthForm.Designer.cs">
       <DependentUpon>TransferByMonthForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ElectricityForm.resx">
+      <DependentUpon>ElectricityForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IntroForm.resx">
+      <DependentUpon>IntroForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -111,6 +123,18 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RevenueForm.resx">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SatisfactionForm.resx">
+      <DependentUpon>SatisfactionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferByDurationForm.resx">
+      <DependentUpon>TransferByDurationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TransferByMonthForm.resx">
+      <DependentUpon>TransferByMonthForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

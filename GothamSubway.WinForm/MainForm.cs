@@ -18,6 +18,13 @@ namespace GothamSubway.WinForm
             InitializeComponent();
         }
 
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            ShowChildForm(new IntroForm());
+        }
+
         private void ShowChildForm(Form form)
         {
             if (form == null)
@@ -28,6 +35,7 @@ namespace GothamSubway.WinForm
             if (childForm == null)
             {
                 form.MdiParent = this;
+                form.WindowState = FormWindowState.Maximized;
                 form.Show();
             }
             else
@@ -36,27 +44,27 @@ namespace GothamSubway.WinForm
 
         private void itmTransferByMonth_ItemClick(object sender, TileItemEventArgs e)
         {
-            ShowChildForm(null/* new TransferWithMonthForm() */);
+            ShowChildForm(new TransferByMonthForm());
         }
 
         private void itmTransferByDuration_ItemClick(object sender, TileItemEventArgs e)
         {
-            ShowChildForm(null/* new TransferWithDurationForm() */);
+            ShowChildForm(new TransferByDurationForm());
         }
 
         private void itmRevenue_ItemClick(object sender, TileItemEventArgs e)
         {
-            ShowChildForm(null/* new RevenueForm() */);
+            ShowChildForm(new RevenueForm());
         }
 
         private void itmSatisfaction_ItemClick(object sender, TileItemEventArgs e)
         {
-            ShowChildForm(null/* new SatisfactionForm() */);
+            ShowChildForm(new SatisfactionForm());
         }
 
         private void itmElectricity_ItemClick(object sender, TileItemEventArgs e)
         {
-            ShowChildForm(null/* new ElectricityForm() */);
+            ShowChildForm(new ElectricityForm());
         }
     }
 }
