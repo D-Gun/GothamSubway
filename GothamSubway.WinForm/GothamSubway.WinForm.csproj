@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ElectricityForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ElectricityForm.Designer.cs">
+      <DependentUpon>ElectricityForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extend\XtraTabbedMdiManagerExtend.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -66,6 +72,30 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RevenueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RevenueForm.Designer.cs">
+      <DependentUpon>RevenueForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SatisfactionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SatisfactionForm.Designer.cs">
+      <DependentUpon>SatisfactionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TransferByDurationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransferByDurationForm.Designer.cs">
+      <DependentUpon>TransferByDurationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TransferByMonthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TransferByMonthForm.Designer.cs">
+      <DependentUpon>TransferByMonthForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
