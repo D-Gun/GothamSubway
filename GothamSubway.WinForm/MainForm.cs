@@ -35,7 +35,7 @@ namespace GothamSubway.WinForm
             return null;
         }
 
-        private void itmTransferWithMonth_ItemClick(object sender, TileItemEventArgs e)
+        private void itmTransferByMonth_ItemClick(object sender, TileItemEventArgs e)
         {
             //Form form = FindChildForm("Form1");
 
@@ -45,7 +45,7 @@ namespace GothamSubway.WinForm
             //    form.Activate();
         }
 
-        private void itmTransferWithDuration_ItemClick(object sender, TileItemEventArgs e)
+        private void itmTransferByDuration_ItemClick(object sender, TileItemEventArgs e)
         {
             //Form form = FindChildForm("Form2");
 

@@ -30,7 +30,6 @@ namespace GothamSubway.WinForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
@@ -38,13 +37,11 @@ namespace GothamSubway.WinForm
             DevExpress.XtraEditors.TileItemElement tileItemElement5 = new DevExpress.XtraEditors.TileItemElement();
             this.tileBar = new DevExpress.XtraBars.Navigation.TileBar();
             this.tileBarGroupTables = new DevExpress.XtraBars.Navigation.TileBarGroup();
-            this.itmTransferWithMonth = new DevExpress.XtraBars.Navigation.TileBarItem();
-            this.itmTransferWithDuration = new DevExpress.XtraBars.Navigation.TileBarItem();
+            this.itmTransferByMonth = new DevExpress.XtraBars.Navigation.TileBarItem();
+            this.itmTransferByDuration = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmRevenue = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmSatisfaction = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmElectricity = new DevExpress.XtraBars.Navigation.TileBarItem();
-            this.mdiMain = new GothamSubway.WinForm.XtraTabbedMdiManagerExtend(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.mdiMain)).BeginInit();
             this.SuspendLayout();
             // 
             // tileBar
@@ -65,19 +62,19 @@ namespace GothamSubway.WinForm
             this.tileBar.IndentBetweenItems = 15;
             this.tileBar.ItemPadding = new System.Windows.Forms.Padding(8, 6, 12, 6);
             this.tileBar.Location = new System.Drawing.Point(0, 0);
-            this.tileBar.Margin = new System.Windows.Forms.Padding(5);
+            this.tileBar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tileBar.MaxId = 8;
-            this.tileBar.MaximumSize = new System.Drawing.Size(0, 118);
-            this.tileBar.MinimumSize = new System.Drawing.Size(117, 118);
+            this.tileBar.MaximumSize = new System.Drawing.Size(0, 152);
+            this.tileBar.MinimumSize = new System.Drawing.Size(134, 152);
             this.tileBar.Name = "tileBar";
-            this.tileBar.Padding = new System.Windows.Forms.Padding(34, 12, 34, 12);
+            this.tileBar.Padding = new System.Windows.Forms.Padding(39, 15, 39, 15);
             this.tileBar.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
-            this.tileBar.SelectedItem = this.itmTransferWithMonth;
+            this.tileBar.SelectedItem = this.itmTransferByMonth;
             this.tileBar.SelectionBorderWidth = 3;
             this.tileBar.SelectionColor = System.Drawing.Color.DarkRed;
             this.tileBar.ShowGroupText = false;
             this.tileBar.ShowItemShadow = true;
-            this.tileBar.Size = new System.Drawing.Size(915, 118);
+            this.tileBar.Size = new System.Drawing.Size(1046, 152);
             this.tileBar.TabIndex = 1;
             this.tileBar.Text = "tileBar";
             this.tileBar.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -85,40 +82,40 @@ namespace GothamSubway.WinForm
             // 
             // tileBarGroupTables
             // 
-            this.tileBarGroupTables.Items.Add(this.itmTransferWithMonth);
-            this.tileBarGroupTables.Items.Add(this.itmTransferWithDuration);
+            this.tileBarGroupTables.Items.Add(this.itmTransferByMonth);
+            this.tileBarGroupTables.Items.Add(this.itmTransferByDuration);
             this.tileBarGroupTables.Items.Add(this.itmRevenue);
             this.tileBarGroupTables.Items.Add(this.itmSatisfaction);
             this.tileBarGroupTables.Items.Add(this.itmElectricity);
             this.tileBarGroupTables.Name = "tileBarGroupTables";
             // 
-            // itmTransferWithMonth
+            // itmTransferByMonth
             // 
-            this.itmTransferWithMonth.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.itmTransferByMonth.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
             tileItemElement1.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.승하차_투명_;
             tileItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
             tileItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
             tileItemElement1.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
-            tileItemElement1.Text = "승하차(월별)";
+            tileItemElement1.Text = "(월별)\n승하차";
             tileItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
-            this.itmTransferWithMonth.Elements.Add(tileItemElement1);
-            this.itmTransferWithMonth.Id = 1;
-            this.itmTransferWithMonth.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
-            this.itmTransferWithMonth.Name = "itmTransferWithMonth";
+            this.itmTransferByMonth.Elements.Add(tileItemElement1);
+            this.itmTransferByMonth.Id = 1;
+            this.itmTransferByMonth.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
+            this.itmTransferByMonth.Name = "itmTransferByMonth";
             // 
-            // itmTransferWithDuration
+            // itmTransferByDuration
             // 
-            this.itmTransferWithDuration.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
+            this.itmTransferByDuration.DropDownOptions.BeakColor = System.Drawing.Color.Empty;
             tileItemElement2.ImageOptions.Image = global::GothamSubway.WinForm.Properties.Resources.승하차_투명_;
             tileItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleRight;
             tileItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.Stretch;
             tileItemElement2.ImageOptions.ImageSize = new System.Drawing.Size(50, 50);
-            tileItemElement2.Text = "승하차(기간)";
+            tileItemElement2.Text = "(기간)\n승하차";
             tileItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.BottomLeft;
-            this.itmTransferWithDuration.Elements.Add(tileItemElement2);
-            this.itmTransferWithDuration.Id = 2;
-            this.itmTransferWithDuration.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
-            this.itmTransferWithDuration.Name = "itmTransferWithDuration";
+            this.itmTransferByDuration.Elements.Add(tileItemElement2);
+            this.itmTransferByDuration.Id = 2;
+            this.itmTransferByDuration.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
+            this.itmTransferByDuration.Name = "itmTransferByDuration";
             // 
             // itmRevenue
             // 
@@ -162,21 +159,17 @@ namespace GothamSubway.WinForm
             this.itmElectricity.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmElectricity.Name = "itmElectricity";
             // 
-            // mdiMain
-            // 
-            this.mdiMain.MdiParent = this;
-            // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 604);
+            this.ClientSize = new System.Drawing.Size(1046, 777);
             this.Controls.Add(this.tileBar);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "MainForm";
-            ((System.ComponentModel.ISupportInitialize)(this.mdiMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -185,8 +178,8 @@ namespace GothamSubway.WinForm
 
         private DevExpress.XtraBars.Navigation.TileBar tileBar;
         private DevExpress.XtraBars.Navigation.TileBarGroup tileBarGroupTables;
-        private DevExpress.XtraBars.Navigation.TileBarItem itmTransferWithMonth;
-        private DevExpress.XtraBars.Navigation.TileBarItem itmTransferWithDuration;
+        private DevExpress.XtraBars.Navigation.TileBarItem itmTransferByMonth;
+        private DevExpress.XtraBars.Navigation.TileBarItem itmTransferByDuration;
         private DevExpress.XtraBars.Navigation.TileBarItem itmRevenue;
         private DevExpress.XtraBars.Navigation.TileBarItem itmSatisfaction;
         private DevExpress.XtraBars.Navigation.TileBarItem itmElectricity;
