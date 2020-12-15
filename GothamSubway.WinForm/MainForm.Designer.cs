@@ -133,6 +133,7 @@ namespace GothamSubway.WinForm
             this.itmRevenue.Id = 3;
             this.itmRevenue.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmRevenue.Name = "itmRevenue";
+            this.itmRevenue.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmRevenue_ItemClick);
             // 
             // itmSatisfaction
             // 
@@ -147,6 +148,7 @@ namespace GothamSubway.WinForm
             this.itmSatisfaction.Id = 4;
             this.itmSatisfaction.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmSatisfaction.Name = "itmSatisfaction";
+            this.itmSatisfaction.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmSatisfaction_ItemClick);
             // 
             // itmElectricity
             // 
@@ -161,6 +163,7 @@ namespace GothamSubway.WinForm
             this.itmElectricity.Id = 5;
             this.itmElectricity.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmElectricity.Name = "itmElectricity";
+            this.itmElectricity.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmElectricity_ItemClick);
             // 
             // mdiMain
             // 

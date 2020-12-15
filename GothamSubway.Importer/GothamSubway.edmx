@@ -1,0 +1,564 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GothamSubwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Electricity">
+          <Key>
+            <PropertyRef Name="ElectricityId" />
+          </Key>
+          <Property Name="ElectricityId" Type="int" Nullable="false" />
+          <Property Name="Month" Type="datetime" Nullable="false" />
+          <Property Name="Usage" Type="int" Nullable="false" />
+          <Property Name="Bill" Type="int" Nullable="false" />
+          <Property Name="YoY" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FootTraffic">
+          <Key>
+            <PropertyRef Name="FootTrafficId" />
+          </Key>
+          <Property Name="FootTrafficId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="StationId" Type="int" Nullable="false" />
+          <Property Name="TransferId" Type="int" Nullable="false" />
+          <Property Name="BeforeSix" Type="int" Nullable="false" />
+          <Property Name="SixToSeven" Type="int" Nullable="false" />
+          <Property Name="SevenToEight" Type="int" Nullable="false" />
+          <Property Name="EightToNine" Type="int" Nullable="false" />
+          <Property Name="NineToTen" Type="int" Nullable="false" />
+          <Property Name="TenToEleven" Type="int" Nullable="false" />
+          <Property Name="ElevenToTwelve" Type="int" Nullable="false" />
+          <Property Name="TwelveToThirteen" Type="int" Nullable="false" />
+          <Property Name="ThirteenToFourteen" Type="int" Nullable="false" />
+          <Property Name="FourteenToFifteen" Type="int" Nullable="false" />
+          <Property Name="FifteenToSixteen" Type="int" Nullable="false" />
+          <Property Name="SixteenToSeventeen" Type="int" Nullable="false" />
+          <Property Name="SeventeenToEighteen" Type="int" Nullable="false" />
+          <Property Name="EighteenToNineteen" Type="int" Nullable="false" />
+          <Property Name="NineteenToTwenty" Type="int" Nullable="false" />
+          <Property Name="TwentyToTwentyOne" Type="int" Nullable="false" />
+          <Property Name="TwnetyOneToTwentyTwo" Type="int" Nullable="false" />
+          <Property Name="TwentyTwoToTwentyThree" Type="int" Nullable="false" />
+          <Property Name="TwentyThreeToTwentyFour" Type="int" Nullable="false" />
+          <Property Name="AfterTwentyFour" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="RevenueId" />
+          </Key>
+          <Property Name="RevenueId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StationId" Type="int" Nullable="false" />
+          <Property Name="Month" Type="datetime" Nullable="false" />
+          <Property Name="SubwayCardId" Type="int" Nullable="false" />
+          <Property Name="Income" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Satisfaction">
+          <Key>
+            <PropertyRef Name="Satisfactionid" />
+          </Key>
+          <Property Name="Satisfactionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SatisfactionCategoryId" Type="int" Nullable="false" />
+          <Property Name="Excellent" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Good" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Soso" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Bad" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Terrible" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SatisfactionCategory">
+          <Key>
+            <PropertyRef Name="SatisfactionCategoryId" />
+          </Key>
+          <Property Name="SatisfactionCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UpperId" Type="int" />
+          <Property Name="Item" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="StationId" />
+          </Key>
+          <Property Name="StationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SubwayCard">
+          <Key>
+            <PropertyRef Name="SubwayCardId" />
+          </Key>
+          <Property Name="SubwayCardId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Transfer">
+          <Key>
+            <PropertyRef Name="TransferId" />
+          </Key>
+          <Property Name="TransferId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_FootTraffic_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FootTraffic" Type="Self.FootTraffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="FootTraffic">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FootTraffic_Transfer">
+          <End Role="Transfer" Type="Self.Transfer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FootTraffic" Type="Self.FootTraffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transfer">
+              <PropertyRef Name="TransferId" />
+            </Principal>
+            <Dependent Role="FootTraffic">
+              <PropertyRef Name="TransferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_SubwayCard">
+          <End Role="SubwayCard" Type="Self.SubwayCard" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubwayCard">
+              <PropertyRef Name="SubwayCardId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="SubwayCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satisfaction_SatisfactionCategory">
+          <End Role="SatisfactionCategory" Type="Self.SatisfactionCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Satisfaction" Type="Self.Satisfaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactionCategory">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Principal>
+            <Dependent Role="Satisfaction">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SatisfactionCategory_SatisfactionCategory">
+          <End Role="SatisfactionCategory" Type="Self.SatisfactionCategory" Multiplicity="0..1" />
+          <End Role="SatisfactionCategory1" Type="Self.SatisfactionCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactionCategory">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Principal>
+            <Dependent Role="SatisfactionCategory1">
+              <PropertyRef Name="UpperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GothamSubwayModelStoreContainer">
+          <EntitySet Name="Electricity" EntityType="Self.Electricity" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FootTraffic" EntityType="Self.FootTraffic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Revenue" EntityType="Self.Revenue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Satisfaction" EntityType="Self.Satisfaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SatisfactionCategory" EntityType="Self.SatisfactionCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Station" EntityType="Self.Station" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SubwayCard" EntityType="Self.SubwayCard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Transfer" EntityType="Self.Transfer" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_FootTraffic_Station" Association="Self.FK_FootTraffic_Station">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="FootTraffic" EntitySet="FootTraffic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FootTraffic_Transfer" Association="Self.FK_FootTraffic_Transfer">
+            <End Role="Transfer" EntitySet="Transfer" />
+            <End Role="FootTraffic" EntitySet="FootTraffic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Station" Association="Self.FK_Revenue_Station">
+            <End Role="Station" EntitySet="Station" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_SubwayCard" Association="Self.FK_Revenue_SubwayCard">
+            <End Role="SubwayCard" EntitySet="SubwayCard" />
+            <End Role="Revenue" EntitySet="Revenue" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satisfaction_SatisfactionCategory" Association="Self.FK_Satisfaction_SatisfactionCategory">
+            <End Role="SatisfactionCategory" EntitySet="SatisfactionCategory" />
+            <End Role="Satisfaction" EntitySet="Satisfaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SatisfactionCategory_SatisfactionCategory" Association="Self.FK_SatisfactionCategory_SatisfactionCategory">
+            <End Role="SatisfactionCategory" EntitySet="SatisfactionCategory" />
+            <End Role="SatisfactionCategory1" EntitySet="SatisfactionCategory" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GothamSubwayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Electricity">
+          <Key>
+            <PropertyRef Name="ElectricityId" />
+          </Key>
+          <Property Name="ElectricityId" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Usage" Type="Int32" Nullable="false" />
+          <Property Name="Bill" Type="Int32" Nullable="false" />
+          <Property Name="YoY" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FootTraffic">
+          <Key>
+            <PropertyRef Name="FootTrafficId" />
+          </Key>
+          <Property Name="FootTrafficId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="StationId" Type="Int32" Nullable="false" />
+          <Property Name="TransferId" Type="Int32" Nullable="false" />
+          <Property Name="BeforeSix" Type="Int32" Nullable="false" />
+          <Property Name="SixToSeven" Type="Int32" Nullable="false" />
+          <Property Name="SevenToEight" Type="Int32" Nullable="false" />
+          <Property Name="EightToNine" Type="Int32" Nullable="false" />
+          <Property Name="NineToTen" Type="Int32" Nullable="false" />
+          <Property Name="TenToEleven" Type="Int32" Nullable="false" />
+          <Property Name="ElevenToTwelve" Type="Int32" Nullable="false" />
+          <Property Name="TwelveToThirteen" Type="Int32" Nullable="false" />
+          <Property Name="ThirteenToFourteen" Type="Int32" Nullable="false" />
+          <Property Name="FourteenToFifteen" Type="Int32" Nullable="false" />
+          <Property Name="FifteenToSixteen" Type="Int32" Nullable="false" />
+          <Property Name="SixteenToSeventeen" Type="Int32" Nullable="false" />
+          <Property Name="SeventeenToEighteen" Type="Int32" Nullable="false" />
+          <Property Name="EighteenToNineteen" Type="Int32" Nullable="false" />
+          <Property Name="NineteenToTwenty" Type="Int32" Nullable="false" />
+          <Property Name="TwentyToTwentyOne" Type="Int32" Nullable="false" />
+          <Property Name="TwnetyOneToTwentyTwo" Type="Int32" Nullable="false" />
+          <Property Name="TwentyTwoToTwentyThree" Type="Int32" Nullable="false" />
+          <Property Name="TwentyThreeToTwentyFour" Type="Int32" Nullable="false" />
+          <Property Name="AfterTwentyFour" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Station" Relationship="Self.FK_FootTraffic_Station" FromRole="FootTraffic" ToRole="Station" />
+          <NavigationProperty Name="Transfer" Relationship="Self.FK_FootTraffic_Transfer" FromRole="FootTraffic" ToRole="Transfer" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="RevenueId" />
+          </Key>
+          <Property Name="RevenueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StationId" Type="Int32" Nullable="false" />
+          <Property Name="Month" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SubwayCardId" Type="Int32" Nullable="false" />
+          <Property Name="Income" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Station" Relationship="Self.FK_Revenue_Station" FromRole="Revenue" ToRole="Station" />
+          <NavigationProperty Name="SubwayCard" Relationship="Self.FK_Revenue_SubwayCard" FromRole="Revenue" ToRole="SubwayCard" />
+        </EntityType>
+        <EntityType Name="Satisfaction">
+          <Key>
+            <PropertyRef Name="Satisfactionid" />
+          </Key>
+          <Property Name="Satisfactionid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SatisfactionCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="Excellent" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Good" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Soso" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Bad" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+          <Property Name="Terrible" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+          <NavigationProperty Name="SatisfactionCategory" Relationship="Self.FK_Satisfaction_SatisfactionCategory" FromRole="Satisfaction" ToRole="SatisfactionCategory" />
+        </EntityType>
+        <EntityType Name="SatisfactionCategory">
+          <Key>
+            <PropertyRef Name="SatisfactionCategoryId" />
+          </Key>
+          <Property Name="SatisfactionCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UpperId" Type="Int32" />
+          <Property Name="Item" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Satisfactions" Relationship="Self.FK_Satisfaction_SatisfactionCategory" FromRole="SatisfactionCategory" ToRole="Satisfaction" />
+          <NavigationProperty Name="SatisfactionCategory1" Relationship="Self.FK_SatisfactionCategory_SatisfactionCategory" FromRole="SatisfactionCategory" ToRole="SatisfactionCategory1" />
+          <NavigationProperty Name="SatisfactionCategory2" Relationship="Self.FK_SatisfactionCategory_SatisfactionCategory" FromRole="SatisfactionCategory1" ToRole="SatisfactionCategory" />
+        </EntityType>
+        <EntityType Name="Station">
+          <Key>
+            <PropertyRef Name="StationId" />
+          </Key>
+          <Property Name="StationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FootTraffics" Relationship="Self.FK_FootTraffic_Station" FromRole="Station" ToRole="FootTraffic" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenue_Station" FromRole="Station" ToRole="Revenue" />
+        </EntityType>
+        <EntityType Name="SubwayCard">
+          <Key>
+            <PropertyRef Name="SubwayCardId" />
+          </Key>
+          <Property Name="SubwayCardId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Revenues" Relationship="Self.FK_Revenue_SubwayCard" FromRole="SubwayCard" ToRole="Revenue" />
+        </EntityType>
+        <EntityType Name="Transfer">
+          <Key>
+            <PropertyRef Name="TransferId" />
+          </Key>
+          <Property Name="TransferId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="FootTraffics" Relationship="Self.FK_FootTraffic_Transfer" FromRole="Transfer" ToRole="FootTraffic" />
+        </EntityType>
+        <Association Name="FK_FootTraffic_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FootTraffic" Type="Self.FootTraffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="FootTraffic">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_FootTraffic_Transfer">
+          <End Role="Transfer" Type="Self.Transfer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="FootTraffic" Type="Self.FootTraffic" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Transfer">
+              <PropertyRef Name="TransferId" />
+            </Principal>
+            <Dependent Role="FootTraffic">
+              <PropertyRef Name="TransferId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_Station">
+          <End Role="Station" Type="Self.Station" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Station">
+              <PropertyRef Name="StationId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="StationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Revenue_SubwayCard">
+          <End Role="SubwayCard" Type="Self.SubwayCard" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Revenue" Type="Self.Revenue" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubwayCard">
+              <PropertyRef Name="SubwayCardId" />
+            </Principal>
+            <Dependent Role="Revenue">
+              <PropertyRef Name="SubwayCardId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Satisfaction_SatisfactionCategory">
+          <End Role="SatisfactionCategory" Type="Self.SatisfactionCategory" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Satisfaction" Type="Self.Satisfaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactionCategory">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Principal>
+            <Dependent Role="Satisfaction">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SatisfactionCategory_SatisfactionCategory">
+          <End Role="SatisfactionCategory" Type="Self.SatisfactionCategory" Multiplicity="0..1" />
+          <End Role="SatisfactionCategory1" Type="Self.SatisfactionCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SatisfactionCategory">
+              <PropertyRef Name="SatisfactionCategoryId" />
+            </Principal>
+            <Dependent Role="SatisfactionCategory1">
+              <PropertyRef Name="UpperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GothamSubwayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Electricities" EntityType="Self.Electricity" />
+          <EntitySet Name="FootTraffics" EntityType="Self.FootTraffic" />
+          <EntitySet Name="Revenues" EntityType="Self.Revenue" />
+          <EntitySet Name="Satisfactions" EntityType="Self.Satisfaction" />
+          <EntitySet Name="SatisfactionCategories" EntityType="Self.SatisfactionCategory" />
+          <EntitySet Name="Stations" EntityType="Self.Station" />
+          <EntitySet Name="SubwayCards" EntityType="Self.SubwayCard" />
+          <EntitySet Name="Transfers" EntityType="Self.Transfer" />
+          <AssociationSet Name="FK_FootTraffic_Station" Association="Self.FK_FootTraffic_Station">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="FootTraffic" EntitySet="FootTraffics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_FootTraffic_Transfer" Association="Self.FK_FootTraffic_Transfer">
+            <End Role="Transfer" EntitySet="Transfers" />
+            <End Role="FootTraffic" EntitySet="FootTraffics" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_Station" Association="Self.FK_Revenue_Station">
+            <End Role="Station" EntitySet="Stations" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Revenue_SubwayCard" Association="Self.FK_Revenue_SubwayCard">
+            <End Role="SubwayCard" EntitySet="SubwayCards" />
+            <End Role="Revenue" EntitySet="Revenues" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Satisfaction_SatisfactionCategory" Association="Self.FK_Satisfaction_SatisfactionCategory">
+            <End Role="SatisfactionCategory" EntitySet="SatisfactionCategories" />
+            <End Role="Satisfaction" EntitySet="Satisfactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SatisfactionCategory_SatisfactionCategory" Association="Self.FK_SatisfactionCategory_SatisfactionCategory">
+            <End Role="SatisfactionCategory" EntitySet="SatisfactionCategories" />
+            <End Role="SatisfactionCategory1" EntitySet="SatisfactionCategories" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GothamSubwayModelStoreContainer" CdmEntityContainer="GothamSubwayEntities">
+          <EntitySetMapping Name="Electricities">
+            <EntityTypeMapping TypeName="GothamSubwayModel.Electricity">
+              <MappingFragment StoreEntitySet="Electricity">
+                <ScalarProperty Name="ElectricityId" ColumnName="ElectricityId" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Usage" ColumnName="Usage" />
+                <ScalarProperty Name="Bill" ColumnName="Bill" />
+                <ScalarProperty Name="YoY" ColumnName="YoY" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FootTraffics">
+            <EntityTypeMapping TypeName="GothamSubwayModel.FootTraffic">
+              <MappingFragment StoreEntitySet="FootTraffic">
+                <ScalarProperty Name="FootTrafficId" ColumnName="FootTrafficId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="TransferId" ColumnName="TransferId" />
+                <ScalarProperty Name="BeforeSix" ColumnName="BeforeSix" />
+                <ScalarProperty Name="SixToSeven" ColumnName="SixToSeven" />
+                <ScalarProperty Name="SevenToEight" ColumnName="SevenToEight" />
+                <ScalarProperty Name="EightToNine" ColumnName="EightToNine" />
+                <ScalarProperty Name="NineToTen" ColumnName="NineToTen" />
+                <ScalarProperty Name="TenToEleven" ColumnName="TenToEleven" />
+                <ScalarProperty Name="ElevenToTwelve" ColumnName="ElevenToTwelve" />
+                <ScalarProperty Name="TwelveToThirteen" ColumnName="TwelveToThirteen" />
+                <ScalarProperty Name="ThirteenToFourteen" ColumnName="ThirteenToFourteen" />
+                <ScalarProperty Name="FourteenToFifteen" ColumnName="FourteenToFifteen" />
+                <ScalarProperty Name="FifteenToSixteen" ColumnName="FifteenToSixteen" />
+                <ScalarProperty Name="SixteenToSeventeen" ColumnName="SixteenToSeventeen" />
+                <ScalarProperty Name="SeventeenToEighteen" ColumnName="SeventeenToEighteen" />
+                <ScalarProperty Name="EighteenToNineteen" ColumnName="EighteenToNineteen" />
+                <ScalarProperty Name="NineteenToTwenty" ColumnName="NineteenToTwenty" />
+                <ScalarProperty Name="TwentyToTwentyOne" ColumnName="TwentyToTwentyOne" />
+                <ScalarProperty Name="TwnetyOneToTwentyTwo" ColumnName="TwnetyOneToTwentyTwo" />
+                <ScalarProperty Name="TwentyTwoToTwentyThree" ColumnName="TwentyTwoToTwentyThree" />
+                <ScalarProperty Name="TwentyThreeToTwentyFour" ColumnName="TwentyThreeToTwentyFour" />
+                <ScalarProperty Name="AfterTwentyFour" ColumnName="AfterTwentyFour" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revenues">
+            <EntityTypeMapping TypeName="GothamSubwayModel.Revenue">
+              <MappingFragment StoreEntitySet="Revenue">
+                <ScalarProperty Name="RevenueId" ColumnName="RevenueId" />
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="SubwayCardId" ColumnName="SubwayCardId" />
+                <ScalarProperty Name="Income" ColumnName="Income" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Satisfactions">
+            <EntityTypeMapping TypeName="GothamSubwayModel.Satisfaction">
+              <MappingFragment StoreEntitySet="Satisfaction">
+                <ScalarProperty Name="Satisfactionid" ColumnName="Satisfactionid" />
+                <ScalarProperty Name="SatisfactionCategoryId" ColumnName="SatisfactionCategoryId" />
+                <ScalarProperty Name="Excellent" ColumnName="Excellent" />
+                <ScalarProperty Name="Good" ColumnName="Good" />
+                <ScalarProperty Name="Soso" ColumnName="Soso" />
+                <ScalarProperty Name="Bad" ColumnName="Bad" />
+                <ScalarProperty Name="Terrible" ColumnName="Terrible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SatisfactionCategories">
+            <EntityTypeMapping TypeName="GothamSubwayModel.SatisfactionCategory">
+              <MappingFragment StoreEntitySet="SatisfactionCategory">
+                <ScalarProperty Name="SatisfactionCategoryId" ColumnName="SatisfactionCategoryId" />
+                <ScalarProperty Name="UpperId" ColumnName="UpperId" />
+                <ScalarProperty Name="Item" ColumnName="Item" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stations">
+            <EntityTypeMapping TypeName="GothamSubwayModel.Station">
+              <MappingFragment StoreEntitySet="Station">
+                <ScalarProperty Name="StationId" ColumnName="StationId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubwayCards">
+            <EntityTypeMapping TypeName="GothamSubwayModel.SubwayCard">
+              <MappingFragment StoreEntitySet="SubwayCard">
+                <ScalarProperty Name="SubwayCardId" ColumnName="SubwayCardId" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transfers">
+            <EntityTypeMapping TypeName="GothamSubwayModel.Transfer">
+              <MappingFragment StoreEntitySet="Transfer">
+                <ScalarProperty Name="TransferId" ColumnName="TransferId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="없음" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
