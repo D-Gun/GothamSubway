@@ -20,45 +20,43 @@ namespace GothamSubway.WinForm
 
         private void ShowChildForm(Form form)
         {
-            form.MdiParent = this;
-            form.Show();
-        }
+            if (form == null)
+                return;
 
-        private Form FindChildForm(string text)
-        {
-            foreach (var form in MdiChildren)
+            var childForm = MdiChildren.FirstOrDefault(x => x.GetType() == form.GetType());
+
+            if (childForm == null)
             {
-                if (form.Text == text)
-                    return form;
+                form.MdiParent = this;
+                form.Show();
             }
-
-            return null;
+            else
+                childForm.Focus();
         }
 
         private void itmTransferByMonth_ItemClick(object sender, TileItemEventArgs e)
         {
-            //Form form = FindChildForm("Form1");
-
-            //if (form == null)
-            //    ShowChildForm(new Form1());
-            //else
-            //    form.Activate();
+            ShowChildForm(null/* new TransferWithMonthForm() */);
         }
 
         private void itmTransferByDuration_ItemClick(object sender, TileItemEventArgs e)
         {
-            //Form form = FindChildForm("Form2");
-
-            //if (form == null)
-            //    ShowChildForm(new Form2());
-            //else
-            //    form.Activate();
+            ShowChildForm(null/* new TransferWithDurationForm() */);
         }
-    }
 
-    public class MyTabbedMdiManager : DevExpress.XtraTabbedMdi.XtraTabbedMdiManager, DevExpress.XtraTab.IXtraTabProperties
-    {
-        public MyTabbedMdiManager(IContainer container) : base(container) {}
-        DevExpress.Utils.DefaultBoolean DevExpress.XtraTab.IXtraTabProperties.ShowTabHeader { get { return DevExpress.Utils.DefaultBoolean.False; } }
+        private void itmRevenue_ItemClick(object sender, TileItemEventArgs e)
+        {
+            ShowChildForm(null/* new RevenueForm() */);
+        }
+
+        private void itmSatisfaction_ItemClick(object sender, TileItemEventArgs e)
+        {
+            ShowChildForm(null/* new SatisfactionForm() */);
+        }
+
+        private void itmElectricity_ItemClick(object sender, TileItemEventArgs e)
+        {
+            ShowChildForm(null/* new ElectricityForm() */);
+        }
     }
 }
