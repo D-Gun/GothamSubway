@@ -60,11 +60,22 @@ namespace GothamSubway.WinForm
         private void OccoredEvent(object sender)
         {
             SimpleButton btn = sender as SimpleButton;
+            InitializeButtonColor();
+            btn.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             ButtonClickedEventArgs args = new ButtonClickedEventArgs();
             args.StationName = btn.Tag.ToString();
             OnButtonClicked(args.StationName);
         }
-        
+
+        private void InitializeButtonColor()
+        {
+            foreach(var control in Controls)
+            {
+                if(control.GetType() == btnCityHall.GetType())
+                    ((SimpleButton)control).Appearance.BackColor = Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            }
+        }
+
         /* 역이름 주석
          * 0 시청
          * 1 고담씨티
@@ -80,7 +91,7 @@ namespace GothamSubway.WinForm
 
 
         private void btnCityHall_Click(object sender, EventArgs e)
-        { 
+        {
             OccoredEvent(sender);
         }
 
