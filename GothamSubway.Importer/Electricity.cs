@@ -18,6 +18,5 @@ namespace GothamSubway.Importer
         public System.DateTime Month { get; set; }
         public int Usage { get; set; }
         public int Bill { get; set; }
-        public decimal YoY { get; set; }
     }
 }
