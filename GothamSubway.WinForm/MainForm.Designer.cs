@@ -62,18 +62,18 @@ namespace GothamSubway.WinForm
             this.tileBar.IndentBetweenItems = 15;
             this.tileBar.ItemPadding = new System.Windows.Forms.Padding(8, 6, 12, 6);
             this.tileBar.Location = new System.Drawing.Point(0, 0);
-            this.tileBar.Margin = new System.Windows.Forms.Padding(5);
+            this.tileBar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.tileBar.MaxId = 9;
-            this.tileBar.MaximumSize = new System.Drawing.Size(0, 118);
-            this.tileBar.MinimumSize = new System.Drawing.Size(117, 118);
+            this.tileBar.MaximumSize = new System.Drawing.Size(0, 152);
+            this.tileBar.MinimumSize = new System.Drawing.Size(134, 152);
             this.tileBar.Name = "tileBar";
-            this.tileBar.Padding = new System.Windows.Forms.Padding(34, 12, 34, 12);
+            this.tileBar.Padding = new System.Windows.Forms.Padding(39, 15, 39, 15);
             this.tileBar.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
             this.tileBar.SelectionBorderWidth = 3;
             this.tileBar.SelectionColor = System.Drawing.Color.DarkRed;
             this.tileBar.ShowGroupText = false;
             this.tileBar.ShowItemShadow = true;
-            this.tileBar.Size = new System.Drawing.Size(915, 118);
+            this.tileBar.Size = new System.Drawing.Size(1022, 152);
             this.tileBar.TabIndex = 1;
             this.tileBar.Text = "tileBar";
             this.tileBar.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -167,11 +167,13 @@ namespace GothamSubway.WinForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(915, 604);
+            this.ClientSize = new System.Drawing.Size(1022, 728);
             this.Controls.Add(this.tileBar);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MinimumSize = new System.Drawing.Size(1024, 768);
             this.Name = "MainForm";
             this.ResumeLayout(false);
 

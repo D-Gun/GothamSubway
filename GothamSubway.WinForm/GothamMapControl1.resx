@@ -117,29 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="수입_투명_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\수입(투명).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MD_MapofGothamLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MD_MapofGothamLine.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MapofGotham" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MapofGotham1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="만족도_투명_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\만족도(투명).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="전력량_투명_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\전력량(투명).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="승하차_투명_" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\승하차(투명).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="MapofGothamLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\MapofGothamLine.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="station30" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\station30.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

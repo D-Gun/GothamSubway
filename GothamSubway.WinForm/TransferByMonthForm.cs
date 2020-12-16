@@ -17,5 +17,10 @@ namespace GothamSubway.WinForm
         {
             InitializeComponent();
         }
+
+        private void gothamMapControl11_ButtonClicked(object sender, GothamMapControl1.ButtonClickedEventArgs e)
+        {
+            MessageBox.Show($"{e.StationName}");
+        }
     }
 }
