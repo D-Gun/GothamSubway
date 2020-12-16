@@ -103,6 +103,12 @@
     <Compile Include="TransferByMonthForm.Designer.cs">
       <DependentUpon>TransferByMonthForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="GothamMapControl1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GothamMapControl1.Designer.cs">
+      <DependentUpon>GothamMapControl1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ElectricityForm.resx">
       <DependentUpon>ElectricityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -135,6 +141,9 @@
     <EmbeddedResource Include="TransferByMonthForm.resx">
       <DependentUpon>TransferByMonthForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GothamMapControl1.resx">
+      <DependentUpon>GothamMapControl1.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -159,6 +168,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\전력량%28투명%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapofGotham.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapofGotham1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MapofGothamLine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MD_MapofGothamLine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\station30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
