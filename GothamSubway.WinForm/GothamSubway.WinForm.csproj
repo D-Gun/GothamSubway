@@ -170,19 +170,7 @@
     <None Include="Resources\전력량%28투명%29.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\MapofGotham.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MapofGotham1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\MapofGothamLine.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\MD_MapofGothamLine.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\station30.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
