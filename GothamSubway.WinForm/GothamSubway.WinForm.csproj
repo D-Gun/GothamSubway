@@ -124,6 +124,12 @@
     <Compile Include="GothamMapControl1.Designer.cs">
       <DependentUpon>GothamMapControl1.cs</DependentUpon>
     </Compile>
+    <Compile Include="YearSelectorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="YearSelectorControl.Designer.cs">
+      <DependentUpon>YearSelectorControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ElectricityForm.resx">
       <DependentUpon>ElectricityForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,7 +165,11 @@
     <EmbeddedResource Include="GothamMapControl1.resx">
       <DependentUpon>GothamMapControl1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="YearSelectorControl.resx">
+      <DependentUpon>YearSelectorControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\GothamSubway.Data.Revenue.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.ElectricityItem.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficTotalModel.datasource" />
     <None Include="Properties\Settings.settings">
