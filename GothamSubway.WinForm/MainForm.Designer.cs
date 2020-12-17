@@ -30,6 +30,7 @@ namespace GothamSubway.WinForm
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             DevExpress.XtraEditors.TileItemElement tileItemElement1 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement2 = new DevExpress.XtraEditors.TileItemElement();
             DevExpress.XtraEditors.TileItemElement tileItemElement3 = new DevExpress.XtraEditors.TileItemElement();
@@ -42,6 +43,8 @@ namespace GothamSubway.WinForm
             this.itmRevenue = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmSatisfaction = new DevExpress.XtraBars.Navigation.TileBarItem();
             this.itmElectricity = new DevExpress.XtraBars.Navigation.TileBarItem();
+            this.mdiMain = new XtraTabbedMdiManagerExtend(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.mdiMain)).BeginInit();
             this.SuspendLayout();
             // 
             // tileBar
@@ -62,18 +65,18 @@ namespace GothamSubway.WinForm
             this.tileBar.IndentBetweenItems = 15;
             this.tileBar.ItemPadding = new System.Windows.Forms.Padding(8, 6, 12, 6);
             this.tileBar.Location = new System.Drawing.Point(0, 0);
-            this.tileBar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tileBar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.tileBar.MaxId = 9;
-            this.tileBar.MaximumSize = new System.Drawing.Size(0, 152);
-            this.tileBar.MinimumSize = new System.Drawing.Size(134, 152);
+            this.tileBar.MaximumSize = new System.Drawing.Size(0, 118);
+            this.tileBar.MinimumSize = new System.Drawing.Size(117, 118);
             this.tileBar.Name = "tileBar";
-            this.tileBar.Padding = new System.Windows.Forms.Padding(39, 15, 39, 15);
+            this.tileBar.Padding = new System.Windows.Forms.Padding(34, 12, 34, 12);
             this.tileBar.ScrollMode = DevExpress.XtraEditors.TileControlScrollMode.None;
             this.tileBar.SelectionBorderWidth = 3;
             this.tileBar.SelectionColor = System.Drawing.Color.DarkRed;
             this.tileBar.ShowGroupText = false;
             this.tileBar.ShowItemShadow = true;
-            this.tileBar.Size = new System.Drawing.Size(1022, 152);
+            this.tileBar.Size = new System.Drawing.Size(1022, 118);
             this.tileBar.TabIndex = 1;
             this.tileBar.Text = "tileBar";
             this.tileBar.VerticalContentAlignment = DevExpress.Utils.VertAlignment.Center;
@@ -162,18 +165,21 @@ namespace GothamSubway.WinForm
             this.itmElectricity.ItemSize = DevExpress.XtraBars.Navigation.TileBarItemSize.Wide;
             this.itmElectricity.Name = "itmElectricity";
             this.itmElectricity.ItemClick += new DevExpress.XtraEditors.TileItemClickEventHandler(this.itmElectricity_ItemClick);
+            //
+            // mdiMain
+            //
+            this.mdiMain.MdiParent = this;
             // 
             // MainForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 728);
             this.Controls.Add(this.tileBar);
             this.IsMdiContainer = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1024, 768);
+            this.MinimumSize = new System.Drawing.Size(1024, 760);
             this.Name = "MainForm";
             this.ResumeLayout(false);
 

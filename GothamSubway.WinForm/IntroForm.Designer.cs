@@ -36,7 +36,7 @@ namespace GothamSubway.WinForm
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(229, 207);
+            this.labelControl1.Location = new System.Drawing.Point(229, 241);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(162, 37);
             this.labelControl1.TabIndex = 1;
@@ -44,9 +44,9 @@ namespace GothamSubway.WinForm
             // 
             // IntroForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1022, 611);
             this.Controls.Add(this.labelControl1);
             this.Name = "IntroForm";
             this.Text = "IntroForm";

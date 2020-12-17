@@ -75,8 +75,8 @@ namespace GothamSubway.WinForm
             DevExpress.DataAccess.Excel.ExcelWorksheetSettings excelWorksheetSettings1 = new DevExpress.DataAccess.Excel.ExcelWorksheetSettings();
             DevExpress.DataAccess.Excel.ExcelSourceOptions excelSourceOptions1 = new DevExpress.DataAccess.Excel.ExcelSourceOptions(excelWorksheetSettings1);
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
             this.excelBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.excelDataSource1 = new DevExpress.DataAccess.Excel.ExcelDataSource();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(doughnutSeriesLabel1)).BeginInit();
@@ -97,6 +97,7 @@ namespace GothamSubway.WinForm
             this.chartControl1.Legend.Name = "Default Legend";
             this.chartControl1.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.chartControl1.Location = new System.Drawing.Point(0, 0);
+            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.chartControl1.Name = "chartControl1";
             series1.ArgumentDataMember = "분류";
             doughnutSeriesLabel1.TextPattern = "{A}\n{V:#.00\"%\"}";
@@ -132,11 +133,15 @@ namespace GothamSubway.WinForm
         series1,
         series2,
         series3};
-            this.chartControl1.Size = new System.Drawing.Size(914, 579);
+            this.chartControl1.Size = new System.Drawing.Size(1022, 611);
             this.chartControl1.TabIndex = 0;
             chartTitle1.Text = "지하철 이용 만족도(구별)";
             this.chartControl1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
+            // 
+            // excelBindingSource1
+            // 
+            this.excelBindingSource1.DataSource = this.excelDataSource1;
             // 
             // excelDataSource1
             // 
@@ -258,17 +263,12 @@ namespace GothamSubway.WinForm
             excelSourceOptions1.ImportSettings = excelWorksheetSettings1;
             this.excelDataSource1.SourceOptions = excelSourceOptions1;
             // 
-            // excelBindingSource1
-            // 
-            this.excelBindingSource1.DataSource = this.excelDataSource1;
-            // 
             // SatisfactionForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 579);
+            this.ClientSize = new System.Drawing.Size(1022, 611);
             this.Controls.Add(this.chartControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SatisfactionForm";
             this.Text = "SatisfactionForm";
             ((System.ComponentModel.ISupportInitialize)(doughnutSeriesLabel1)).EndInit();
