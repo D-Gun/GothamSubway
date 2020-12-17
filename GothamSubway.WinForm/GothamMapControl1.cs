@@ -27,9 +27,9 @@ namespace GothamSubway.WinForm
                 ButtonClicked(this, e);
         }
 
-        private ButtonClickedEventArgs OnButtonClicked(string stationName)
+        private ButtonClickedEventArgs OnButtonClicked(int stationNunmber)
         {
-            ButtonClickedEventArgs args = new ButtonClickedEventArgs(stationName);
+            ButtonClickedEventArgs args = new ButtonClickedEventArgs(stationNunmber);
             OnButtonClicked(args);
 
             return args;
@@ -45,17 +45,19 @@ namespace GothamSubway.WinForm
 
         public class ButtonClickedEventArgs : EventArgs
         {
-            public string StationName { get; set; }
+            public int StationNumber { get; set; }
 
             public ButtonClickedEventArgs()
             {
             }
 
-            public ButtonClickedEventArgs(string stationName)
+            public ButtonClickedEventArgs(int stationNumber)
             {
-                StationName = stationName;
+                StationNumber = stationNumber;
             }
         }
+
+
         #endregion
         private void OccoredEvent(object sender)
         {
@@ -63,8 +65,21 @@ namespace GothamSubway.WinForm
             InitializeButtonColor();
             btn.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             ButtonClickedEventArgs args = new ButtonClickedEventArgs();
-            args.StationName = btn.Tag.ToString();
-            OnButtonClicked(args.StationName);
+            
+            args.StationNumber = Convert.ToInt32(btn.Tag);
+            /* 버튼 태그 - 역이름 주석
+            * 1 고담씨티
+            * 2 시청
+            * 3 웨인엔터프라이즈
+            * 4 내로우즈 3가
+            * 5 내로우즈 5가
+            * 6 DK게이트
+            * 7 신설동
+            * 8 제기동
+            * 9 청량리
+            * 10 올뺴미법정앞
+            */
+            OnButtonClicked(args.StationNumber);
         }
 
         private void InitializeButtonColor()
@@ -75,19 +90,6 @@ namespace GothamSubway.WinForm
                     ((SimpleButton)control).Appearance.BackColor = Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             }
         }
-
-        /* 역이름 주석
-         * 0 시청
-         * 1 고담씨티
-         * 2 올뺴미법정앞
-         * 3 청량리
-         * 4 제기동
-         * 5 신설동
-         * 6 DK게이트
-         * 7 내로우즈 5가
-         * 8 내로우즈 3가
-         * 9 웨인엔터프라이즈
-         */
 
 
         private void btnCityHall_Click(object sender, EventArgs e)

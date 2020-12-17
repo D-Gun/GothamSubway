@@ -161,6 +161,7 @@
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GothamSubway.Data.ElectricityItem.datasource" />
+    <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficTotalModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
