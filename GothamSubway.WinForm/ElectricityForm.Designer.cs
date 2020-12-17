@@ -88,6 +88,7 @@ namespace GothamSubway.WinForm
             // 
             this.chartUsage.DataSource = this.electricityBindingSource;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Label.TextPattern = "{V:#,#}";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartUsage.Diagram = xyDiagram1;
             this.chartUsage.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -120,6 +121,7 @@ namespace GothamSubway.WinForm
             // 
             this.chartBill.DataSource = this.electricityBindingSource;
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram2.AxisY.Label.TextPattern = "{V:#,#}";
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             this.chartBill.Diagram = xyDiagram2;
             this.chartBill.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -177,6 +179,8 @@ namespace GothamSubway.WinForm
             // 
             // colUsage
             // 
+            this.colUsage.DisplayFormat.FormatString = "#,#";
+            this.colUsage.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colUsage.FieldName = "Usage";
             this.colUsage.MinWidth = 25;
             this.colUsage.Name = "colUsage";
@@ -219,6 +223,8 @@ namespace GothamSubway.WinForm
             // 
             // colBill
             // 
+            this.colBill.DisplayFormat.FormatString = "#,#";
+            this.colBill.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             this.colBill.FieldName = "Bill";
             this.colBill.MinWidth = 25;
             this.colBill.Name = "colBill";
