@@ -26,22 +26,29 @@ namespace GothamSubway.WinForm
             if (DesignMode)
                 return;
 
-            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear));
-            footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
         }
 
         public string stringYear { get; set; }//콤보박스 기준년도 프로퍼티 선언
-              
-       
+        public int stationNumber { get; set; }//지하철역 버튼 태그 프로퍼티 선언
+
 
         private void cbxYear_SelectedIndexChanged(object sender, EventArgs e)
         {
             if ((string)cbxYear.SelectedItem != "기준년도")
                 stringYear = (string)cbxYear.SelectedItem;
+
+            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear),stationNumber);
+            footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
+
         }
 
         private void gothamMapControl_ButtonClicked(object sender, GothamMapControl1.ButtonClickedEventArgs e)
         {
+            stationNumber = e.StationNumber;
+
+            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
+            footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
+
             MessageBox.Show($"{e.StationNumber}");
         }
     }
