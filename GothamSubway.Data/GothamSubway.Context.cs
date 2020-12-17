@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GothamSubway.Importer
+namespace GothamSubway.Data
 {
     using System;
     using System.Data.Entity;

@@ -7,16 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GothamSubway.Importer
+namespace GothamSubway.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Electricity
+    public partial class Revenue
     {
-        public int ElectricityId { get; set; }
+        public int RevenueId { get; set; }
+        public int StationId { get; set; }
         public System.DateTime Month { get; set; }
-        public int Usage { get; set; }
-        public int Bill { get; set; }
+        public int SubwayCardId { get; set; }
+        public int Income { get; set; }
+    
+        public virtual Station Station { get; set; }
+        public virtual SubwayCard SubwayCard { get; set; }
     }
 }

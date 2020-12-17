@@ -7,28 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GothamSubway.Importer
+namespace GothamSubway.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class SatisfactionCategory
+    public partial class Station
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SatisfactionCategory()
+        public Station()
         {
-            this.Satisfactions = new HashSet<Satisfaction>();
-            this.SatisfactionCategory1 = new HashSet<SatisfactionCategory>();
+            this.FootTraffics = new HashSet<FootTraffic>();
+            this.Revenues = new HashSet<Revenue>();
         }
     
-        public int SatisfactionCategoryId { get; set; }
-        public Nullable<int> UpperId { get; set; }
-        public string Item { get; set; }
+        public int StationId { get; set; }
+        public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Satisfaction> Satisfactions { get; set; }
+        public virtual ICollection<FootTraffic> FootTraffics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SatisfactionCategory> SatisfactionCategory1 { get; set; }
-        public virtual SatisfactionCategory SatisfactionCategory2 { get; set; }
+        public virtual ICollection<Revenue> Revenues { get; set; }
     }
 }

@@ -47,6 +47,12 @@
     <Reference Include="DevExpress.XtraCharts.v20.2.UI, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v20.2.Wizard, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.XtraPrinting.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -156,6 +162,7 @@
     <EmbeddedResource Include="GothamMapControl1.resx">
       <DependentUpon>GothamMapControl1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="packages.config" />
     <None Include="GothamSubwayDataSet.xsc">
       <DependentUpon>GothamSubwayDataSet.xsd</DependentUpon>
     </None>
@@ -194,6 +201,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\MD_MapofGothamLine.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\station30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GothamSubway.Data\GothamSubway.Data.csproj">
+      <Project>{013ceb14-936b-42d4-bc88-8c7df5aaa422}</Project>
+      <Name>GothamSubway.Data</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -7,25 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GothamSubway.Importer
+namespace GothamSubway.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Station
+    public partial class SubwayCard
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Station()
+        public SubwayCard()
         {
-            this.FootTraffics = new HashSet<FootTraffic>();
             this.Revenues = new HashSet<Revenue>();
         }
     
-        public int StationId { get; set; }
-        public string Name { get; set; }
+        public int SubwayCardId { get; set; }
+        public string CompanyName { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FootTraffic> FootTraffics { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Revenue> Revenues { get; set; }
     }

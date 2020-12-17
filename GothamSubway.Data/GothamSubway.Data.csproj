@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{013CEB14-936B-42D4-BC88-8C7DF5AAA422}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GothamSubway.Data</RootNamespace>
+    <AssemblyName>GothamSubway.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.Desktop.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraBars.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v20.2, Version=20.2.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Electricity.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extend\XtraTabbedMdiManagerExtend.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="FootTraffic.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GothamSubway.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GothamSubway.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GothamSubway.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GothamSubway.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GothamSubway.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Revenue.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Satisfaction.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SatisfactionCategory.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Station.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubwayCard.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Transfer.cs">
+      <DependentUpon>GothamSubway.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UEF\BaseDao.cs" />
+    <Compile Include="UEF\Dao\Dao.cs" />
+    <Compile Include="UEF\Dao\ElectricityDao.cs" />
+    <Compile Include="UEF\Dao\FootTrafficDao.cs" />
+    <Compile Include="UEF\Dao\RevenueDao.cs" />
+    <Compile Include="UEF\Dao\SatisfactionCategoryDao.cs" />
+    <Compile Include="UEF\Dao\SatisfactionDao.cs" />
+    <Compile Include="UEF\Dao\StationDao.cs" />
+    <Compile Include="UEF\Dao\SubwayCardDao.cs" />
+    <Compile Include="UEF\Dao\TransferDao.cs" />
+    <Compile Include="UEF\DbContextCreator.cs" />
+    <Compile Include="UEF\Entities\Electricity.cs" />
+    <Compile Include="UEF\Entities\FootTraffic.cs" />
+    <Compile Include="UEF\Entities\Ramdom.cs" />
+    <Compile Include="UEF\Entities\Revenue.cs" />
+    <Compile Include="UEF\Entities\Satisfaction.cs" />
+    <Compile Include="UEF\SingleKeyDao.cs" />
+    <Compile Include="Utility.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="GothamSubway.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GothamSubway.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="GothamSubway.edmx.diagram">
+      <DependentUpon>GothamSubway.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="GothamSubway.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GothamSubway.edmx</DependentUpon>
+      <LastGenOutput>GothamSubway.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="GothamSubway.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>GothamSubway.edmx</DependentUpon>
+      <LastGenOutput>GothamSubway.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
