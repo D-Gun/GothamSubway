@@ -8,7 +8,7 @@ namespace GothamSubway.Data
     {
         internal FootTrafficDao() { }
 
-        public List<FootTrafficTotalModel> GetMonthlyFootTraffics(int selectedYear)
+        public List<FootTrafficTotalModel> GetMonthlyFootTraffics(int selectedYear, int stationNumber)
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
             {
@@ -38,9 +38,9 @@ namespace GothamSubway.Data
                                 twentyOneToTwentyTwo = x.TwnetyOneToTwentyTwo,
                                 twentyTwoToTwentyThree = x.TwentyTwoToTwentyThree,
                                 twentyThreeToTwentyFour = x.TwentyThreeToTwentyFour,
-                                afterTwentyFour = x.AfterTwentyFour 
+                                afterTwentyFour = x.AfterTwentyFour
                             };
-                query = query.Where(x => x.date.Year== selectedYear); // selected year에 해당하는 query 생성
+                query = query.Where(x => (x.date.Year == selectedYear) && (x.stationId == stationNumber)); // selected year에 해당하는 query 생성
 
             //    int month = int.Parse(birthdate) % 10000 / 100;
             //    int day = int.Parse(birthdate) % 100;
