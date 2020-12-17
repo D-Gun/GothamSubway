@@ -70,7 +70,7 @@ namespace GothamSubway.WinForm
             this.btnCityHall.Name = "btnCityHall";
             this.btnCityHall.Size = new System.Drawing.Size(16, 16);
             this.btnCityHall.TabIndex = 4;
-            this.btnCityHall.Tag = "0";
+            this.btnCityHall.Tag = "2";
             this.btnCityHall.Click += new System.EventHandler(this.btnCityHall_Click);
             // 
             // btnGothamCity
@@ -101,7 +101,7 @@ namespace GothamSubway.WinForm
             this.btnOwlCourt.Name = "btnOwlCourt";
             this.btnOwlCourt.Size = new System.Drawing.Size(16, 16);
             this.btnOwlCourt.TabIndex = 8;
-            this.btnOwlCourt.Tag = "2";
+            this.btnOwlCourt.Tag = "10";
             this.btnOwlCourt.Click += new System.EventHandler(this.btnOwlCourt_Click);
             // 
             // lblOwlCourt
@@ -121,7 +121,7 @@ namespace GothamSubway.WinForm
             this.btnChungRyangLi.Name = "btnChungRyangLi";
             this.btnChungRyangLi.Size = new System.Drawing.Size(16, 16);
             this.btnChungRyangLi.TabIndex = 10;
-            this.btnChungRyangLi.Tag = "3";
+            this.btnChungRyangLi.Tag = "9";
             this.btnChungRyangLi.Click += new System.EventHandler(this.btnChungRyangLi_Click);
             // 
             // lblChungRyangLi
@@ -141,7 +141,7 @@ namespace GothamSubway.WinForm
             this.btnJeGiDong.Name = "btnJeGiDong";
             this.btnJeGiDong.Size = new System.Drawing.Size(16, 16);
             this.btnJeGiDong.TabIndex = 12;
-            this.btnJeGiDong.Tag = "4";
+            this.btnJeGiDong.Tag = "8";
             this.btnJeGiDong.Click += new System.EventHandler(this.btnJeGiDong_Click);
             // 
             // lblJeGiDong
@@ -161,7 +161,7 @@ namespace GothamSubway.WinForm
             this.btnSinSulDong.Name = "btnSinSulDong";
             this.btnSinSulDong.Size = new System.Drawing.Size(16, 16);
             this.btnSinSulDong.TabIndex = 14;
-            this.btnSinSulDong.Tag = "5";
+            this.btnSinSulDong.Tag = "7";
             this.btnSinSulDong.Click += new System.EventHandler(this.btnSinSulDong_Click);
             // 
             // lblSinSulDong
@@ -201,7 +201,7 @@ namespace GothamSubway.WinForm
             this.btnNarrows3rdst.Name = "btnNarrows3rdst";
             this.btnNarrows3rdst.Size = new System.Drawing.Size(16, 16);
             this.btnNarrows3rdst.TabIndex = 18;
-            this.btnNarrows3rdst.Tag = "7";
+            this.btnNarrows3rdst.Tag = "5";
             this.btnNarrows3rdst.Click += new System.EventHandler(this.btnNarrows3rdst_Click);
             // 
             // lblNarrows3rdst
@@ -221,7 +221,7 @@ namespace GothamSubway.WinForm
             this.btnNarrows5thst.Name = "btnNarrows5thst";
             this.btnNarrows5thst.Size = new System.Drawing.Size(16, 16);
             this.btnNarrows5thst.TabIndex = 20;
-            this.btnNarrows5thst.Tag = "8";
+            this.btnNarrows5thst.Tag = "4";
             this.btnNarrows5thst.Click += new System.EventHandler(this.btnNarrows5thst_Click);
             // 
             // lblNarrows5thst
@@ -241,7 +241,7 @@ namespace GothamSubway.WinForm
             this.btnWayneEnt.Name = "btnWayneEnt";
             this.btnWayneEnt.Size = new System.Drawing.Size(16, 16);
             this.btnWayneEnt.TabIndex = 22;
-            this.btnWayneEnt.Tag = "9";
+            this.btnWayneEnt.Tag = "3";
             this.btnWayneEnt.Click += new System.EventHandler(this.btnWayneEnt_Click);
             // 
             // lblWayneEnt
