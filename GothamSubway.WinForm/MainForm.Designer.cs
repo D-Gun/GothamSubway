@@ -1,4 +1,4 @@
-﻿
+﻿using GothamSubway.Data;
 namespace GothamSubway.WinForm
 {
     partial class MainForm

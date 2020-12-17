@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace GothamSubway.WinForm
+namespace GothamSubway.Data
 {
     public class XtraTabbedMdiManagerExtend : DevExpress.XtraTabbedMdi.XtraTabbedMdiManager, DevExpress.XtraTab.IXtraTabProperties
     {

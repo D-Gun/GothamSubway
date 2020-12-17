@@ -1,13 +1,11 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿using GothamSubway.Data;
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -206,7 +204,7 @@ namespace GothamSubway.Importer
                 List<SubwayCard> subwayCards = new List<SubwayCard>();
                 List<Revenue> revenues = new List<Revenue>();
 
-                using (var context = new GothamSubwayEntities())
+                using (var context = DbContextCreator.Create())
                 {
                     stations = context.Stations.ToList();
                     subwayCards = context.SubwayCards.ToList();
@@ -311,7 +309,7 @@ namespace GothamSubway.Importer
                 }
 
                 // Entity를 DB에 저장
-                using (var context = new GothamSubwayEntities())
+                using (var context = DbContextCreator.Create())
                 {
                     for (int i = context.Stations.Count(); i < stations.Count; i++)
                         context.Stations.Add(stations[i]);
@@ -330,7 +328,7 @@ namespace GothamSubway.Importer
                 int maxFirstId;
                 int beforeSatisfactionCategoryCount;
 
-                using (var context = new GothamSubwayEntities())
+                using (var context = DbContextCreator.Create())
                 {
                     satisfactionCategories = context.SatisfactionCategories.ToList();
                     if (satisfactionCategories.Count != 0)
@@ -392,7 +390,7 @@ namespace GothamSubway.Importer
                 }
 
                 // Entity를 DB에 저장
-                using(var context = new GothamSubwayEntities())
+                using(var context = DbContextCreator.Create())
                 {
                     for (int i = beforeSatisfactionCategoryCount; i < satisfactionCategories.Count; ++i)
                         context.SatisfactionCategories.Add(satisfactionCategories[i]);
@@ -429,7 +427,7 @@ namespace GothamSubway.Importer
                 }
 
                 // Entity를 DB에 저장하기
-                using(var context = new GothamSubwayEntities())
+                using(var context = DbContextCreator.Create())
                 {
                     //foreach (Electricity electricity in electricities)
                     context.Electricities.AddRange(electricities);

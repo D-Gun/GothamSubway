@@ -7,21 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GothamSubway.Importer
+namespace GothamSubway.Data
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Satisfaction
+    public partial class Electricity
     {
-        public int Satisfactionid { get; set; }
-        public int SatisfactionCategoryId { get; set; }
-        public decimal Excellent { get; set; }
-        public decimal Good { get; set; }
-        public decimal Soso { get; set; }
-        public decimal Bad { get; set; }
-        public decimal Terrible { get; set; }
-    
-        public virtual SatisfactionCategory SatisfactionCategory { get; set; }
+        public int ElectricityId { get; set; }
+        public System.DateTime Month { get; set; }
+        public int Usage { get; set; }
+        public int Bill { get; set; }
     }
 }
