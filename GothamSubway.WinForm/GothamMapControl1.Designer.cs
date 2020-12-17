@@ -29,7 +29,6 @@ namespace GothamSubway.WinForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.lblCityHall = new System.Windows.Forms.Label();
             this.btnCityHall = new DevExpress.XtraEditors.SimpleButton();
             this.btnGothamCity = new DevExpress.XtraEditors.SimpleButton();
@@ -50,21 +49,9 @@ namespace GothamSubway.WinForm
             this.lblNarrows5thst = new System.Windows.Forms.Label();
             this.btnWayneEnt = new DevExpress.XtraEditors.SimpleButton();
             this.lblWayneEnt = new System.Windows.Forms.Label();
+            this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             this.SuspendLayout();
-            // 
-            // pictureEdit1
-            // 
-            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureEdit1.EditValue = global::GothamSubway.WinForm.Properties.Resources.MD_MapofGothamLine;
-            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
-            this.pictureEdit1.MaximumSize = new System.Drawing.Size(480, 481);
-            this.pictureEdit1.MinimumSize = new System.Drawing.Size(480, 481);
-            this.pictureEdit1.Name = "pictureEdit1";
-            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
-            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(480, 481);
-            this.pictureEdit1.TabIndex = 0;
             // 
             // lblCityHall
             // 
@@ -265,6 +252,19 @@ namespace GothamSubway.WinForm
             this.lblWayneEnt.Size = new System.Drawing.Size(112, 18);
             this.lblWayneEnt.TabIndex = 21;
             this.lblWayneEnt.Text = "웨인엔터프라이즈";
+            // 
+            // pictureEdit1
+            // 
+            this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureEdit1.EditValue = global::GothamSubway.WinForm.Properties.Resources.MD_MapofGothamLine;
+            this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit1.MaximumSize = new System.Drawing.Size(480, 481);
+            this.pictureEdit1.MinimumSize = new System.Drawing.Size(480, 481);
+            this.pictureEdit1.Name = "pictureEdit1";
+            this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit1.Size = new System.Drawing.Size(480, 481);
+            this.pictureEdit1.TabIndex = 0;
             // 
             // GothamMapControl1
             // 
