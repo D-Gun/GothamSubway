@@ -11,7 +11,15 @@ namespace GothamSubway.Data
     {
     }
 
-    // 예시
+    public class ElectricityItem
+    {
+        public DateTime Month { get; set; }
+        public string Monthdate { get; set; }
+        public int Usage { get; set; }
+        public int Bill { get; set; }
+        //public int IncOrDecRate
+    }
+
     public class ElectricityModel
     {
         private static Random random = new Random();
