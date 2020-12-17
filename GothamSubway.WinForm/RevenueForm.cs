@@ -20,6 +20,9 @@ namespace GothamSubway.WinForm
             InitializeComponent();
         }
 
+        public int SelectedYear { get; set; }
+        public int SelectedStation { get; set; }
+
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
@@ -27,42 +30,41 @@ namespace GothamSubway.WinForm
             if (DesignMode)
                 return;
 
+            SelectedStation = 0;
+            SelectedYear = 2019;
+
             revenueBindingSource.DataSource = Dao.Revenue.GetAll();
-
-            Dao.Revenue.GetAllYears();
-
-            yearSelectorControl1.SelectComboBox += YearSelectorControl1_SelectComboBox;
-            yearSelectorControl1.Initialize(Dao.Revenue.GetAllYears());
 
             gothamMapControl.ButtonClicked += GothamMapControl_ButtonClicked;
             
+            yearSelectorControl1.SelectComboBox += YearSelectorControl1_SelectComboBox;
+            yearSelectorControl1.Initialize(Dao.Revenue.GetAllYears());
+        }
 
+        private void Resume()
+        {
+            for(int i =0; i < Dao.SubwayCard.GetCount(); ++i)
+            {
+                Series series = chartControl1.Series[i];
+                series.FilterString = 
+                    $"[StationId] = {SelectedStation} " +
+                    $"And [SubWayCardId] = {i + 1} " +
+                    $"And [Month] Between(#{SelectedYear}-01-01#, #{SelectedYear}- 12-31#)";
+            }
+
+            ResumeLayout(false);
         }
 
         private void GothamMapControl_ButtonClicked(object sender, GothamMapControl1.ButtonClickedEventArgs e)
         {
-            //for(int i = 0; i < Dao.SubwayCard.GetCount(); ++i)
-            //{
-            //    Series series = chartControl1.Series[i];
-            //    series.FilterString = $"[StationId] = {e.}"
-            //}
-
-            //foreach (Series serise in chartControl1.Series)
-            //{
-            //    serise.FilterString = "[StationId] = 1 And [SubwayCardId] = 3";
-            //}
+            SelectedStation = e.StationNumber;
+            Resume();
         }
 
         private void YearSelectorControl1_SelectComboBox(object sender, YearSelectorControl.SelectComboBoxEventArgs e)
         {
-            for (int i = 0; i < Dao.SubwayCard.GetCount(); ++i)
-            {
-                Series series = chartControl1.Series[i];
-                series.FilterString = $"[StationId] = 1 And [SubWayCardId] = {i+1} And [Month] Between(#{e.Item}-01-01#, #{e.Item}-12" +
-            "-31#)";
-            }
-
-            ResumeLayout(false);
+            SelectedYear = e.Item;
+            Resume();
         }
     }
 }

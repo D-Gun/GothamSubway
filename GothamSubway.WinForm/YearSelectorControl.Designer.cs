@@ -48,6 +48,8 @@ namespace GothamSubway.WinForm
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBoxEdit1);
+            this.MaximumSize = new System.Drawing.Size(108, 28);
+            this.MinimumSize = new System.Drawing.Size(108, 28);
             this.Name = "YearSelectorControl";
             this.Size = new System.Drawing.Size(108, 28);
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
