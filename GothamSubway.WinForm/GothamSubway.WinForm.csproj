@@ -75,11 +75,6 @@
     <Compile Include="ElectricityForm.Designer.cs">
       <DependentUpon>ElectricityForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="GothamSubwayDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>GothamSubwayDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="IntroForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -160,17 +155,6 @@
       <DependentUpon>GothamMapControl1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="GothamSubwayDataSet.xsc">
-      <DependentUpon>GothamSubwayDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="GothamSubwayDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>GothamSubwayDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="GothamSubwayDataSet.xss">
-      <DependentUpon>GothamSubwayDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

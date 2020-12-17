@@ -29,50 +29,56 @@ namespace GothamSubway.WinForm
         /// </summary>
         private void InitializeComponent()
         {
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.gothamMapControl11 = new GothamSubway.WinForm.GothamMapControl1();
+            this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
+            this.tblMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // labelControl1
+            // tblMain
             // 
-            this.labelControl1.Appearance.Font = new System.Drawing.Font("Consolas", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(12, 13);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(418, 47);
-            this.labelControl1.TabIndex = 0;
-            this.labelControl1.Text = "TransferByMonthForm";
+            this.tblMain.BackColor = System.Drawing.Color.Transparent;
+            this.tblMain.ColumnCount = 2;
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
+            this.tblMain.Controls.Add(this.gothamMapControl, 1, 0);
+            this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblMain.Location = new System.Drawing.Point(0, 0);
+            this.tblMain.Name = "tblMain";
+            this.tblMain.RowCount = 1;
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblMain.Size = new System.Drawing.Size(1022, 611);
+            this.tblMain.TabIndex = 4;
             // 
-            // gothamMapControl11
+            // gothamMapControl
             // 
-            this.gothamMapControl11.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gothamMapControl11.Location = new System.Drawing.Point(398, 65);
-            this.gothamMapControl11.MaximumSize = new System.Drawing.Size(480, 481);
-            this.gothamMapControl11.MinimumSize = new System.Drawing.Size(480, 481);
-            this.gothamMapControl11.Name = "gothamMapControl11";
-            this.gothamMapControl11.Size = new System.Drawing.Size(480, 481);
-            this.gothamMapControl11.TabIndex = 1;
-            this.gothamMapControl11.ButtonClicked += new System.EventHandler<GothamSubway.WinForm.GothamMapControl1.ButtonClickedEventArgs>(this.gothamMapControl11_ButtonClicked);
+            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.gothamMapControl.Appearance.Options.UseBackColor = true;
+            this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gothamMapControl.Location = new System.Drawing.Point(592, 118);
+            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.Name = "gothamMapControl";
+            this.gothamMapControl.Size = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.TabIndex = 2;
             // 
             // TransferByMonthForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 579);
-            this.Controls.Add(this.gothamMapControl11);
-            this.Controls.Add(this.labelControl1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ClientSize = new System.Drawing.Size(1022, 611);
+            this.Controls.Add(this.tblMain);
             this.Name = "TransferByMonthForm";
             this.Text = "TransferByMonthForm";
+            this.tblMain.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private DevExpress.XtraEditors.LabelControl labelControl1;
-        private GothamMapControl1 gothamMapControl11;
+        private System.Windows.Forms.TableLayoutPanel tblMain;
+        private GothamMapControl1 gothamMapControl;
     }
 }
