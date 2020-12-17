@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace GothamSubway.Data
 {
-    class Utility
+    public class Utility
     {
         public static bool MboxYesNo(string title, string question)
         {

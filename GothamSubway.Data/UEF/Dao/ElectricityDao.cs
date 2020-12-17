@@ -18,7 +18,7 @@ namespace GothamSubway.Data
                                 Bill = x.Bill
                             };
 
-                return query.Take(10).ToList();
+                return query.ToList();
             }
         }
     }

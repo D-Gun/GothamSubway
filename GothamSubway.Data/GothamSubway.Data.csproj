@@ -113,7 +113,6 @@
     <Compile Include="UEF\DbContextCreator.cs" />
     <Compile Include="UEF\Entities\Electricity.cs" />
     <Compile Include="UEF\Entities\FootTraffic.cs" />
-    <Compile Include="UEF\Entities\Ramdom.cs" />
     <Compile Include="UEF\Entities\Revenue.cs" />
     <Compile Include="UEF\Entities\Satisfaction.cs" />
     <Compile Include="UEF\SingleKeyDao.cs" />
