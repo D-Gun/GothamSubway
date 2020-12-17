@@ -200,86 +200,86 @@ namespace GothamSubway.Importer
                 // Entity에 값 넣기
                 List<Station> stations = new List<Station>();
                 List<FootTraffic> footTraffics = new List<FootTraffic>();
-                List<Transfer> transfers = new List<Transfer>();
                 List<SubwayCard> subwayCards = new List<SubwayCard>();
                 List<Revenue> revenues = new List<Revenue>();
 
                 using (var context = DbContextCreator.Create())
                 {
+                    footTraffics = context.FootTraffics.ToList();
                     stations = context.Stations.ToList();
                     subwayCards = context.SubwayCards.ToList();
-                    transfers = context.Transfers.ToList();
+                    // transfers = context.Transfers.ToList();
                 }
 
-                for (int i = 0; i < rows.Count; ++i)
-                {
-                    // Station
-                    Station station = new Station();
-                    if (stations.Find(x => x.Name == rows[i][1]) == null)
-                    {
-                        // 역이 없을 경우 추가해주기
-                        station.Name = rows[i][1];
-                        stations.Add(station);
-                    }
-                    else
-                        // 역이 있을 경우 연결
-                        station = stations.Find(x => x.Name == rows[i][1]);
+                //for (int i = 0; i < rows.Count; ++i)
+                //{
+                //    // Station
+                //    Station station = new Station();
+                //    if (stations.Find(x => x.Name == rows[i][1]) == null)
+                //    {
+                //        // 역이 없을 경우 추가해주기
+                //        station.Name = rows[i][1];
+                //        stations.Add(station);
+                //    }
+                //    else
+                //        // 역이 있을 경우 연결
+                //        station = stations.Find(x => x.Name == rows[i][1]);
 
-                    // FootTraffic
-                    FootTraffic footTraffic = new FootTraffic() { Station = station, TransferId = transfers.Find(x => x.Name == rows[i][2]).TransferId };
+                //    // FootTraffic
+                //    FootTraffic footTraffic = new FootTraffic() { Station = station, TransferId = transfers.Find(x => x.Name == rows[i][2]).TransferId };
 
-                    double dateNumber = 0;
-                    dateNumber = double.Parse(rows[i][0]);
-                    if (dateNumber > 60d)
-                        dateNumber = dateNumber - 2;
-                    else
-                        dateNumber = dateNumber - 1;
+                //    double dateNumber = 0;
+                //    dateNumber = double.Parse(rows[i][0]);
+                //    if (dateNumber > 60d)
+                //        dateNumber = dateNumber - 2;
+                //    else
+                //        dateNumber = dateNumber - 1;
 
-                    DateTime dateTime = new DateTime(1900, 1, 1);
-                    dateTime = dateTime.AddDays(dateNumber);
+                //    DateTime dateTime = new DateTime(1900, 1, 1);
+                //    dateTime = dateTime.AddDays(dateNumber);
 
-                    footTraffic.Date = dateTime;
-                    footTraffic.BeforeSix = int.Parse(rows[i][3]);
-                    footTraffic.SixToSeven = int.Parse(rows[i][4]);
-                    footTraffic.SevenToEight = int.Parse(rows[i][5]);
-                    footTraffic.EightToNine = int.Parse(rows[i][6]);
-                    footTraffic.NineToTen = int.Parse(rows[i][7]);
-                    footTraffic.TenToEleven = int.Parse(rows[i][8]);
-                    footTraffic.ElevenToTwelve = int.Parse(rows[i][9]);
-                    footTraffic.TwelveToThirteen = int.Parse(rows[i][10]);
-                    footTraffic.ThirteenToFourteen = int.Parse(rows[i][11]);
-                    footTraffic.FourteenToFifteen = int.Parse(rows[i][12]);
-                    footTraffic.FifteenToSixteen = int.Parse(rows[i][13]);
-                    footTraffic.SixteenToSeventeen = int.Parse(rows[i][14]);
-                    footTraffic.SeventeenToEighteen = int.Parse(rows[i][15]);
-                    footTraffic.EighteenToNineteen = int.Parse(rows[i][16]);
-                    footTraffic.NineteenToTwenty = int.Parse(rows[i][17]);
-                    footTraffic.TwentyToTwentyOne = int.Parse(rows[i][18]);
-                    footTraffic.TwnetyOneToTwentyTwo = int.Parse(rows[i][19]);
-                    footTraffic.TwentyTwoToTwentyThree = int.Parse(rows[i][20]);
-                    footTraffic.TwentyThreeToTwentyFour = int.Parse(rows[i][21]);
-                    footTraffic.AfterTwentyFour = int.Parse(rows[i][22]);
+                //    footTraffic.Date = dateTime;
+                //    footTraffic.BeforeSix = int.Parse(rows[i][3]);
+                //    footTraffic.SixToSeven = int.Parse(rows[i][4]);
+                //    footTraffic.SevenToEight = int.Parse(rows[i][5]);
+                //    footTraffic.EightToNine = int.Parse(rows[i][6]);
+                //    footTraffic.NineToTen = int.Parse(rows[i][7]);
+                //    footTraffic.TenToEleven = int.Parse(rows[i][8]);
+                //    footTraffic.ElevenToTwelve = int.Parse(rows[i][9]);
+                //    footTraffic.TwelveToThirteen = int.Parse(rows[i][10]);
+                //    footTraffic.ThirteenToFourteen = int.Parse(rows[i][11]);
+                //    footTraffic.FourteenToFifteen = int.Parse(rows[i][12]);
+                //    footTraffic.FifteenToSixteen = int.Parse(rows[i][13]);
+                //    footTraffic.SixteenToSeventeen = int.Parse(rows[i][14]);
+                //    footTraffic.SeventeenToEighteen = int.Parse(rows[i][15]);
+                //    footTraffic.EighteenToNineteen = int.Parse(rows[i][16]);
+                //    footTraffic.NineteenToTwenty = int.Parse(rows[i][17]);
+                //    footTraffic.TwentyToTwentyOne = int.Parse(rows[i][18]);
+                //    footTraffic.TwnetyOneToTwentyTwo = int.Parse(rows[i][19]);
+                //    footTraffic.TwentyTwoToTwentyThree = int.Parse(rows[i][20]);
+                //    footTraffic.TwentyThreeToTwentyFour = int.Parse(rows[i][21]);
+                //    footTraffic.AfterTwentyFour = int.Parse(rows[i][22]);
 
-                    footTraffics.Add(footTraffic);
-                }
+                //    footTraffics.Add(footTraffic);
+                //}
 
                 // SubwayCard
                 // 1. Wayne shipping, 2. DK Transport, 3. Gotham Credit
-                List<SubwayCard> subwayCardList = new List<SubwayCard>();
-                subwayCardList.Add(new SubwayCard() { CompanyName = "Wayne shipping" });
-                subwayCardList.Add(new SubwayCard() { CompanyName = "DK Transport" });
-                subwayCardList.Add(new SubwayCard() { CompanyName = "Gotham Credit" });
-                subwayCards.AddRange(subwayCardList);
+                //List<SubwayCard> subwayCardList = new List<SubwayCard>();
+                //subwayCardList.Add(new SubwayCard() { CompanyName = "Wayne shipping" });
+                //subwayCardList.Add(new SubwayCard() { CompanyName = "DK Transport" });
+                //subwayCardList.Add(new SubwayCard() { CompanyName = "Gotham Credit" });
+                //subwayCards.AddRange(subwayCardList);
 
                 for(int i = 1;i <= 12; i++)
                 {
                     for (int j = 0; j < stations.Count; j++)
                     {
-                        List<FootTraffic> list = footTraffics.FindAll(x => x.Date.Month == i && x.Station == stations[j]);
+                        List<FootTraffic> list = footTraffics.FindAll(x => x.Date.Month == i && x.StationId == (j+1));
                         int sum = 0;
                         foreach (var item in list)
                         {
-                            sum += item.BeforeSix + item.SixToSeven + item.SevenToEight + item.EightToNine +
+                            sum = item.BeforeSix + item.SixToSeven + item.SevenToEight + item.EightToNine +
                                 item.NineToTen + item.TenToEleven + item.ElevenToTwelve + item.TwelveToThirteen +
                                 item.ThirteenToFourteen + item.FourteenToFifteen + item.FifteenToSixteen + item.SixteenToSeventeen +
                                 item.SeventeenToEighteen + item.EighteenToNineteen + item.NineteenToTwenty + item.TwentyToTwentyOne +
@@ -289,12 +289,12 @@ namespace GothamSubway.Importer
                         for (int k = 0; k < 3; k++)
                         {
                             Revenue revenue = new Revenue();
-                            revenue.Station = stations[j];
-                            revenue.Month = new DateTime(list.First().Date.Year, i, 1);
-                            revenue.SubwayCard = subwayCards[k];
-                            if (k != 3)
+                            revenue.StationId = j+1;
+                            revenue.Month = new DateTime(list.First().Date.Year - 1, i, 1);
+                            revenue.SubwayCardId = k+1;
+                            if (k < 2)
                             {
-                                int income = (int)(sum * (random.Next(25, 41) / 100.0));
+                                int income = (int)(sum * (random.NextDouble() % 0.4));
                                 revenue.Income = income;
                                 sum -= income;
                             }
@@ -311,11 +311,11 @@ namespace GothamSubway.Importer
                 // Entity를 DB에 저장
                 using (var context = DbContextCreator.Create())
                 {
-                    for (int i = context.Stations.Count(); i < stations.Count; i++)
-                        context.Stations.Add(stations[i]);
-                    for (int i = context.SubwayCards.Count(); i < subwayCards.Count; i++)
-                        context.SubwayCards.Add(subwayCards[i]);
-                    context.FootTraffics.AddRange(footTraffics);
+                    //for (int i = context.Stations.Count(); i < stations.Count; i++)
+                    //    context.Stations.Add(stations[i]);
+                    //for (int i = context.SubwayCards.Count(); i < subwayCards.Count; i++)
+                    //    context.SubwayCards.Add(subwayCards[i]);
+                    //context.FootTraffics.AddRange(footTraffics);
                     context.Revenues.AddRange(revenues);
                     context.SaveChanges();
                 }
