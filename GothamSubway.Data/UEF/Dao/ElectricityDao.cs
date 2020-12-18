@@ -34,7 +34,6 @@ namespace GothamSubway.Data
                             };
 
                 List<ElectricityItem> items = query.ToList();
-                
                 for (int i = 0; i < items.Count; i++)
                 {
                     ElectricityItem previousItem = items.Find(x => x.Month.Year == (items[i].Month.Year -1) && x.Month.Month == items[i].Month.Month);
@@ -50,11 +49,11 @@ namespace GothamSubway.Data
                         items[i].BillYoYRate = (items[i].Bill - previousItem.Bill) / (double)previousItem.Bill * 100.0;
                     }
                 }
-
                 foreach (var x in items)
                 {
                     x.Monthdate = x.Month.ToString("MM");
                 }
+
                 return items;
             }
         }

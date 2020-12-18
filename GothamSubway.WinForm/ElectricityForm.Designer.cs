@@ -62,6 +62,7 @@ namespace GothamSubway.WinForm
             this.colMonthBill = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBill = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBillYoYRate = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.yearSelectorControl1 = new GothamSubway.WinForm.YearSelectorControl();
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartUsage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
@@ -93,16 +94,18 @@ namespace GothamSubway.WinForm
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Controls.Add(this.chartUsage, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.chartBill, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.gridUsage, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.gridBill, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartUsage, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.chartBill, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.gridUsage, 0, 2);
+            this.tableLayoutPanel1.Controls.Add(this.gridBill, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.yearSelectorControl1, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.RowCount = 3;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1168, 786);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -124,7 +127,7 @@ namespace GothamSubway.WinForm
             this.chartUsage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartUsage.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
             this.chartUsage.Legend.Name = "Default Legend";
-            this.chartUsage.Location = new System.Drawing.Point(3, 3);
+            this.chartUsage.Location = new System.Drawing.Point(3, 50);
             this.chartUsage.Name = "chartUsage";
             series1.ArgumentDataMember = "Monthdate";
             series1.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
@@ -153,7 +156,7 @@ namespace GothamSubway.WinForm
         series1,
         series2,
         series3};
-            this.chartUsage.Size = new System.Drawing.Size(578, 387);
+            this.chartUsage.Size = new System.Drawing.Size(578, 363);
             this.chartUsage.TabIndex = 0;
             chartTitle1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle1.Text = "지하철 전력 사용량 (단위 : kWh)";
@@ -183,7 +186,7 @@ namespace GothamSubway.WinForm
             this.chartBill.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartBill.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
             this.chartBill.Legend.Name = "Default Legend";
-            this.chartBill.Location = new System.Drawing.Point(587, 3);
+            this.chartBill.Location = new System.Drawing.Point(587, 50);
             this.chartBill.Name = "chartBill";
             series4.ArgumentDataMember = "Monthdate";
             series4.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
@@ -211,7 +214,7 @@ namespace GothamSubway.WinForm
         series4,
         series5,
         series6};
-            this.chartBill.Size = new System.Drawing.Size(578, 387);
+            this.chartBill.Size = new System.Drawing.Size(578, 363);
             this.chartBill.TabIndex = 1;
             chartTitle2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle2.Text = "지하철 전기 요금 (단위 : 원)";
@@ -224,10 +227,10 @@ namespace GothamSubway.WinForm
             this.gridUsage.DataSource = this.electricityBindingSource;
             this.gridUsage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gridUsage.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gridUsage.Location = new System.Drawing.Point(3, 396);
+            this.gridUsage.Location = new System.Drawing.Point(3, 419);
             this.gridUsage.MainView = this.gridView1;
             this.gridUsage.Name = "gridUsage";
-            this.gridUsage.Size = new System.Drawing.Size(578, 387);
+            this.gridUsage.Size = new System.Drawing.Size(578, 364);
             this.gridUsage.TabIndex = 2;
             this.gridUsage.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -284,10 +287,10 @@ namespace GothamSubway.WinForm
             // 
             this.gridBill.DataSource = this.electricityBindingSource;
             this.gridBill.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gridBill.Location = new System.Drawing.Point(587, 396);
+            this.gridBill.Location = new System.Drawing.Point(587, 419);
             this.gridBill.MainView = this.gridView2;
             this.gridBill.Name = "gridBill";
-            this.gridBill.Size = new System.Drawing.Size(578, 387);
+            this.gridBill.Size = new System.Drawing.Size(578, 364);
             this.gridBill.TabIndex = 3;
             this.gridBill.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView2});
@@ -344,6 +347,16 @@ namespace GothamSubway.WinForm
             this.colBillYoYRate.VisibleIndex = 2;
             this.colBillYoYRate.Width = 94;
             // 
+            // yearSelectorControl1
+            // 
+            this.yearSelectorControl1.Location = new System.Drawing.Point(3, 5);
+            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.Name = "yearSelectorControl1";
+            this.yearSelectorControl1.Size = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.TabIndex = 4;
+            // 
             // ElectricityForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -397,5 +410,6 @@ namespace GothamSubway.WinForm
         private DevExpress.XtraGrid.Columns.GridColumn colUsage;
         private DevExpress.XtraGrid.Columns.GridColumn colUsageYoY;
         private DevExpress.XtraGrid.Columns.GridColumn colBillYoYRate;
+        private YearSelectorControl yearSelectorControl1;
     }
 }
