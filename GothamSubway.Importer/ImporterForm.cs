@@ -14,7 +14,7 @@ namespace GothamSubway.Importer
     public partial class ImporterForm : Form
     {
         Excel.Workbook workbook;
-        Excel.Worksheet worksheet;
+        Excel.Worksheet worksheet; 
         Excel.Application application;
         List<string> columns;
         List<List<string>> rows;
@@ -38,7 +38,7 @@ namespace GothamSubway.Importer
 
         private void btnSaveDB_Click(object sender, EventArgs e)
         {
-            if (_checkedRadioButton <= 0 || _checkedRadioButton > 3) // 나중에 상수로 바꾸자
+            if (_checkedRadioButton <= 0 || _checkedRadioButton > 4) // 나중에 상수로 바꾸자
             {
                 MessageBox.Show("저장 방식을 선택해 주세요");
                 return;
@@ -193,9 +193,10 @@ namespace GothamSubway.Importer
 
         private void bgwInsert_DoWork(object sender, DoWorkEventArgs e)
         {
-            if((int)e.Argument == 1)
+            Random random = new Random();
+
+            if ((int)e.Argument == 1)
             {
-                Random random = new Random();
 
                 // Entity에 값 넣기
                 List<Station> stations = new List<Station>();
@@ -431,6 +432,42 @@ namespace GothamSubway.Importer
                 {
                     //foreach (Electricity electricity in electricities)
                     context.Electricities.AddRange(electricities);
+                    context.SaveChanges();
+                }
+            }
+            else if((int)e.Argument == 4)
+            {
+                // Satisfaction
+                List<Satisfaction> satisfactions = Dao.Satisfaction.GetAll();
+                List<Satisfaction> newSatisfactions = new List<Satisfaction>();
+
+                for(int i = 0; i < satisfactions.Count; i++)
+                {
+                    List<int> randomNumbers = new List<int>();
+                    int sum = 0;
+
+                    for (int j =0; j < 5; j++)
+                    {
+                        randomNumbers.Add(random.Next(1500, 2000));
+                        sum += randomNumbers[j];
+                    }
+
+                    Satisfaction satisfaction = new Satisfaction()
+                    {
+                        SatisfactionCategoryId = satisfactions[i].SatisfactionCategoryId,
+                        Excellent = (decimal)((randomNumbers[0] * 100.0) / (double)sum),
+                        Good = (decimal)((randomNumbers[1] * 100.0) / (double)sum),
+                        Soso = (decimal)((randomNumbers[2] * 100.0) / (double)sum),
+                        Bad = (decimal)((randomNumbers[3] * 100.0) / (double)sum),
+                        Terrible = (decimal)((randomNumbers[4] * 100.0) / (double)sum)
+                    };
+
+                    newSatisfactions.Add(satisfaction);
+                }
+
+                using (var context = DbContextCreator.Create())
+                {
+                    context.Satisfactions.AddRange(newSatisfactions);
                     context.SaveChanges();
                 }
             }

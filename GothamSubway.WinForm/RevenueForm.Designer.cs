@@ -30,14 +30,14 @@ namespace GothamSubway.WinForm
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView4 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
-            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView5 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView6 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel2 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView1 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView2 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView3 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.revenueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
@@ -48,14 +48,14 @@ namespace GothamSubway.WinForm
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.revenueBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -97,17 +97,18 @@ namespace GothamSubway.WinForm
             // 
             // chartControl1
             // 
+            this.chartControl1.AnimationStartMode = DevExpress.XtraCharts.ChartAnimationMode.OnDataChanged;
             this.chartControl1.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
             this.tablePanel1.SetColumn(this.chartControl1, 0);
             this.tablePanel1.SetColumnSpan(this.chartControl1, 6);
             this.chartControl1.CrosshairOptions.LinesMode = DevExpress.XtraCharts.CrosshairLinesMode.Free;
             this.chartControl1.DataSource = this.revenueBindingSource;
-            xyDiagram2.AxisX.Label.TextPattern = "{A:MM\'월\'}";
-            xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram2.AxisX.WholeRange.EndSideMargin = 0D;
-            xyDiagram2.AxisX.WholeRange.StartSideMargin = 0D;
-            xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram2;
+            xyDiagram1.AxisX.Label.TextPattern = "{A:MM\'월\'}";
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             this.chartControl1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
@@ -116,34 +117,34 @@ namespace GothamSubway.WinForm
             this.chartControl1.Location = new System.Drawing.Point(3, 64);
             this.chartControl1.Name = "chartControl1";
             this.tablePanel1.SetRow(this.chartControl1, 1);
-            series4.ArgumentDataMember = "Month";
-            series4.DataSource = this.revenueBindingSource;
-            series4.FilterString = "[StationId] = 1 And [SubwayCardId] = 1 And [Month] Between(#2019-01-01#, #2019-12" +
+            series1.ArgumentDataMember = "Month";
+            series1.DataSource = this.revenueBindingSource;
+            series1.FilterString = "[StationId] = 1 And [SubwayCardId] = 1 And [Month] Between(#2019-01-01#, #2019-12" +
     "-31#)";
-            series4.Name = "Wayne shipping";
-            series4.ValueDataMembersSerializable = "Income";
-            stackedStepAreaSeriesView4.Transparency = ((byte)(120));
-            series4.View = stackedStepAreaSeriesView4;
-            series5.ArgumentDataMember = "Month";
-            series5.FilterString = "[StationId] = 1 And [SubwayCardId] = 2 And [Month] Between(#2019-01-01#, #2019-12" +
+            series1.Name = "Wayne shipping";
+            series1.ValueDataMembersSerializable = "Income";
+            stackedStepAreaSeriesView1.Transparency = ((byte)(120));
+            series1.View = stackedStepAreaSeriesView1;
+            series2.ArgumentDataMember = "Month";
+            series2.FilterString = "[StationId] = 1 And [SubwayCardId] = 2 And [Month] Between(#2019-01-01#, #2019-12" +
     "-31#)";
-            series5.Name = "DK Transport";
-            series5.ValueDataMembersSerializable = "Income";
-            stackedStepAreaSeriesView5.Transparency = ((byte)(120));
-            series5.View = stackedStepAreaSeriesView5;
-            series6.ArgumentDataMember = "Month";
-            series6.FilterString = "[StationId] = 1 And [SubwayCardId] = 3 And [Month] Between(#2019-01-01#, #2019-12" +
+            series2.Name = "DK Transport";
+            series2.ValueDataMembersSerializable = "Income";
+            stackedStepAreaSeriesView2.Transparency = ((byte)(120));
+            series2.View = stackedStepAreaSeriesView2;
+            series3.ArgumentDataMember = "Month";
+            series3.FilterString = "[StationId] = 1 And [SubwayCardId] = 3 And [Month] Between(#2019-01-01#, #2019-12" +
     "-31#)";
-            series6.Name = "Gotham Credit";
-            series6.ValueDataMembersSerializable = "Income";
-            stackedStepAreaSeriesView6.Transparency = ((byte)(120));
-            series6.View = stackedStepAreaSeriesView6;
+            series3.Name = "Gotham Credit";
+            series3.ValueDataMembersSerializable = "Income";
+            stackedStepAreaSeriesView3.Transparency = ((byte)(120));
+            series3.View = stackedStepAreaSeriesView3;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series4,
-        series5,
-        series6};
-            sideBySideBarSeriesLabel2.TextPattern = "{V}";
-            this.chartControl1.SeriesTemplate.Label = sideBySideBarSeriesLabel2;
+        series1,
+        series2,
+        series3};
+            sideBySideBarSeriesLabel1.TextPattern = "{V}";
+            this.chartControl1.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
             this.chartControl1.Size = new System.Drawing.Size(576, 483);
             this.chartControl1.TabIndex = 3;
             // 
@@ -225,14 +226,14 @@ namespace GothamSubway.WinForm
             this.Name = "RevenueForm";
             this.Text = "RevenueForm";
             ((System.ComponentModel.ISupportInitialize)(this.revenueBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(stackedStepAreaSeriesView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
             this.tablePanel1.ResumeLayout(false);

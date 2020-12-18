@@ -21,6 +21,7 @@ namespace GothamSubway.Data
         public decimal Soso { get; set; }
         public decimal Bad { get; set; }
         public decimal Terrible { get; set; }
+        public System.DateTime Year { get; set; }
     
         public virtual SatisfactionCategory SatisfactionCategory { get; set; }
     }

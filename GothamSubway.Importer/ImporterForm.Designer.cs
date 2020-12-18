@@ -40,6 +40,7 @@ namespace GothamSubway.Importer
             this.lblProgress = new System.Windows.Forms.Label();
             this.bgwInsert = new System.ComponentModel.BackgroundWorker();
             this.lblProgress2 = new System.Windows.Forms.Label();
+            this.rbtSatisfaction2 = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -125,7 +126,7 @@ namespace GothamSubway.Importer
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(651, 75);
+            this.lblProgress.Location = new System.Drawing.Point(651, 110);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(38, 12);
             this.lblProgress.TabIndex = 6;
@@ -142,17 +143,31 @@ namespace GothamSubway.Importer
             // lblProgress2
             // 
             this.lblProgress2.AutoSize = true;
-            this.lblProgress2.Location = new System.Drawing.Point(651, 97);
+            this.lblProgress2.Location = new System.Drawing.Point(651, 133);
             this.lblProgress2.Name = "lblProgress2";
             this.lblProgress2.Size = new System.Drawing.Size(38, 12);
             this.lblProgress2.TabIndex = 7;
             this.lblProgress2.Text = "label1";
+            // 
+            // rbtSatisfaction2
+            // 
+            this.rbtSatisfaction2.AutoSize = true;
+            this.rbtSatisfaction2.Location = new System.Drawing.Point(651, 79);
+            this.rbtSatisfaction2.Name = "rbtSatisfaction2";
+            this.rbtSatisfaction2.Size = new System.Drawing.Size(94, 16);
+            this.rbtSatisfaction2.TabIndex = 8;
+            this.rbtSatisfaction2.TabStop = true;
+            this.rbtSatisfaction2.Tag = "4";
+            this.rbtSatisfaction2.Text = "Satisfaction2";
+            this.rbtSatisfaction2.UseVisualStyleBackColor = true;
+            this.rbtSatisfaction2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // ImporterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.rbtSatisfaction2);
             this.Controls.Add(this.lblProgress2);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.rbtElectricity);
@@ -182,6 +197,7 @@ namespace GothamSubway.Importer
         private System.Windows.Forms.Label lblProgress;
         private System.ComponentModel.BackgroundWorker bgwInsert;
         private System.Windows.Forms.Label lblProgress2;
+        private System.Windows.Forms.RadioButton rbtSatisfaction2;
     }
 }
 

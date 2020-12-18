@@ -41,22 +41,25 @@ namespace GothamSubway.WinForm
             cbxCategory.SelectedIndex = 0;
 
             yearSelectorControl1.SelectComboBox += YearSelectorControl1_SelectComboBox; ;
-            yearSelectorControl1.Initialize(Dao.Revenue.GetAllYears());
+            yearSelectorControl1.Initialize(Dao.Satisfaction.GetAllYears());
         }
 
         private void Resume()
         {
             List<SatisfactionModel> models = satisfactionModels.
-                FindAll(x => (x.SatisfactionCategoryId / 100) == SelectedSatisfactionCategoryId)
+                FindAll(x => (x.SatisfactionCategoryId / 100) == SelectedSatisfactionCategoryId &&
+                x.Year.Year == SelectedYear)
                 .OrderBy(x => x.SatisfactionCategoryId).ToList();
 
-            string filterString = "";
+            string filterString = $"[Year] Between(#{SelectedYear}-01-01#, #{SelectedYear}- 12-31#) And (";
 
             for(int i =0; i < models.Count; i++)
             {
                 filterString += $" [SatisfactionCategory] = '{models[i].SatisfactionCategory}' ";
                 if (i != models.Count - 1)
                     filterString += "Or";
+                else
+                    filterString += ")";
             }
 
             chartControl1.SeriesTemplate.FilterString = filterString;

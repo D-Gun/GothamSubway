@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="GothamSubwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="GothamSubwayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Electricity">
           <Key>
             <PropertyRef Name="ElectricityId" />
@@ -58,6 +58,7 @@
             <PropertyRef Name="Satisfactionid" />
           </Key>
           <Property Name="Satisfactionid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Year" Type="datetime" Nullable="false" />
           <Property Name="SatisfactionCategoryId" Type="int" Nullable="false" />
           <Property Name="Excellent" Type="decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="Good" Type="decimal" Precision="4" Scale="2" Nullable="false" />
@@ -210,8 +211,7 @@
             <End Role="SatisfactionCategory1" EntitySet="SatisfactionCategory" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="GothamSubwayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -279,6 +279,7 @@
           <Property Name="Bad" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <Property Name="Terrible" Type="Decimal" Precision="4" Scale="2" Nullable="false" />
           <NavigationProperty Name="SatisfactionCategory" Relationship="Self.FK_Satisfaction_SatisfactionCategory" FromRole="Satisfaction" ToRole="SatisfactionCategory" />
+          <Property Name="Year" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="SatisfactionCategory">
           <Key>
@@ -492,6 +493,7 @@
           <EntitySetMapping Name="Satisfactions">
             <EntityTypeMapping TypeName="GothamSubwayModel.Satisfaction">
               <MappingFragment StoreEntitySet="Satisfaction">
+                <ScalarProperty Name="Year" ColumnName="Year" />
                 <ScalarProperty Name="Satisfactionid" ColumnName="Satisfactionid" />
                 <ScalarProperty Name="SatisfactionCategoryId" ColumnName="SatisfactionCategoryId" />
                 <ScalarProperty Name="Excellent" ColumnName="Excellent" />
