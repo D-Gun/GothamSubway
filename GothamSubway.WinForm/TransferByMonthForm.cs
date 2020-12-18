@@ -19,37 +19,55 @@ namespace GothamSubway.WinForm
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e) // gridview생성 이벤트
+        protected override void OnLoad(EventArgs e) // 폼 로드 시gridview생성 이벤트
         {
             base.OnLoad(e);
 
             if (DesignMode)
                 return;
-
+            initStation();
+            
         }
 
-        public string stringYear { get; set; }//콤보박스 기준년도 프로퍼티 선언
-        public int stationNumber { get; set; }//지하철역 버튼 태그 프로퍼티 선언
-
-
-        private void cbxYear_SelectedIndexChanged(object sender, EventArgs e)
+        private void initStation()
         {
-            if ((string)cbxYear.SelectedItem != "기준년도")
-                stringYear = (string)cbxYear.SelectedItem;
+            stringYear = 2019;
+            gothamMapControl.ButtonClicked += 
+                new EventHandler<GothamMapControl1.ButtonClickedEventArgs>(gothamMapControl_ButtonClicked);//맵컨트롤 이벤트 핸들러 subscribe
+            gothamMapControl.InitButton();//유저컨트롤 버튼 강제 발동 이벤트
 
-            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear),stationNumber);
+            yearSelectorControl1.SelectComboBox += 
+                new EventHandler<YearSelectorControl.SelectComboBoxEventArgs>(yearSelectorControl1_SelectComboBox); // 콤보박스 이벤트 핸들러 subscribe
+            yearSelectorControl1.Initialize(Dao.FootTraffic.GetAllYears());
+
+
+            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
             footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
-
         }
+
+        public int stringYear { get; set; }//콤보박스 기준년도 프로퍼티 선언
+        public int stationNumber { get; set; }//지하철역 버튼 태그 프로퍼티 선언
+   
 
         private void gothamMapControl_ButtonClicked(object sender, GothamMapControl1.ButtonClickedEventArgs e)
         {
             stationNumber = e.StationNumber;
 
+            dataBinding();
+        }
+
+        
+
+        private void yearSelectorControl1_SelectComboBox(object sender, YearSelectorControl.SelectComboBoxEventArgs e)
+        {
+            stringYear = e.Item;
+
+            dataBinding();
+        }
+        private void dataBinding()
+        {
             var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
             footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
-
-            MessageBox.Show($"{e.StationNumber}");
         }
     }
 }

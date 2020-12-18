@@ -14,8 +14,7 @@ namespace GothamSubway.WinForm
     {
         public YearSelectorControl()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         public void Initialize(List<int> list)
