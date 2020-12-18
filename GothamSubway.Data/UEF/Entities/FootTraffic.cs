@@ -31,6 +31,7 @@ namespace GothamSubway.Data
         public int sixteenToSeventeen { get; set; }
         public int seventeenToEighteen { get; set; }
         public int eighteenToNineteen { get; set; }
+        public int nineteenToTwenty { get; set; }
         public int twentyToTwentyOne { get; set; }
         public int twentyOneToTwentyTwo { get; set; }
         public int twentyTwoToTwentyThree { get; set; }
@@ -38,4 +39,10 @@ namespace GothamSubway.Data
         public int afterTwentyFour { get; set; }
     }
 
+    public class FootTrafficMonthlyTotalModel
+    {
+        public DateTime date { get; set; }
+        public int dailyTransferTotalForMonthlyTotal { get; set; }
+        public int monthlytotal { get; set; }
+    }
 }
