@@ -33,7 +33,6 @@ namespace GothamSubway.WinForm
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
-            this.cbxYear = new DevExpress.XtraEditors.ComboBoxEdit();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dailyTransferTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.monthlyTransferTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,10 +59,10 @@ namespace GothamSubway.WinForm
             this.twentyThreeToTwentyFourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.afterTwentyFourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.footTrafficTotalModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.yearSelectorControl1 = new GothamSubway.WinForm.YearSelectorControl();
             this.tblMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbxYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -97,31 +96,17 @@ namespace GothamSubway.WinForm
             this.gothamMapControl.Name = "gothamMapControl";
             this.gothamMapControl.Size = new System.Drawing.Size(480, 481);
             this.gothamMapControl.TabIndex = 2;
-            this.gothamMapControl.ButtonClicked += new System.EventHandler<GothamSubway.WinForm.GothamMapControl1.ButtonClickedEventArgs>(this.gothamMapControl_ButtonClicked);
+            
             // 
             // panelControl1
             // 
-            this.panelControl1.Controls.Add(this.cbxYear);
+            this.panelControl1.Controls.Add(this.yearSelectorControl1);
             this.panelControl1.Controls.Add(this.dataGridView1);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelControl1.Location = new System.Drawing.Point(3, 3);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(659, 780);
             this.panelControl1.TabIndex = 3;
-            // 
-            // cbxYear
-            // 
-            this.cbxYear.EditValue = "기준년도";
-            this.cbxYear.Location = new System.Drawing.Point(61, 20);
-            this.cbxYear.Name = "cbxYear";
-            this.cbxYear.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbxYear.Properties.DropDownRows = 1;
-            this.cbxYear.Properties.Items.AddRange(new object[] {
-            "2019"});
-            this.cbxYear.Size = new System.Drawing.Size(125, 24);
-            this.cbxYear.TabIndex = 1;
-            this.cbxYear.SelectedIndexChanged += new System.EventHandler(this.cbxYear_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
@@ -356,6 +341,17 @@ namespace GothamSubway.WinForm
             // 
             this.footTrafficTotalModelBindingSource.DataSource = typeof(GothamSubway.Data.FootTrafficTotalModel);
             // 
+            // yearSelectorControl1
+            // 
+            this.yearSelectorControl1.Location = new System.Drawing.Point(9, 7);
+            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.Name = "yearSelectorControl1";
+            this.yearSelectorControl1.Size = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.TabIndex = 1;
+           
+            // 
             // TransferByMonthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
@@ -368,7 +364,6 @@ namespace GothamSubway.WinForm
             this.tblMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbxYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -406,6 +401,6 @@ namespace GothamSubway.WinForm
         private System.Windows.Forms.DataGridViewTextBoxColumn twentyThreeToTwentyFourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn afterTwentyFourDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource footTrafficTotalModelBindingSource;
-        private DevExpress.XtraEditors.ComboBoxEdit cbxYear;
+        private YearSelectorControl yearSelectorControl1;
     }
 }

@@ -15,7 +15,7 @@ namespace GothamSubway.WinForm
     {
         public GothamMapControl1()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         #region ButtonClicked event things for C# 3.0
@@ -80,6 +80,11 @@ namespace GothamSubway.WinForm
             * 10 올뺴미법정앞
             */
             OnButtonClicked(args.StationNumber);
+        }
+
+        public void InitButton()
+        {
+            btnGothamCity.PerformClick(); // OccoredEvent(btnCityHall) 과 같음
         }
 
         private void InitializeButtonColor()

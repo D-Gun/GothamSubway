@@ -7,7 +7,7 @@ namespace GothamSubway.Data
     public class FootTrafficDao : SingleKeyDao<FootTraffic, int>
     {
         internal FootTrafficDao() { }
-
+        
         public List<FootTrafficTotalModel> GetMonthlyFootTraffics(int selectedYear, int stationNumber)
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
@@ -98,6 +98,14 @@ namespace GothamSubway.Data
             //}
 
             return query.ToList();
+            }
+        }
+
+        public List<int> GetAllYears()
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                return context.FootTraffics.Select(x => x.Date.Year).Distinct().ToList();
             }
         }
     }
