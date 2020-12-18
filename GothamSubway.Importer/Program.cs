@@ -16,7 +16,7 @@ namespace GothamSubway.Importer
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ImporterForm());
+            Application.Run(new ImportForm());
         }
     }
 }

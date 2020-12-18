@@ -1,7 +1,7 @@
 ﻿
 namespace GothamSubway.Importer
 {
-    partial class ImporterForm
+    partial class ImportForm
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
@@ -40,7 +40,8 @@ namespace GothamSubway.Importer
             this.lblProgress = new System.Windows.Forms.Label();
             this.bgwInsert = new System.ComponentModel.BackgroundWorker();
             this.lblProgress2 = new System.Windows.Forms.Label();
-            this.rbtRevenue = new System.Windows.Forms.RadioButton();
+            this.rbtSatisfaction2 = new System.Windows.Forms.RadioButton();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +51,7 @@ namespace GothamSubway.Importer
             this.dgvViewer.Location = new System.Drawing.Point(13, 13);
             this.dgvViewer.Name = "dgvViewer";
             this.dgvViewer.RowTemplate.Height = 23;
-            this.dgvViewer.Size = new System.Drawing.Size(632, 425);
+            this.dgvViewer.Size = new System.Drawing.Size(632, 396);
             this.dgvViewer.TabIndex = 0;
             // 
             // btnLoadFile
@@ -147,25 +148,35 @@ namespace GothamSubway.Importer
             this.lblProgress2.Size = new System.Drawing.Size(0, 12);
             this.lblProgress2.TabIndex = 7;
             // 
-            // rbtRevenue
+            // rbtSatisfaction2
             // 
-            this.rbtRevenue.AutoSize = true;
-            this.rbtRevenue.Location = new System.Drawing.Point(651, 79);
-            this.rbtRevenue.Name = "rbtRevenue";
-            this.rbtRevenue.Size = new System.Drawing.Size(71, 16);
-            this.rbtRevenue.TabIndex = 8;
-            this.rbtRevenue.TabStop = true;
-            this.rbtRevenue.Tag = "4";
-            this.rbtRevenue.Text = "여객수입";
-            this.rbtRevenue.UseVisualStyleBackColor = true;
-            this.rbtRevenue.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
+            this.rbtSatisfaction2.AutoSize = true;
+            this.rbtSatisfaction2.Location = new System.Drawing.Point(651, 79);
+            this.rbtSatisfaction2.Name = "rbtSatisfaction2";
+            this.rbtSatisfaction2.Size = new System.Drawing.Size(71, 16);
+            this.rbtSatisfaction2.TabIndex = 8;
+            this.rbtSatisfaction2.TabStop = true;
+            this.rbtSatisfaction2.Tag = "4";
+            this.rbtSatisfaction2.Text = "여객수입";
+            this.rbtSatisfaction2.UseVisualStyleBackColor = true;
+            this.rbtSatisfaction2.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
-            // ImporterForm
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 420);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(677, 12);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "종류에 적합하지 않은 형태의 엑셀 파일을 사용하시어 진행할 경우, 데이터의 손상이 생길 수 있음을 유념해 주시기 바랍니다.";
+            // 
+            // ImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.rbtRevenue);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.rbtSatisfaction2);
             this.Controls.Add(this.lblProgress2);
             this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.rbtElectricity);
@@ -174,7 +185,7 @@ namespace GothamSubway.Importer
             this.Controls.Add(this.btnSaveDB);
             this.Controls.Add(this.btnLoadFile);
             this.Controls.Add(this.dgvViewer);
-            this.Name = "ImporterForm";
+            this.Name = "ImportForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewer)).EndInit();
             this.ResumeLayout(false);
@@ -195,7 +206,8 @@ namespace GothamSubway.Importer
         private System.Windows.Forms.Label lblProgress;
         private System.ComponentModel.BackgroundWorker bgwInsert;
         private System.Windows.Forms.Label lblProgress2;
-        private System.Windows.Forms.RadioButton rbtRevenue;
+        private System.Windows.Forms.RadioButton rbtSatisfaction2;
+        private System.Windows.Forms.Label label1;
     }
 }
 
