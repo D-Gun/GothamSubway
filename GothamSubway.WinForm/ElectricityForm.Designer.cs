@@ -111,12 +111,20 @@ namespace GothamSubway.WinForm
             // 
             // chartUsage
             // 
+            this.chartUsage.AnimationStartMode = DevExpress.XtraCharts.ChartAnimationMode.OnDataChanged;
             this.chartUsage.DataSource = this.electricityBindingSource;
+            xyDiagram1.AxisX.Label.TextPattern = "{A}월";
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.Label.TextPattern = "{V:#,#}";
+            xyDiagram1.AxisY.Title.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisY.Title.Text = "전력 사용량(kWh)";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             secondaryAxisY1.AxisID = 0;
             secondaryAxisY1.Name = "Secondary AxisY 1";
+            secondaryAxisY1.Title.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            secondaryAxisY1.Title.Text = "증감율(%)";
+            secondaryAxisY1.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             secondaryAxisY1.VisibleInPanesSerializable = "-1";
             secondaryAxisY1.WholeRange.Auto = false;
             secondaryAxisY1.WholeRange.MaxValueSerializable = "10";
@@ -131,20 +139,20 @@ namespace GothamSubway.WinForm
             this.chartUsage.Name = "chartUsage";
             series1.ArgumentDataMember = "Monthdate";
             series1.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
-            series1.Name = "2018년";
+            series1.Name = "series1";
             series1.ValueDataMembersSerializable = "Usage";
             sideBySideBarSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
             series1.View = sideBySideBarSeriesView1;
             series2.ArgumentDataMember = "Monthdate";
             series2.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
-            series2.Name = "2019년";
+            series2.Name = "series2";
             series2.ValueDataMembersSerializable = "Usage";
             sideBySideBarSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series2.View = sideBySideBarSeriesView2;
             series3.ArgumentDataMember = "Monthdate";
             series3.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
             series3.LegendName = "Default Legend";
-            series3.Name = "증감율(%)";
+            series3.Name = "증감율";
             series3.ValueDataMembersSerializable = "UsageYoYRate";
             lineSeriesView1.AxisYName = "Secondary AxisY 1";
             lineSeriesView1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -159,7 +167,7 @@ namespace GothamSubway.WinForm
             this.chartUsage.Size = new System.Drawing.Size(578, 363);
             this.chartUsage.TabIndex = 0;
             chartTitle1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle1.Text = "지하철 전력 사용량 (단위 : kWh)";
+            chartTitle1.Text = "지하철 전력 사용량";
             chartTitle1.TextColor = System.Drawing.Color.Black;
             this.chartUsage.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
@@ -170,12 +178,20 @@ namespace GothamSubway.WinForm
             // 
             // chartBill
             // 
+            this.chartBill.AnimationStartMode = DevExpress.XtraCharts.ChartAnimationMode.OnDataChanged;
             this.chartBill.DataSource = this.electricityBindingSource;
+            xyDiagram2.AxisX.Label.TextPattern = "{A}월";
             xyDiagram2.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram2.AxisY.Label.TextPattern = "{V:#,#}";
+            xyDiagram2.AxisY.Title.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram2.AxisY.Title.Text = "전기 요금(원)";
+            xyDiagram2.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram2.AxisY.VisibleInPanesSerializable = "-1";
             secondaryAxisY2.AxisID = 0;
             secondaryAxisY2.Name = "Secondary AxisY 1";
+            secondaryAxisY2.Title.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            secondaryAxisY2.Title.Text = "증감율(%)";
+            secondaryAxisY2.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             secondaryAxisY2.VisibleInPanesSerializable = "-1";
             secondaryAxisY2.WholeRange.Auto = false;
             secondaryAxisY2.WholeRange.MaxValueSerializable = "10";
@@ -190,19 +206,19 @@ namespace GothamSubway.WinForm
             this.chartBill.Name = "chartBill";
             series4.ArgumentDataMember = "Monthdate";
             series4.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
-            series4.Name = "2018년";
+            series4.Name = "series1";
             series4.ValueDataMembersSerializable = "Bill";
             sideBySideBarSeriesView3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(112)))), ((int)(((byte)(192)))));
             series4.View = sideBySideBarSeriesView3;
             series5.ArgumentDataMember = "Monthdate";
             series5.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
-            series5.Name = "2019년";
+            series5.Name = "series2";
             series5.ValueDataMembersSerializable = "Bill";
             sideBySideBarSeriesView4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             series5.View = sideBySideBarSeriesView4;
             series6.ArgumentDataMember = "Monthdate";
             series6.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
-            series6.Name = "증감율(%)";
+            series6.Name = "증감율";
             series6.ValueDataMembersSerializable = "BillYoYRate";
             lineSeriesView2.AxisYName = "Secondary AxisY 1";
             lineSeriesView2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -217,7 +233,7 @@ namespace GothamSubway.WinForm
             this.chartBill.Size = new System.Drawing.Size(578, 363);
             this.chartBill.TabIndex = 1;
             chartTitle2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            chartTitle2.Text = "지하철 전기 요금 (단위 : 원)";
+            chartTitle2.Text = "지하철 전기 요금";
             chartTitle2.TextColor = System.Drawing.Color.Black;
             this.chartBill.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle2});
@@ -252,9 +268,13 @@ namespace GothamSubway.WinForm
             // colUsageMonth
             // 
             this.colUsageMonth.Caption = "일자";
+            this.colUsageMonth.DisplayFormat.FormatString = "yyyy-MM";
+            this.colUsageMonth.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colUsageMonth.FieldName = "Month";
             this.colUsageMonth.MinWidth = 25;
             this.colUsageMonth.Name = "colUsageMonth";
+            this.colUsageMonth.OptionsColumn.AllowEdit = false;
+            this.colUsageMonth.OptionsColumn.AllowMove = false;
             this.colUsageMonth.Visible = true;
             this.colUsageMonth.VisibleIndex = 0;
             this.colUsageMonth.Width = 94;
@@ -267,6 +287,8 @@ namespace GothamSubway.WinForm
             this.colUsage.FieldName = "Usage";
             this.colUsage.MinWidth = 25;
             this.colUsage.Name = "colUsage";
+            this.colUsage.OptionsColumn.AllowEdit = false;
+            this.colUsage.OptionsColumn.AllowMove = false;
             this.colUsage.Visible = true;
             this.colUsage.VisibleIndex = 1;
             this.colUsage.Width = 94;
@@ -279,6 +301,8 @@ namespace GothamSubway.WinForm
             this.colUsageYoY.FieldName = "UsageYoYRate";
             this.colUsageYoY.MinWidth = 25;
             this.colUsageYoY.Name = "colUsageYoY";
+            this.colUsageYoY.OptionsColumn.AllowEdit = false;
+            this.colUsageYoY.OptionsColumn.AllowMove = false;
             this.colUsageYoY.Visible = true;
             this.colUsageYoY.VisibleIndex = 2;
             this.colUsageYoY.Width = 94;
@@ -312,6 +336,8 @@ namespace GothamSubway.WinForm
             // colMonthBill
             // 
             this.colMonthBill.Caption = "일자";
+            this.colMonthBill.DisplayFormat.FormatString = "yyyy-MM";
+            this.colMonthBill.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.colMonthBill.FieldName = "Month";
             this.colMonthBill.MinWidth = 25;
             this.colMonthBill.Name = "colMonthBill";
@@ -343,6 +369,8 @@ namespace GothamSubway.WinForm
             this.colBillYoYRate.FieldName = "BillYoYRate";
             this.colBillYoYRate.MinWidth = 25;
             this.colBillYoYRate.Name = "colBillYoYRate";
+            this.colBillYoYRate.OptionsColumn.AllowEdit = false;
+            this.colBillYoYRate.OptionsColumn.AllowMove = false;
             this.colBillYoYRate.Visible = true;
             this.colBillYoYRate.VisibleIndex = 2;
             this.colBillYoYRate.Width = 94;

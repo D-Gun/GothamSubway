@@ -26,12 +26,13 @@ namespace GothamSubway.Data
             using (GothamSubwayEntities context = DbContextCreator.Create())
             {
                 var query = from x in context.Electricities
+                            orderby x.Month ascending
                             select new ElectricityItem
                             {
                                 Month = x.Month,
                                 Usage = x.Usage,
                                 Bill = x.Bill,
-                            };
+                            };                        
 
                 List<ElectricityItem> items = query.ToList();
                 for (int i = 0; i < items.Count; i++)
@@ -55,6 +56,14 @@ namespace GothamSubway.Data
                 }
 
                 return items;
+            }
+        }
+
+        public List<int> GetAllYears()
+        {
+            using (var context = DbContextCreator.Create())
+            {
+                return context.Electricities.Select(x => x.Month.Year).Distinct().ToList();
             }
         }
     }
