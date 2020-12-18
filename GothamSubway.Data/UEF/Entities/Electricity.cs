@@ -17,7 +17,8 @@ namespace GothamSubway.Data
         public string Monthdate { get; set; }
         public int Usage { get; set; }
         public int Bill { get; set; }
-        //public int IncOrDecRate
+        public double UsageYoYRate { get; set; }
+        public double BillYoYRate { get; set; }
     }
 
     public class ElectricityModel

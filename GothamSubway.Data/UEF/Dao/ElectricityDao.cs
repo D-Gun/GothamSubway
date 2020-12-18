@@ -30,33 +30,27 @@ namespace GothamSubway.Data
                             {
                                 Month = x.Month,
                                 Usage = x.Usage,
-                                Bill = x.Bill
+                                Bill = x.Bill,
                             };
 
                 List<ElectricityItem> items = query.ToList();
                 
-                foreach(var x in items)
+                for (int i = 0; i < items.Count; i++)
+                {
+                    ElectricityItem previousItem = items.Find(x => x.Month.Year == (items[i].Month.Year -1) && x.Month.Month == items[i].Month.Month);
+
+                    if (previousItem == null)
+                        items[i].UsageYoYRate = 0;
+                    else
+                    {
+                        items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / previousItem.Usage * 100;
+                    }
+                }
+                foreach (var x in items)
                 {
                     x.Monthdate = x.Month.ToString("MM");
                 }
-
                 return items;
-            }
-        }
-
-        public List<ElectricityItem> GetUsageByYear(string year)
-        {
-            using (GothamSubwayEntities context = DbContextCreator.Create())
-            {
-                var query = from x in context.Electricities
-                            select new ElectricityItem
-                            {
-                                Monthdate = x.Month.ToString("MM"),
-                                Usage = x.Usage,
-                            };
-                query.Where(x => x.Monthdate == year);
-
-                return query.ToList();
             }
         }
     }

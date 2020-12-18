@@ -31,12 +31,15 @@ namespace GothamSubway.WinForm
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.SecondaryAxisY secondaryAxisY1 = new DevExpress.XtraCharts.SecondaryAxisY();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.LineSeriesView lineSeriesView1 = new DevExpress.XtraCharts.LineSeriesView();
             DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.Series series5 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.chartUsage = new DevExpress.XtraCharts.ChartControl();
@@ -46,6 +49,7 @@ namespace GothamSubway.WinForm
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMonth = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colUsage = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridBill = new DevExpress.XtraGrid.GridControl();
             this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMonth1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -53,13 +57,16 @@ namespace GothamSubway.WinForm
             this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartUsage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(secondaryAxisY1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.electricityBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBill)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridBill)).BeginInit();
@@ -90,6 +97,14 @@ namespace GothamSubway.WinForm
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisY.Label.TextPattern = "{V:#,#}";
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            secondaryAxisY1.AxisID = 0;
+            secondaryAxisY1.Name = "Secondary AxisY 1";
+            secondaryAxisY1.VisibleInPanesSerializable = "-1";
+            secondaryAxisY1.WholeRange.Auto = false;
+            secondaryAxisY1.WholeRange.MaxValueSerializable = "10";
+            secondaryAxisY1.WholeRange.MinValueSerializable = "-10";
+            xyDiagram1.SecondaryAxesY.AddRange(new DevExpress.XtraCharts.SecondaryAxisY[] {
+            secondaryAxisY1});
             this.chartUsage.Diagram = xyDiagram1;
             this.chartUsage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartUsage.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
@@ -104,12 +119,25 @@ namespace GothamSubway.WinForm
             series2.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
             series2.Name = "2019년";
             series2.ValueDataMembersSerializable = "Usage";
+            series3.ArgumentDataMember = "Monthdate";
+            series3.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
+            series3.LegendName = "Default Legend";
+            series3.Name = "증감율";
+            series3.ValueDataMembersSerializable = "UsageYoYRate";
+            lineSeriesView1.AxisYName = "Secondary AxisY 1";
+            lineSeriesView1.LineMarkerOptions.Kind = DevExpress.XtraCharts.MarkerKind.Diamond;
+            lineSeriesView1.LineMarkerOptions.Size = 7;
+            lineSeriesView1.MarkerVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series3.View = lineSeriesView1;
             this.chartUsage.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,
-        series2};
+        series2,
+        series3};
             this.chartUsage.Size = new System.Drawing.Size(578, 387);
             this.chartUsage.TabIndex = 0;
+            chartTitle1.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle1.Text = "지하철 전력 사용량";
+            chartTitle1.TextColor = System.Drawing.Color.Black;
             this.chartUsage.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle1});
             // 
@@ -129,20 +157,22 @@ namespace GothamSubway.WinForm
             this.chartBill.Legend.Name = "Default Legend";
             this.chartBill.Location = new System.Drawing.Point(587, 3);
             this.chartBill.Name = "chartBill";
-            series3.ArgumentDataMember = "Monthdate";
-            series3.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
-            series3.Name = "2018년";
-            series3.ValueDataMembersSerializable = "Bill";
             series4.ArgumentDataMember = "Monthdate";
-            series4.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
-            series4.Name = "2019년";
+            series4.FilterString = "[Month] Between(#2018-01-01#, #2018-12-31#)";
+            series4.Name = "2018년";
             series4.ValueDataMembersSerializable = "Bill";
+            series5.ArgumentDataMember = "Monthdate";
+            series5.FilterString = "[Month] Between(#2019-01-01#, #2019-12-31#)";
+            series5.Name = "2019년";
+            series5.ValueDataMembersSerializable = "Bill";
             this.chartBill.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series3,
-        series4};
+        series4,
+        series5};
             this.chartBill.Size = new System.Drawing.Size(578, 387);
             this.chartBill.TabIndex = 1;
+            chartTitle2.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             chartTitle2.Text = "지하철 전기 요금";
+            chartTitle2.TextColor = System.Drawing.Color.Black;
             this.chartBill.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
             chartTitle2});
             // 
@@ -150,6 +180,7 @@ namespace GothamSubway.WinForm
             // 
             this.gridUsage.DataSource = this.electricityBindingSource;
             this.gridUsage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gridUsage.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gridUsage.Location = new System.Drawing.Point(3, 396);
             this.gridUsage.MainView = this.gridView1;
             this.gridUsage.Name = "gridUsage";
@@ -160,12 +191,17 @@ namespace GothamSubway.WinForm
             // 
             // gridView1
             // 
+            this.gridView1.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView1.Appearance.ViewCaption.Options.UseFont = true;
             this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMonth,
-            this.colUsage});
+            this.colUsage,
+            this.gridColumn1});
             this.gridView1.GridControl = this.gridUsage;
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsView.ShowGroupPanel = false;
+            this.gridView1.OptionsView.ShowViewCaption = true;
+            this.gridView1.ViewCaption = "전력 사용량 세부내역";
             // 
             // colMonth
             // 
@@ -191,6 +227,17 @@ namespace GothamSubway.WinForm
             this.colUsage.VisibleIndex = 1;
             this.colUsage.Width = 94;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "gridColumn1";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.OptionsColumn.AllowEdit = false;
+            this.gridColumn1.OptionsColumn.AllowMove = false;
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 2;
+            this.gridColumn1.Width = 94;
+            // 
             // gridBill
             // 
             this.gridBill.DataSource = this.electricityBindingSource;
@@ -205,12 +252,16 @@ namespace GothamSubway.WinForm
             // 
             // gridView2
             // 
+            this.gridView2.Appearance.ViewCaption.Font = new System.Drawing.Font("Tahoma", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridView2.Appearance.ViewCaption.Options.UseFont = true;
             this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMonth1,
             this.colBill});
             this.gridView2.GridControl = this.gridBill;
             this.gridView2.Name = "gridView2";
             this.gridView2.OptionsView.ShowGroupPanel = false;
+            this.gridView2.OptionsView.ShowViewCaption = true;
+            this.gridView2.ViewCaption = "전기 요금 세부내역";
             // 
             // colMonth1
             // 
@@ -246,14 +297,17 @@ namespace GothamSubway.WinForm
             this.Name = "ElectricityForm";
             this.Text = "ElectricityForm";
             this.tableLayoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(secondaryAxisY1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(lineSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartUsage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.electricityBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartBill)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridUsage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -277,5 +331,6 @@ namespace GothamSubway.WinForm
         private DevExpress.XtraGrid.Views.Grid.GridView gridView2;
         private DevExpress.XtraGrid.Columns.GridColumn colMonth1;
         private DevExpress.XtraGrid.Columns.GridColumn colBill;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }
