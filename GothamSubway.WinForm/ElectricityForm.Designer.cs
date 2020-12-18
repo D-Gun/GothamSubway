@@ -165,6 +165,7 @@ namespace GothamSubway.WinForm
             this.colUsage});
             this.gridView1.GridControl = this.gridUsage;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsView.ShowGroupPanel = false;
             // 
             // colMonth
             // 
@@ -209,6 +210,7 @@ namespace GothamSubway.WinForm
             this.colBill});
             this.gridView2.GridControl = this.gridBill;
             this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsView.ShowGroupPanel = false;
             // 
             // colMonth1
             // 
