@@ -29,7 +29,6 @@ namespace GothamSubway.WinForm
                 return;
 
             var electricityItems = Dao.Electricity.GetElectricity();
-            
             electricityBindingSource.DataSource = electricityItems;
         }
     }
