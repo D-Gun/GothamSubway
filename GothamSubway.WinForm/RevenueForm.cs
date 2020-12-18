@@ -36,7 +36,8 @@ namespace GothamSubway.WinForm
             revenueBindingSource.DataSource = Dao.Revenue.GetAll();
 
             gothamMapControl.ButtonClicked += GothamMapControl_ButtonClicked;
-            
+            gothamMapControl.InitButton();
+
             yearSelectorControl1.SelectComboBox += YearSelectorControl1_SelectComboBox;
             yearSelectorControl1.Initialize(Dao.Revenue.GetAllYears());
         }

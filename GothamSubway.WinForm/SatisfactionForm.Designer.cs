@@ -72,15 +72,15 @@ namespace GothamSubway.WinForm
             legend1.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
             legend1.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             legend1.Border.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            customLegendItem1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            customLegendItem1.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(96)))), ((int)(((byte)(181)))), ((int)(((byte)(204)))));
             customLegendItem1.Name = "매우좋음";
-            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            customLegendItem2.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(108)))), ((int)(((byte)(125)))));
             customLegendItem2.Name = "좋음";
-            customLegendItem3.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            customLegendItem3.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(183)))), ((int)(((byte)(109)))));
             customLegendItem3.Name = "보통";
-            customLegendItem4.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            customLegendItem4.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(173)))), ((int)(((byte)(0)))));
             customLegendItem4.Name = "나쁨";
-            customLegendItem5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            customLegendItem5.MarkerColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(134)))), ((int)(((byte)(81)))));
             customLegendItem5.Name = "매우나쁨";
             legend1.CustomItems.AddRange(new DevExpress.XtraCharts.CustomLegendItem[] {
             customLegendItem1,

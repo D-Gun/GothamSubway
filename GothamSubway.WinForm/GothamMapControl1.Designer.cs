@@ -56,20 +56,21 @@ namespace GothamSubway.WinForm
             // lblCityHall
             // 
             this.lblCityHall.AutoSize = true;
-            this.lblCityHall.Location = new System.Drawing.Point(226, 121);
+            this.lblCityHall.Location = new System.Drawing.Point(198, 94);
             this.lblCityHall.Name = "lblCityHall";
-            this.lblCityHall.Size = new System.Drawing.Size(34, 18);
-            this.lblCityHall.TabIndex = 3;
+            this.lblCityHall.Size = new System.Drawing.Size(27, 14);
+            this.lblCityHall.TabIndex = 12;
             this.lblCityHall.Text = "시청";
             // 
             // btnCityHall
             // 
             this.btnCityHall.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnCityHall.Appearance.Options.UseBackColor = true;
-            this.btnCityHall.Location = new System.Drawing.Point(234, 142);
+            this.btnCityHall.Location = new System.Drawing.Point(205, 110);
+            this.btnCityHall.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCityHall.Name = "btnCityHall";
-            this.btnCityHall.Size = new System.Drawing.Size(16, 16);
-            this.btnCityHall.TabIndex = 4;
+            this.btnCityHall.Size = new System.Drawing.Size(14, 12);
+            this.btnCityHall.TabIndex = 3;
             this.btnCityHall.Tag = "2";
             this.btnCityHall.Click += new System.EventHandler(this.btnCityHall_Click);
             // 
@@ -77,49 +78,52 @@ namespace GothamSubway.WinForm
             // 
             this.btnGothamCity.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnGothamCity.Appearance.Options.UseBackColor = true;
-            this.btnGothamCity.Location = new System.Drawing.Point(289, 161);
+            this.btnGothamCity.Location = new System.Drawing.Point(253, 125);
+            this.btnGothamCity.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGothamCity.Name = "btnGothamCity";
-            this.btnGothamCity.Size = new System.Drawing.Size(16, 16);
-            this.btnGothamCity.TabIndex = 6;
+            this.btnGothamCity.Size = new System.Drawing.Size(14, 12);
+            this.btnGothamCity.TabIndex = 0;
             this.btnGothamCity.Tag = "1";
             this.btnGothamCity.Click += new System.EventHandler(this.btnGothamCity_Click);
             // 
             // lblGothamCity
             // 
             this.lblGothamCity.AutoSize = true;
-            this.lblGothamCity.Location = new System.Drawing.Point(281, 140);
+            this.lblGothamCity.Location = new System.Drawing.Point(246, 109);
             this.lblGothamCity.Name = "lblGothamCity";
-            this.lblGothamCity.Size = new System.Drawing.Size(60, 18);
-            this.lblGothamCity.TabIndex = 5;
+            this.lblGothamCity.Size = new System.Drawing.Size(47, 14);
+            this.lblGothamCity.TabIndex = 11;
             this.lblGothamCity.Text = "고담씨티";
             // 
             // btnOwlCourt
             // 
             this.btnOwlCourt.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnOwlCourt.Appearance.Options.UseBackColor = true;
-            this.btnOwlCourt.Location = new System.Drawing.Point(319, 182);
+            this.btnOwlCourt.Location = new System.Drawing.Point(279, 142);
+            this.btnOwlCourt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnOwlCourt.Name = "btnOwlCourt";
-            this.btnOwlCourt.Size = new System.Drawing.Size(16, 16);
-            this.btnOwlCourt.TabIndex = 8;
+            this.btnOwlCourt.Size = new System.Drawing.Size(14, 12);
+            this.btnOwlCourt.TabIndex = 2;
             this.btnOwlCourt.Tag = "10";
             this.btnOwlCourt.Click += new System.EventHandler(this.btnOwlCourt_Click);
             // 
             // lblOwlCourt
             // 
             this.lblOwlCourt.AutoSize = true;
-            this.lblOwlCourt.Location = new System.Drawing.Point(341, 180);
+            this.lblOwlCourt.Location = new System.Drawing.Point(298, 140);
             this.lblOwlCourt.Name = "lblOwlCourt";
-            this.lblOwlCourt.Size = new System.Drawing.Size(86, 18);
-            this.lblOwlCourt.TabIndex = 7;
+            this.lblOwlCourt.Size = new System.Drawing.Size(67, 14);
+            this.lblOwlCourt.TabIndex = 20;
             this.lblOwlCourt.Text = "올뺴미법정앞";
             // 
             // btnChungRyangLi
             // 
             this.btnChungRyangLi.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnChungRyangLi.Appearance.Options.UseBackColor = true;
-            this.btnChungRyangLi.Location = new System.Drawing.Point(326, 213);
+            this.btnChungRyangLi.Location = new System.Drawing.Point(285, 166);
+            this.btnChungRyangLi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChungRyangLi.Name = "btnChungRyangLi";
-            this.btnChungRyangLi.Size = new System.Drawing.Size(16, 16);
+            this.btnChungRyangLi.Size = new System.Drawing.Size(14, 12);
             this.btnChungRyangLi.TabIndex = 10;
             this.btnChungRyangLi.Tag = "9";
             this.btnChungRyangLi.Click += new System.EventHandler(this.btnChungRyangLi_Click);
@@ -127,130 +131,136 @@ namespace GothamSubway.WinForm
             // lblChungRyangLi
             // 
             this.lblChungRyangLi.AutoSize = true;
-            this.lblChungRyangLi.Location = new System.Drawing.Point(348, 211);
+            this.lblChungRyangLi.Location = new System.Drawing.Point(304, 164);
             this.lblChungRyangLi.Name = "lblChungRyangLi";
-            this.lblChungRyangLi.Size = new System.Drawing.Size(47, 18);
-            this.lblChungRyangLi.TabIndex = 9;
+            this.lblChungRyangLi.Size = new System.Drawing.Size(37, 14);
+            this.lblChungRyangLi.TabIndex = 19;
             this.lblChungRyangLi.Text = "청량리";
             // 
             // btnJeGiDong
             // 
             this.btnJeGiDong.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnJeGiDong.Appearance.Options.UseBackColor = true;
-            this.btnJeGiDong.Location = new System.Drawing.Point(301, 310);
+            this.btnJeGiDong.Location = new System.Drawing.Point(263, 241);
+            this.btnJeGiDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnJeGiDong.Name = "btnJeGiDong";
-            this.btnJeGiDong.Size = new System.Drawing.Size(16, 16);
-            this.btnJeGiDong.TabIndex = 12;
+            this.btnJeGiDong.Size = new System.Drawing.Size(14, 12);
+            this.btnJeGiDong.TabIndex = 9;
             this.btnJeGiDong.Tag = "8";
             this.btnJeGiDong.Click += new System.EventHandler(this.btnJeGiDong_Click);
             // 
             // lblJeGiDong
             // 
             this.lblJeGiDong.AutoSize = true;
-            this.lblJeGiDong.Location = new System.Drawing.Point(291, 333);
+            this.lblJeGiDong.Location = new System.Drawing.Point(255, 259);
             this.lblJeGiDong.Name = "lblJeGiDong";
-            this.lblJeGiDong.Size = new System.Drawing.Size(47, 18);
-            this.lblJeGiDong.TabIndex = 11;
+            this.lblJeGiDong.Size = new System.Drawing.Size(37, 14);
+            this.lblJeGiDong.TabIndex = 18;
             this.lblJeGiDong.Text = "제기동";
             // 
             // btnSinSulDong
             // 
             this.btnSinSulDong.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnSinSulDong.Appearance.Options.UseBackColor = true;
-            this.btnSinSulDong.Location = new System.Drawing.Point(192, 339);
+            this.btnSinSulDong.Location = new System.Drawing.Point(168, 264);
+            this.btnSinSulDong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSinSulDong.Name = "btnSinSulDong";
-            this.btnSinSulDong.Size = new System.Drawing.Size(16, 16);
-            this.btnSinSulDong.TabIndex = 14;
+            this.btnSinSulDong.Size = new System.Drawing.Size(14, 12);
+            this.btnSinSulDong.TabIndex = 8;
             this.btnSinSulDong.Tag = "7";
             this.btnSinSulDong.Click += new System.EventHandler(this.btnSinSulDong_Click);
             // 
             // lblSinSulDong
             // 
             this.lblSinSulDong.AutoSize = true;
-            this.lblSinSulDong.Location = new System.Drawing.Point(182, 362);
+            this.lblSinSulDong.Location = new System.Drawing.Point(159, 282);
             this.lblSinSulDong.Name = "lblSinSulDong";
-            this.lblSinSulDong.Size = new System.Drawing.Size(47, 18);
-            this.lblSinSulDong.TabIndex = 13;
+            this.lblSinSulDong.Size = new System.Drawing.Size(37, 14);
+            this.lblSinSulDong.TabIndex = 17;
             this.lblSinSulDong.Text = "신설동";
             // 
             // btnDKGate
             // 
             this.btnDKGate.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnDKGate.Appearance.Options.UseBackColor = true;
-            this.btnDKGate.Location = new System.Drawing.Point(107, 310);
+            this.btnDKGate.Location = new System.Drawing.Point(94, 241);
+            this.btnDKGate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnDKGate.Name = "btnDKGate";
-            this.btnDKGate.Size = new System.Drawing.Size(16, 16);
-            this.btnDKGate.TabIndex = 16;
+            this.btnDKGate.Size = new System.Drawing.Size(14, 12);
+            this.btnDKGate.TabIndex = 7;
             this.btnDKGate.Tag = "6";
             this.btnDKGate.Click += new System.EventHandler(this.btnDKGate_Click);
             // 
             // lblDKGate
             // 
             this.lblDKGate.AutoSize = true;
-            this.lblDKGate.Location = new System.Drawing.Point(57, 333);
+            this.lblDKGate.Location = new System.Drawing.Point(50, 259);
             this.lblDKGate.Name = "lblDKGate";
-            this.lblDKGate.Size = new System.Drawing.Size(66, 18);
-            this.lblDKGate.TabIndex = 15;
+            this.lblDKGate.Size = new System.Drawing.Size(52, 14);
+            this.lblDKGate.TabIndex = 16;
             this.lblDKGate.Text = "DK게이트";
             // 
             // btnNarrows3rdst
             // 
             this.btnNarrows3rdst.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnNarrows3rdst.Appearance.Options.UseBackColor = true;
-            this.btnNarrows3rdst.Location = new System.Drawing.Point(84, 265);
+            this.btnNarrows3rdst.Location = new System.Drawing.Point(74, 206);
+            this.btnNarrows3rdst.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNarrows3rdst.Name = "btnNarrows3rdst";
-            this.btnNarrows3rdst.Size = new System.Drawing.Size(16, 16);
-            this.btnNarrows3rdst.TabIndex = 18;
+            this.btnNarrows3rdst.Size = new System.Drawing.Size(14, 12);
+            this.btnNarrows3rdst.TabIndex = 6;
             this.btnNarrows3rdst.Tag = "5";
             this.btnNarrows3rdst.Click += new System.EventHandler(this.btnNarrows3rdst_Click);
             // 
             // lblNarrows3rdst
             // 
             this.lblNarrows3rdst.AutoSize = true;
-            this.lblNarrows3rdst.Location = new System.Drawing.Point(6, 284);
+            this.lblNarrows3rdst.Location = new System.Drawing.Point(5, 221);
             this.lblNarrows3rdst.Name = "lblNarrows3rdst";
-            this.lblNarrows3rdst.Size = new System.Drawing.Size(81, 18);
-            this.lblNarrows3rdst.TabIndex = 17;
+            this.lblNarrows3rdst.Size = new System.Drawing.Size(64, 14);
+            this.lblNarrows3rdst.TabIndex = 15;
             this.lblNarrows3rdst.Text = "내로우즈5가";
             // 
             // btnNarrows5thst
             // 
             this.btnNarrows5thst.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnNarrows5thst.Appearance.Options.UseBackColor = true;
-            this.btnNarrows5thst.Location = new System.Drawing.Point(106, 225);
+            this.btnNarrows5thst.Location = new System.Drawing.Point(93, 175);
+            this.btnNarrows5thst.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNarrows5thst.Name = "btnNarrows5thst";
-            this.btnNarrows5thst.Size = new System.Drawing.Size(16, 16);
-            this.btnNarrows5thst.TabIndex = 20;
+            this.btnNarrows5thst.Size = new System.Drawing.Size(14, 12);
+            this.btnNarrows5thst.TabIndex = 5;
             this.btnNarrows5thst.Tag = "4";
             this.btnNarrows5thst.Click += new System.EventHandler(this.btnNarrows5thst_Click);
             // 
             // lblNarrows5thst
             // 
             this.lblNarrows5thst.AutoSize = true;
-            this.lblNarrows5thst.Location = new System.Drawing.Point(19, 225);
+            this.lblNarrows5thst.Location = new System.Drawing.Point(17, 175);
             this.lblNarrows5thst.Name = "lblNarrows5thst";
-            this.lblNarrows5thst.Size = new System.Drawing.Size(81, 18);
-            this.lblNarrows5thst.TabIndex = 19;
+            this.lblNarrows5thst.Size = new System.Drawing.Size(64, 14);
+            this.lblNarrows5thst.TabIndex = 14;
             this.lblNarrows5thst.Text = "내로우즈3가";
             // 
             // btnWayneEnt
             // 
             this.btnWayneEnt.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btnWayneEnt.Appearance.Options.UseBackColor = true;
-            this.btnWayneEnt.Location = new System.Drawing.Point(106, 170);
+            this.btnWayneEnt.Location = new System.Drawing.Point(93, 132);
+            this.btnWayneEnt.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnWayneEnt.Name = "btnWayneEnt";
-            this.btnWayneEnt.Size = new System.Drawing.Size(16, 16);
-            this.btnWayneEnt.TabIndex = 22;
+            this.btnWayneEnt.Size = new System.Drawing.Size(14, 12);
+            this.btnWayneEnt.TabIndex = 4;
             this.btnWayneEnt.Tag = "3";
             this.btnWayneEnt.Click += new System.EventHandler(this.btnWayneEnt_Click);
             // 
             // lblWayneEnt
             // 
             this.lblWayneEnt.AutoSize = true;
-            this.lblWayneEnt.Location = new System.Drawing.Point(128, 170);
+            this.lblWayneEnt.Location = new System.Drawing.Point(112, 132);
             this.lblWayneEnt.Name = "lblWayneEnt";
-            this.lblWayneEnt.Size = new System.Drawing.Size(112, 18);
-            this.lblWayneEnt.TabIndex = 21;
+            this.lblWayneEnt.Size = new System.Drawing.Size(87, 14);
+            this.lblWayneEnt.TabIndex = 13;
             this.lblWayneEnt.Text = "웨인엔터프라이즈";
             // 
             // pictureEdit1
@@ -258,17 +268,18 @@ namespace GothamSubway.WinForm
             this.pictureEdit1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureEdit1.EditValue = global::GothamSubway.WinForm.Properties.Resources.MD_MapofGothamLine;
             this.pictureEdit1.Location = new System.Drawing.Point(0, 0);
-            this.pictureEdit1.MaximumSize = new System.Drawing.Size(480, 481);
-            this.pictureEdit1.MinimumSize = new System.Drawing.Size(480, 481);
+            this.pictureEdit1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureEdit1.MaximumSize = new System.Drawing.Size(420, 374);
+            this.pictureEdit1.MinimumSize = new System.Drawing.Size(420, 374);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
             this.pictureEdit1.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
-            this.pictureEdit1.Size = new System.Drawing.Size(480, 481);
-            this.pictureEdit1.TabIndex = 0;
+            this.pictureEdit1.Size = new System.Drawing.Size(420, 374);
+            this.pictureEdit1.TabIndex = 1;
             // 
             // GothamMapControl1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.btnWayneEnt);
@@ -292,10 +303,11 @@ namespace GothamSubway.WinForm
             this.Controls.Add(this.btnCityHall);
             this.Controls.Add(this.lblCityHall);
             this.Controls.Add(this.pictureEdit1);
-            this.MaximumSize = new System.Drawing.Size(480, 481);
-            this.MinimumSize = new System.Drawing.Size(480, 481);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MaximumSize = new System.Drawing.Size(420, 374);
+            this.MinimumSize = new System.Drawing.Size(420, 374);
             this.Name = "GothamMapControl1";
-            this.Size = new System.Drawing.Size(480, 481);
+            this.Size = new System.Drawing.Size(420, 374);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

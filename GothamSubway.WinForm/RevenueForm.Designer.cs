@@ -33,10 +33,13 @@ namespace GothamSubway.WinForm
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView1 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.XYSeriesBlowUpAnimation xySeriesBlowUpAnimation1 = new DevExpress.XtraCharts.XYSeriesBlowUpAnimation();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView2 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.XYSeriesBlowUpAnimation xySeriesBlowUpAnimation2 = new DevExpress.XtraCharts.XYSeriesBlowUpAnimation();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.StackedStepAreaSeriesView stackedStepAreaSeriesView3 = new DevExpress.XtraCharts.StackedStepAreaSeriesView();
+            DevExpress.XtraCharts.XYSeriesBlowUpAnimation xySeriesBlowUpAnimation3 = new DevExpress.XtraCharts.XYSeriesBlowUpAnimation();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
             this.revenueBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
@@ -123,6 +126,8 @@ namespace GothamSubway.WinForm
     "-31#)";
             series1.Name = "Wayne shipping";
             series1.ValueDataMembersSerializable = "Income";
+            xySeriesBlowUpAnimation1.Duration = System.TimeSpan.Parse("00:00:00.5000000");
+            stackedStepAreaSeriesView1.SeriesAnimation = xySeriesBlowUpAnimation1;
             stackedStepAreaSeriesView1.Transparency = ((byte)(120));
             series1.View = stackedStepAreaSeriesView1;
             series2.ArgumentDataMember = "Month";
@@ -130,6 +135,9 @@ namespace GothamSubway.WinForm
     "-31#)";
             series2.Name = "DK Transport";
             series2.ValueDataMembersSerializable = "Income";
+            xySeriesBlowUpAnimation2.BeginTime = System.TimeSpan.Parse("00:00:00.4000000");
+            xySeriesBlowUpAnimation2.Duration = System.TimeSpan.Parse("00:00:00.5000000");
+            stackedStepAreaSeriesView2.SeriesAnimation = xySeriesBlowUpAnimation2;
             stackedStepAreaSeriesView2.Transparency = ((byte)(120));
             series2.View = stackedStepAreaSeriesView2;
             series3.ArgumentDataMember = "Month";
@@ -137,6 +145,9 @@ namespace GothamSubway.WinForm
     "-31#)";
             series3.Name = "Gotham Credit";
             series3.ValueDataMembersSerializable = "Income";
+            xySeriesBlowUpAnimation3.BeginTime = System.TimeSpan.Parse("00:00:00.8000000");
+            xySeriesBlowUpAnimation3.Duration = System.TimeSpan.Parse("00:00:00.5000000");
+            stackedStepAreaSeriesView3.SeriesAnimation = xySeriesBlowUpAnimation3;
             stackedStepAreaSeriesView3.Transparency = ((byte)(120));
             series3.View = stackedStepAreaSeriesView3;
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
