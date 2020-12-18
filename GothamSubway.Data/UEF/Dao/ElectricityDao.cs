@@ -40,12 +40,17 @@ namespace GothamSubway.Data
                     ElectricityItem previousItem = items.Find(x => x.Month.Year == (items[i].Month.Year -1) && x.Month.Month == items[i].Month.Month);
 
                     if (previousItem == null)
+                    {
                         items[i].UsageYoYRate = 0;
+                        items[i].BillYoYRate = 0;
+                    }
                     else
                     {
-                        items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / previousItem.Usage * 100;
+                        items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / (double)previousItem.Usage * 100.0;
+                        items[i].BillYoYRate = (items[i].Bill - previousItem.Bill) / (double)previousItem.Bill * 100.0;
                     }
                 }
+
                 foreach (var x in items)
                 {
                     x.Monthdate = x.Month.ToString("MM");
