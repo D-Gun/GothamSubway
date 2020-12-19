@@ -7,7 +7,51 @@ namespace GothamSubway.Data
     public class FootTrafficDao : SingleKeyDao<FootTraffic, int>
     {
         internal FootTrafficDao() { }
-        
+
+        public List<FootTrafficDurationSumModel> GetDurationSumModel(DateTime start, DateTime end)
+        {
+            using (GothamSubwayEntities context = DbContextCreator.Create())
+            {
+                return (from x in context.FootTraffics
+                        where (DateTime.Compare(start, x.Date) < 0 && DateTime.Compare(x.Date, end) > 0)
+                        select new FootTrafficDurationSumModel
+                        {
+                            Date = x.Date,
+                            StationId = x.StationId,
+                            TransferId = x.TransferId,
+                            Sum = x.BeforeSix + x.SixToSeven + x.SevenToEight + x.EightToNine + x.NineToTen + x.TenToEleven + x.ElevenToTwelve +
+                             x.TwelveToThirteen + x.ThirteenToFourteen + x.FourteenToFifteen + x.FifteenToSixteen + x.SixteenToSeventeen +
+                             x.SeventeenToEighteen + x.EighteenToNineteen + x.TwentyToTwentyOne + x.TwnetyOneToTwentyTwo +
+                             x.TwentyTwoToTwentyThree + x.TwentyThreeToTwentyFour + x.AfterTwentyFour
+                        }).ToList();
+            }
+        }
+
+        //DateTime dttmA = Convert.ToDateTime("2017-01-01"), dttmB = DateTime.Now;
+        /* 
+         * compareResult가 0보다 작은경우 : dttmA < dttmB 
+         * compareResult가 0인 경우 : dttmA = dttmB 
+         * compareResult가 0보다 큰경우 : dttmA > dttmB 
+         */
+        //int compareResult = DateTime.Compare(dttmA, dttmB);
+
+        public List<FootTrafficDurationAverageModel> GetDurationAverageModel(DateTime start, DateTime end)
+        {
+            using (GothamSubwayEntities context = DbContextCreator.Create())
+            {
+                return (from x in context.FootTraffics
+                        where (DateTime.Compare(start, x.Date) < 0 && DateTime.Compare(x.Date, end) > 0)
+                        group x by new { StationId = x.StationId, TransferId = x.TransferId } into g
+                        select new FootTrafficDurationAverageModel
+                        {
+                            StationId = g.Key.StationId,
+                            TransferId = g.Key.TransferId,
+                            BeforeSix = g.Average(a => a.BeforeSix),
+                            SixToSeven = g.Average(a => a.SixToSeven)
+                        }).ToList();
+            }
+        }
+
         public List<FootTrafficTotalModel> GetMonthlyFootTraffics(int selectedYear, int stationNumber)
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
