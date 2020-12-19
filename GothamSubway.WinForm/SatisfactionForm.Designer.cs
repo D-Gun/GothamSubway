@@ -171,6 +171,7 @@ namespace GothamSubway.WinForm
             this.cbxCategory.Name = "cbxCategory";
             this.cbxCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cbxCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.tablePanel1.SetRow(this.cbxCategory, 0);
             this.cbxCategory.Size = new System.Drawing.Size(111, 24);
             this.cbxCategory.TabIndex = 10;
