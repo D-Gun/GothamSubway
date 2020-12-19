@@ -35,12 +35,15 @@ namespace GothamSubway.WinForm
             DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView1 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesView sideBySideBarSeriesView2 = new DevExpress.XtraCharts.SideBySideBarSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle1 = new DevExpress.XtraCharts.ChartTitle();
             DevExpress.XtraCharts.XYDiagram xyDiagram2 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series3 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SplineSeriesView splineSeriesView1 = new DevExpress.XtraCharts.SplineSeriesView();
             DevExpress.XtraCharts.Series series4 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SplineSeriesView splineSeriesView2 = new DevExpress.XtraCharts.SplineSeriesView();
+            DevExpress.XtraCharts.ChartTitle chartTitle2 = new DevExpress.XtraCharts.ChartTitle();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
             this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
             this.footTrafficDurationAverageModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chartControl2 = new DevExpress.XtraCharts.ChartControl();
@@ -51,7 +54,6 @@ namespace GothamSubway.WinForm
             this.dtoEndDate = new DevExpress.XtraEditors.DateTimeOffsetEdit();
             this.dtoStartDate = new DevExpress.XtraEditors.DateTimeOffsetEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
             this.tblMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
@@ -88,14 +90,28 @@ namespace GothamSubway.WinForm
             this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMain.ForeColor = System.Drawing.Color.Transparent;
             this.tblMain.Location = new System.Drawing.Point(0, 0);
-            this.tblMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tblMain.Name = "tblMain";
             this.tblMain.RowCount = 3;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 35F));
-            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 55F));
-            this.tblMain.Size = new System.Drawing.Size(1168, 786);
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 38.62521F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 51.39116F));
+            this.tblMain.Size = new System.Drawing.Size(1022, 611);
             this.tblMain.TabIndex = 4;
+            // 
+            // gothamMapControl
+            // 
+            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.gothamMapControl.Appearance.Options.UseBackColor = true;
+            this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gothamMapControl.Location = new System.Drawing.Point(595, 149);
+            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.Name = "gothamMapControl";
+            this.tblMain.SetRowSpan(this.gothamMapControl, 2);
+            this.gothamMapControl.Size = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.TabIndex = 2;
             // 
             // chartControl1
             // 
@@ -113,8 +129,7 @@ namespace GothamSubway.WinForm
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(3, 82);
-            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chartControl1.Location = new System.Drawing.Point(3, 64);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.PaletteName = "Aspect";
             series1.ArgumentDataMember = "Time";
@@ -134,8 +149,12 @@ namespace GothamSubway.WinForm
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series1,
         series2};
-            this.chartControl1.Size = new System.Drawing.Size(666, 267);
+            this.chartControl1.Size = new System.Drawing.Size(582, 229);
             this.chartControl1.TabIndex = 3;
+            chartTitle1.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            chartTitle1.Text = "시간대별 승하차 승객수 평균";
+            this.chartControl1.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle1});
             // 
             // footTrafficDurationAverageModelBindingSource
             // 
@@ -154,8 +173,7 @@ namespace GothamSubway.WinForm
             this.chartControl2.Diagram = xyDiagram2;
             this.chartControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.chartControl2.Legend.Name = "Default Legend";
-            this.chartControl2.Location = new System.Drawing.Point(3, 357);
-            this.chartControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chartControl2.Location = new System.Drawing.Point(3, 299);
             this.chartControl2.Name = "chartControl2";
             this.chartControl2.PaletteName = "Aspect";
             series3.ArgumentDataMember = "Date";
@@ -171,8 +189,12 @@ namespace GothamSubway.WinForm
             this.chartControl2.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
         series3,
         series4};
-            this.chartControl2.Size = new System.Drawing.Size(666, 425);
+            this.chartControl2.Size = new System.Drawing.Size(582, 309);
             this.chartControl2.TabIndex = 4;
+            chartTitle2.Font = new System.Drawing.Font("맑은 고딕", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            chartTitle2.Text = "날짜별 승하차 승객수";
+            this.chartControl2.Titles.AddRange(new DevExpress.XtraCharts.ChartTitle[] {
+            chartTitle2});
             // 
             // footTrafficDurationSumModelBindingSource
             // 
@@ -189,20 +211,18 @@ namespace GothamSubway.WinForm
             this.panelControl1.Controls.Add(this.dtoEndDate);
             this.panelControl1.Controls.Add(this.dtoStartDate);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelControl1.Location = new System.Drawing.Point(675, 4);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panelControl1.Location = new System.Drawing.Point(591, 3);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(490, 70);
+            this.panelControl1.Size = new System.Drawing.Size(428, 55);
             this.panelControl1.TabIndex = 5;
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.labelControl1.Appearance.Options.UseBackColor = true;
-            this.labelControl1.Location = new System.Drawing.Point(191, 26);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl1.Location = new System.Drawing.Point(167, 20);
             this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(11, 18);
+            this.labelControl1.Size = new System.Drawing.Size(9, 14);
             this.labelControl1.TabIndex = 3;
             this.labelControl1.Text = "~";
             // 
@@ -210,10 +230,9 @@ namespace GothamSubway.WinForm
             // 
             this.simpleButton1.Appearance.ForeColor = System.Drawing.Color.Black;
             this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.Location = new System.Drawing.Point(331, 23);
-            this.simpleButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.simpleButton1.Location = new System.Drawing.Point(290, 18);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(86, 30);
+            this.simpleButton1.Size = new System.Drawing.Size(75, 23);
             this.simpleButton1.TabIndex = 2;
             this.simpleButton1.Text = "검색";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
@@ -221,8 +240,7 @@ namespace GothamSubway.WinForm
             // dtoEndDate
             // 
             this.dtoEndDate.EditValue = new System.DateTime(2019, 1, 31, 20, 44, 32, 0);
-            this.dtoEndDate.Location = new System.Drawing.Point(210, 24);
-            this.dtoEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtoEndDate.Location = new System.Drawing.Point(184, 19);
             this.dtoEndDate.Name = "dtoEndDate";
             this.dtoEndDate.Properties.BeepOnError = false;
             this.dtoEndDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -231,14 +249,13 @@ namespace GothamSubway.WinForm
             this.dtoEndDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtoEndDate.Properties.MaskSettings.Set("mask", "d");
             this.dtoEndDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dtoEndDate.Size = new System.Drawing.Size(114, 24);
+            this.dtoEndDate.Size = new System.Drawing.Size(100, 20);
             this.dtoEndDate.TabIndex = 1;
             // 
             // dtoStartDate
             // 
             this.dtoStartDate.EditValue = new System.DateTime(2019, 1, 1, 20, 44, 9, 0);
-            this.dtoStartDate.Location = new System.Drawing.Point(72, 24);
-            this.dtoStartDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dtoStartDate.Location = new System.Drawing.Point(63, 19);
             this.dtoStartDate.Name = "dtoStartDate";
             this.dtoStartDate.Properties.BeepOnError = false;
             this.dtoStartDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -247,7 +264,7 @@ namespace GothamSubway.WinForm
             this.dtoStartDate.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.dtoStartDate.Properties.MaskSettings.Set("mask", "d");
             this.dtoStartDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.dtoStartDate.Size = new System.Drawing.Size(114, 24);
+            this.dtoStartDate.Size = new System.Drawing.Size(100, 20);
             this.dtoStartDate.TabIndex = 0;
             // 
             // labelControl2
@@ -260,36 +277,20 @@ namespace GothamSubway.WinForm
             this.labelControl2.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             this.labelControl2.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
             this.labelControl2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelControl2.Location = new System.Drawing.Point(3, 4);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl2.Location = new System.Drawing.Point(3, 3);
             this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(666, 70);
+            this.labelControl2.Size = new System.Drawing.Size(582, 55);
             this.labelControl2.TabIndex = 6;
             this.labelControl2.Text = "기간별 승하차 인원";
-            // 
-            // gothamMapControl
-            // 
-            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.gothamMapControl.Appearance.Options.UseBackColor = true;
-            this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gothamMapControl.Location = new System.Drawing.Point(680, 191);
-            this.gothamMapControl.MaximumSize = new System.Drawing.Size(480, 481);
-            this.gothamMapControl.MinimumSize = new System.Drawing.Size(480, 481);
-            this.gothamMapControl.Name = "gothamMapControl";
-            this.tblMain.SetRowSpan(this.gothamMapControl, 2);
-            this.gothamMapControl.Size = new System.Drawing.Size(480, 481);
-            this.gothamMapControl.TabIndex = 2;
             // 
             // TransferByDurationForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1168, 786);
+            this.ClientSize = new System.Drawing.Size(1022, 611);
             this.Controls.Add(this.tblMain);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "TransferByDurationForm";
             this.Text = "TransferByDurationForm";
             this.tblMain.ResumeLayout(false);
