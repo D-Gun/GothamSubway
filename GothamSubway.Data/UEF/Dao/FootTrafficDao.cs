@@ -52,7 +52,7 @@ namespace GothamSubway.Data
             }
         }
 
-        public List<FootTrafficTotalModel> GetMonthlyFootTraffics(int selectedYear, int stationNumber)
+        public List<FootTrafficMonthlyTotalModel> GetMonthlyFootTraffics(int selectedYear, int stationNumber)
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
             {
@@ -115,23 +115,30 @@ namespace GothamSubway.Data
                         item.afterTwentyFour;
                 }
 
-                var queryMonthlyTotalList = from x in queryDailyTotalList
-                                            select new FootTrafficMonthlyTotalModel
-                                            {
-                                                date = x.date,
-                                                stationId = x.stationId,
-                                                transferId = x.transferId,
-                                                dailytotal = x.dailyTransferTotal,
-                                                monthlytotal = 0
-                                            };
-                foreach (var item in queryMonthlyTotalList)
+                List<FootTrafficMonthlyTotalModel> footTrafficMonthlyTotalModels = new List<FootTrafficMonthlyTotalModel>();
+
+                foreach (var item in queryDailyTotalList)
                 {
-                    if (item.date.Month == 1)
+                    FootTrafficMonthlyTotalModel find = footTrafficMonthlyTotalModels
+                        .Find(x => x.date.Year == item.date.Year &&
+                        x.date.Month == item.date.Month &&
+                        x.stationId == item.stationId &&
+                        x.transferId == item.transferId);
+                    
+                    if (find == null)
                     {
-                        item.monthlytotal += item.dailytotal;
+                        find = new FootTrafficMonthlyTotalModel()
+                        {
+                            date = new DateTime(item.date.Year, item.date.Month, 1),
+                            stationId = item.stationId,
+                            transferId = item.transferId
+                        };
+                        footTrafficMonthlyTotalModels.Add(find);
                     }
+
+                    find.monthlytotal += item.dailyTransferTotal;
                 }
-               return queryDailyTotalList;
+                return footTrafficMonthlyTotalModels;
             }
         }
 
