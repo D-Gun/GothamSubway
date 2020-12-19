@@ -94,7 +94,8 @@ namespace GothamSubway.WinForm
             legend1.Name = "Legend 1";
             this.chartControl1.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
             legend1});
-            this.chartControl1.Location = new System.Drawing.Point(3, 46);
+            this.chartControl1.Location = new System.Drawing.Point(3, 61);
+            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartControl1.Name = "chartControl1";
             this.tablePanel1.SetRow(this.chartControl1, 1);
             this.tablePanel1.SetRowSpan(this.chartControl1, 8);
@@ -116,7 +117,7 @@ namespace GothamSubway.WinForm
             seriesTitle1});
             doughnutSeriesView1.TotalLabel.TextPattern = "{S}";
             this.chartControl1.SeriesTemplate.View = doughnutSeriesView1;
-            this.chartControl1.Size = new System.Drawing.Size(1016, 518);
+            this.chartControl1.Size = new System.Drawing.Size(1162, 666);
             this.chartControl1.TabIndex = 0;
             // 
             // satisfactionModelBindingSource
@@ -146,6 +147,7 @@ namespace GothamSubway.WinForm
             this.tablePanel1.Controls.Add(this.chartControl1);
             this.tablePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
+            this.tablePanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 0.7F),
@@ -158,18 +160,19 @@ namespace GothamSubway.WinForm
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 1F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 1.3F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 0.7F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1022, 611);
+            this.tablePanel1.Size = new System.Drawing.Size(1168, 786);
             this.tablePanel1.TabIndex = 1;
             // 
             // cbxCategory
             // 
             this.tablePanel1.SetColumn(this.cbxCategory, 1);
-            this.cbxCategory.Location = new System.Drawing.Point(105, 11);
+            this.cbxCategory.Location = new System.Drawing.Point(120, 15);
+            this.cbxCategory.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbxCategory.Name = "cbxCategory";
             this.cbxCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.tablePanel1.SetRow(this.cbxCategory, 0);
-            this.cbxCategory.Size = new System.Drawing.Size(96, 20);
+            this.cbxCategory.Size = new System.Drawing.Size(111, 24);
             this.cbxCategory.TabIndex = 10;
             this.cbxCategory.SelectedIndexChanged += new System.EventHandler(this.cbxCategory_SelectedIndexChanged);
             // 
@@ -178,12 +181,13 @@ namespace GothamSubway.WinForm
             this.labelControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl1.Appearance.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.tablePanel1.SetColumn(this.labelControl1, 3);
+            this.tablePanel1.SetColumn(this.labelControl1, 4);
             this.tablePanel1.SetColumnSpan(this.labelControl1, 3);
-            this.labelControl1.Location = new System.Drawing.Point(310, 3);
+            this.labelControl1.Location = new System.Drawing.Point(470, 4);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 0);
-            this.labelControl1.Size = new System.Drawing.Size(278, 37);
+            this.labelControl1.Size = new System.Drawing.Size(345, 47);
             this.labelControl1.TabIndex = 9;
             this.labelControl1.Text = "지하철 이용 만족도";
             // 
@@ -192,32 +196,35 @@ namespace GothamSubway.WinForm
             this.labelControl2.Appearance.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.tablePanel1.SetColumn(this.labelControl2, 4);
-            this.labelControl2.Location = new System.Drawing.Point(412, 578);
+            this.labelControl2.Location = new System.Drawing.Point(470, 745);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 9);
-            this.labelControl2.Size = new System.Drawing.Size(64, 21);
+            this.labelControl2.Size = new System.Drawing.Size(80, 28);
             this.labelControl2.TabIndex = 8;
             this.labelControl2.Text = "기준년도";
             // 
             // yearSelectorControl1
             // 
             this.tablePanel1.SetColumn(this.yearSelectorControl1, 5);
-            this.yearSelectorControl1.Location = new System.Drawing.Point(514, 572);
-            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(108, 33);
-            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.Location = new System.Drawing.Point(587, 738);
+            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(123, 42);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(123, 42);
             this.yearSelectorControl1.Name = "yearSelectorControl1";
             this.tablePanel1.SetRow(this.yearSelectorControl1, 9);
-            this.yearSelectorControl1.Size = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.Size = new System.Drawing.Size(123, 42);
             this.yearSelectorControl1.TabIndex = 1;
             // 
             // SatisfactionForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 611);
+            this.ClientSize = new System.Drawing.Size(1168, 786);
             this.Controls.Add(this.tablePanel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SatisfactionForm";
             this.Text = "SatisfactionForm";
             ((System.ComponentModel.ISupportInitialize)(doughnutSeriesLabel1)).EndInit();
