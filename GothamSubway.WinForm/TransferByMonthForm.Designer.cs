@@ -36,8 +36,13 @@ namespace GothamSubway.WinForm
             DevExpress.XtraCharts.Series series2 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.AreaSeriesView areaSeriesView2 = new DevExpress.XtraCharts.AreaSeriesView();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
+            this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
+            this.yearSelectorControl1 = new GothamSubway.WinForm.YearSelectorControl();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.footTrafficTotalModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.monthlyTransferTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyTransferTotalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stationIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,21 +66,17 @@ namespace GothamSubway.WinForm
             this.twentyTwoToTwentyThreeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.twentyThreeToTwentyFourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.afterTwentyFourDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.footTrafficTotalModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chartControl1 = new DevExpress.XtraCharts.ChartControl();
-            this.gothamMapControl = new GothamSubway.WinForm.GothamMapControl1();
-            this.yearSelectorControl1 = new GothamSubway.WinForm.YearSelectorControl();
             this.tblMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(areaSeriesView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tblMain
@@ -94,6 +95,20 @@ namespace GothamSubway.WinForm
             this.tblMain.Size = new System.Drawing.Size(1022, 611);
             this.tblMain.TabIndex = 4;
             // 
+            // gothamMapControl
+            // 
+            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.gothamMapControl.Appearance.Options.UseBackColor = true;
+            this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.gothamMapControl.Location = new System.Drawing.Point(592, 118);
+            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.Name = "gothamMapControl";
+            this.gothamMapControl.Size = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.TabIndex = 2;
+            // 
             // panelControl1
             // 
             this.panelControl1.Controls.Add(this.chartControl1);
@@ -106,11 +121,42 @@ namespace GothamSubway.WinForm
             this.panelControl1.Size = new System.Drawing.Size(576, 607);
             this.panelControl1.TabIndex = 3;
             // 
+            // chartControl1
+            // 
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
+            xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            this.chartControl1.Diagram = xyDiagram1;
+            this.chartControl1.Location = new System.Drawing.Point(126, 181);
+            this.chartControl1.Name = "chartControl1";
+            series1.Name = "승차";
+            series1.ValueDataMembersSerializable = "dailyTransferTotal";
+            series1.View = areaSeriesView1;
+            series2.Name = "하차";
+            series2.View = areaSeriesView2;
+            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
+        series1,
+        series2};
+            this.chartControl1.Size = new System.Drawing.Size(300, 200);
+            this.chartControl1.TabIndex = 2;
+            // 
+            // yearSelectorControl1
+            // 
+            this.yearSelectorControl1.Location = new System.Drawing.Point(8, 5);
+            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.Name = "yearSelectorControl1";
+            this.yearSelectorControl1.Size = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.TabIndex = 1;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.monthlyTransferTotal,
             this.dailyTransferTotalDataGridViewTextBoxColumn,
             this.stationIdDataGridViewTextBoxColumn,
             this.dateDataGridViewTextBoxColumn,
@@ -142,6 +188,16 @@ namespace GothamSubway.WinForm
             this.dataGridView1.RowTemplate.Height = 27;
             this.dataGridView1.Size = new System.Drawing.Size(576, 148);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // footTrafficTotalModelBindingSource
+            // 
+            this.footTrafficTotalModelBindingSource.DataSource = typeof(GothamSubway.Data.FootTrafficTotalModel);
+            // 
+            // monthlyTransferTotal
+            // 
+            this.monthlyTransferTotal.DataPropertyName = "monthlyTransferTotal";
+            this.monthlyTransferTotal.HeaderText = "monthlyTransferTotal";
+            this.monthlyTransferTotal.Name = "monthlyTransferTotal";
             // 
             // dailyTransferTotalDataGridViewTextBoxColumn
             // 
@@ -327,52 +383,6 @@ namespace GothamSubway.WinForm
             this.afterTwentyFourDataGridViewTextBoxColumn.Name = "afterTwentyFourDataGridViewTextBoxColumn";
             this.afterTwentyFourDataGridViewTextBoxColumn.Width = 125;
             // 
-            // footTrafficTotalModelBindingSource
-            // 
-            this.footTrafficTotalModelBindingSource.DataSource = typeof(GothamSubway.Data.FootTrafficTotalModel);
-            // 
-            // chartControl1
-            // 
-            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
-            this.chartControl1.Diagram = xyDiagram1;
-            this.chartControl1.Location = new System.Drawing.Point(126, 181);
-            this.chartControl1.Name = "chartControl1";
-            series1.Name = "승차";
-            series1.ValueDataMembersSerializable = "dailyTransferTotal";
-            series1.View = areaSeriesView1;
-            series2.Name = "하차";
-            series2.View = areaSeriesView2;
-            this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series1,
-        series2};
-            this.chartControl1.Size = new System.Drawing.Size(300, 200);
-            this.chartControl1.TabIndex = 2;
-            // 
-            // gothamMapControl
-            // 
-            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.gothamMapControl.Appearance.Options.UseBackColor = true;
-            this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.gothamMapControl.Location = new System.Drawing.Point(592, 118);
-            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
-            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
-            this.gothamMapControl.Name = "gothamMapControl";
-            this.gothamMapControl.Size = new System.Drawing.Size(420, 374);
-            this.gothamMapControl.TabIndex = 2;
-            // 
-            // yearSelectorControl1
-            // 
-            this.yearSelectorControl1.Location = new System.Drawing.Point(8, 5);
-            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(108, 33);
-            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(108, 33);
-            this.yearSelectorControl1.Name = "yearSelectorControl1";
-            this.yearSelectorControl1.Size = new System.Drawing.Size(108, 33);
-            this.yearSelectorControl1.TabIndex = 1;
-            // 
             // TransferByMonthForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -384,14 +394,14 @@ namespace GothamSubway.WinForm
             this.tblMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(areaSeriesView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(areaSeriesView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(series2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.footTrafficTotalModelBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -405,6 +415,8 @@ namespace GothamSubway.WinForm
         private System.Windows.Forms.DataGridViewTextBoxColumn monthlyTransferTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource footTrafficTotalModelBindingSource;
         private YearSelectorControl yearSelectorControl1;
+        private DevExpress.XtraCharts.ChartControl chartControl1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn monthlyTransferTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyTransferTotalDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stationIdDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateDataGridViewTextBoxColumn;
@@ -428,6 +440,5 @@ namespace GothamSubway.WinForm
         private System.Windows.Forms.DataGridViewTextBoxColumn twentyTwoToTwentyThreeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn twentyThreeToTwentyFourDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn afterTwentyFourDataGridViewTextBoxColumn;
-        private DevExpress.XtraCharts.ChartControl chartControl1;
     }
 }

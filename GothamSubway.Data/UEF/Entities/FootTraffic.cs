@@ -42,7 +42,8 @@ namespace GothamSubway.Data
     public class FootTrafficMonthlyTotalModel
     {
         public DateTime date { get; set; }
-        public int dailyTransferTotalForMonthlyTotal { get; set; }
+        public int stationId { get; set; }
+        public int transferId { get; set; }
         public int monthlytotal { get; set; }
     }
 }
