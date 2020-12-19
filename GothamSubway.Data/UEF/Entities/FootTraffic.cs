@@ -14,25 +14,8 @@ namespace GothamSubway.Data
     {
         public int StationId { get; set; }
         public int TransferId { get; set; }
-        public double BeforeSix { get; set; }
-        public double SixToSeven { get; set; }
-        public double SevenToEight { get; set; }
-        public double EightToNine { get; set; }
-        public double NineToTen { get; set; }
-        public double TenToEleven { get; set; }
-        public double ElevenToTwelve { get; set; }
-        public double TwelveToThirteen { get; set; }
-        public double ThirteenToFourteen { get; set; }
-        public double FourteenToFifteen { get; set; }
-        public double FifteenToSixteen { get; set; }
-        public double SixteenToSeventeen { get; set; }
-        public double SeventeenToEighteen { get; set; }
-        public double EighteenToNineteen { get; set; }
-        public double TwentyToTwentyOne { get; set; }
-        public double TwentyOneToTwentyTwo { get; set; }
-        public double TwentyTwoToTwentyThree { get; set; }
-        public double TwentyThreeToTwentyFour { get; set; }
-        public double AfterTwentyFour { get; set; }
+        public string Time { get; set; }
+        public double Average { get; set; }
     }
 
     public class FootTrafficDurationSumModel

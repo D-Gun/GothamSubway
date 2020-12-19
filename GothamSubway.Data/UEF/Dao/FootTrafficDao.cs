@@ -8,12 +8,27 @@ namespace GothamSubway.Data
     {
         internal FootTrafficDao() { }
 
-        public List<FootTrafficDurationSumModel> GetDurationSumModel(DateTime start, DateTime end)
+        public DateTime GetMinimumDate()
+        {
+            using (GothamSubwayEntities context = DbContextCreator.Create())
+            {
+                return context.FootTraffics.Select(x => x.Date).OrderBy(x => x).FirstOrDefault();
+            }
+        }
+
+        public DateTime GetMaximumDate()
+        {
+            using (GothamSubwayEntities context = DbContextCreator.Create())
+            {
+                return context.FootTraffics.Select(x => x.Date).OrderByDescending(x => x).FirstOrDefault();
+            }
+        }
+
+        public List<FootTrafficDurationSumModel> GetDurationSumModel()
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
             {
                 return (from x in context.FootTraffics
-                        where (DateTime.Compare(start, x.Date) < 0 && DateTime.Compare(x.Date, end) > 0)
                         select new FootTrafficDurationSumModel
                         {
                             Date = x.Date,
@@ -27,28 +42,66 @@ namespace GothamSubway.Data
             }
         }
 
-        //DateTime dttmA = Convert.ToDateTime("2017-01-01"), dttmB = DateTime.Now;
-        /* 
-         * compareResult가 0보다 작은경우 : dttmA < dttmB 
-         * compareResult가 0인 경우 : dttmA = dttmB 
-         * compareResult가 0보다 큰경우 : dttmA > dttmB 
-         */
-        //int compareResult = DateTime.Compare(dttmA, dttmB);
-
         public List<FootTrafficDurationAverageModel> GetDurationAverageModel(DateTime start, DateTime end)
         {
             using (GothamSubwayEntities context = DbContextCreator.Create())
             {
-                return (from x in context.FootTraffics
-                        where (DateTime.Compare(start, x.Date) < 0 && DateTime.Compare(x.Date, end) > 0)
+                var query = from x in context.FootTraffics
+                        where (start <= x.Date && x.Date <= end)
                         group x by new { StationId = x.StationId, TransferId = x.TransferId } into g
-                        select new FootTrafficDurationAverageModel
+                        select new
                         {
                             StationId = g.Key.StationId,
                             TransferId = g.Key.TransferId,
                             BeforeSix = g.Average(a => a.BeforeSix),
-                            SixToSeven = g.Average(a => a.SixToSeven)
-                        }).ToList();
+                            SixToSeven = g.Average(a => a.SixToSeven),
+                            SevenToEight = g.Average(a => a.SevenToEight),
+                            EightToNine = g.Average(a => a.EightToNine),
+                            NineToTen = g.Average(a => a.NineToTen),
+                            TenToEleven = g.Average(a => a.TenToEleven),
+                            ElevenToTwelve = g.Average(a => a.ElevenToTwelve),
+                            TwelveToThirteen = g.Average(a => a.TwelveToThirteen),
+                            ThirteenToFourteen = g.Average(a => a.ThirteenToFourteen),
+                            FourteenToFifteen = g.Average(a => a.FourteenToFifteen),
+                            FifteenToSixteen = g.Average(a => a.FifteenToSixteen),
+                            SixteenToSeventeen = g.Average(a => a.SixteenToSeventeen),
+                            SeventeenToEighteen = g.Average(a => a.SeventeenToEighteen),
+                            EighteenToNineteen = g.Average(a => a.EighteenToNineteen),
+                            NineteenToTwenty = g.Average(a => a.NineteenToTwenty),
+                            TwentyToTwentyOne = g.Average(a => a.TwentyToTwentyOne),
+                            TwnetyOneToTwentyTwo = g.Average(a => a.TwnetyOneToTwentyTwo),
+                            TwentyTwoToTwentyThree = g.Average(a => a.TwentyTwoToTwentyThree),
+                            TwentyThreeToTwentyFour = g.Average(a => a.TwentyThreeToTwentyFour),
+                            AfterTwentyFour = g.Average(a => a.AfterTwentyFour)
+                        };
+
+                List<FootTrafficDurationAverageModel> footTrafficDurationAverageModels = new List<FootTrafficDurationAverageModel>();
+
+                foreach(var item in query)
+                {
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "6시이전", Average = item.BeforeSix });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "6~7", Average = item.SixToSeven });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "7~8", Average = item.SevenToEight });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "8~9", Average = item.EightToNine });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "9~10", Average = item.NineToTen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "10~11", Average = item.TenToEleven });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "11~12", Average = item.ElevenToTwelve });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "12~13", Average = item.TwelveToThirteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "13~14", Average = item.ThirteenToFourteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "14~15", Average = item.FourteenToFifteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "15~16", Average = item.FifteenToSixteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "16~17", Average = item.SixteenToSeventeen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "17~18", Average = item.SeventeenToEighteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "18~19", Average = item.EighteenToNineteen });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "19~20", Average = item.NineteenToTwenty });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "20~21", Average = item.TwentyToTwentyOne });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "21~22", Average = item.TwnetyOneToTwentyTwo });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "22~23", Average = item.TwentyTwoToTwentyThree });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "23~24", Average = item.TwentyThreeToTwentyFour });
+                    footTrafficDurationAverageModels.Add(new FootTrafficDurationAverageModel() { StationId = item.StationId, TransferId = item.TransferId, Time = "24시이후", Average = item.AfterTwentyFour });
+                }
+
+                return footTrafficDurationAverageModels;
             }
         }
 
