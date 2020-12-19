@@ -233,7 +233,6 @@ namespace GothamSubway.WinForm
             this.dtoEndDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtoEndDate.Size = new System.Drawing.Size(114, 24);
             this.dtoEndDate.TabIndex = 1;
-            this.dtoEndDate.EditValueChanged += new System.EventHandler(this.dtoEndDate_EditValueChanged);
             // 
             // dtoStartDate
             // 
@@ -250,7 +249,6 @@ namespace GothamSubway.WinForm
             this.dtoStartDate.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.dtoStartDate.Size = new System.Drawing.Size(114, 24);
             this.dtoStartDate.TabIndex = 0;
-            this.dtoStartDate.EditValueChanged += new System.EventHandler(this.dtoStartDate_EditValueChanged);
             // 
             // labelControl2
             // 
