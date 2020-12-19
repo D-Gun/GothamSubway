@@ -98,7 +98,7 @@
 
 ## Third Party
 
-- DevExpress 20.2.3
+- DevExpress 20.2.3 (Trial Version)
 
 ## 기타 개발환경
 
@@ -156,6 +156,7 @@
 
 ![이미지](https://user-images.githubusercontent.com/69996028/102478598-1e779d80-40a1-11eb-9743-fd3a2c8bbc7c.png)
 
+---
 
 # 서로 다른 숫자 형식간의 나눗셈에 관한 이슈 [#37](https://github.com/dlehd333/GothamSubway/issues/37)
 
@@ -177,10 +178,11 @@
 ## 참고할 코드나 스크린샷
 
 ```csharp
-items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / previousItem.Usage * 100.0;                                                                    ↓
+items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / previousItem.Usage * 100.0;
 items[i].UsageYoYRate = (items[i].Bill - previousItem.Usage) / (double)previousItem.Usage * 100.0;
 ```
 
+---
 
 # 지하철 노선도 버튼 전달 값 변경 시 값 전달이 되지 않는 문제 [#40](https://github.com/dlehd333/GothamSubway/issues/40)
 
@@ -211,6 +213,8 @@ protected override void OnLoad(EventArgs e) // 폼 로드 시 이벤트
 }
 ```
 
+---
+
 # 만족도 페이지 동적 차트 구성에 관한 문제 [#44](https://github.com/dlehd333/GothamSubway/issues/44)
 
 ## 증상(문제)
@@ -233,6 +237,7 @@ protected override void OnLoad(EventArgs e) // 폼 로드 시 이벤트
 ![이미지](https://user-images.githubusercontent.com/69996028/102607415-9ad6b300-416b-11eb-9b02-76aa9a28c16a.png)
 ![이미지](https://user-images.githubusercontent.com/69996028/102607569-d83b4080-416b-11eb-9b40-66ab2c10f4cc.png)
 
+---
 
 # DevExpress 버전이 맞지 않는 문제 [#49](https://github.com/dlehd333/GothamSubway/issues/49)
 
