@@ -43,9 +43,9 @@ namespace GothamSubway.Data
                             };
                 queryTime = queryTime.Where(x => (x.date.Year == selectedYear) && (x.stationId == stationNumber)); // selected year에 해당하는 query 생성
                 
-                var queryDailyTotallist = queryTime.ToList();
+                var queryDailyTotalList = queryTime.ToList();
                 
-                foreach (var item in queryDailyTotallist) 
+                foreach (var item in queryDailyTotalList) 
                 {
                     //일별 승 하차 합계 계산
                     item.dailyTransferTotal =
@@ -69,9 +69,25 @@ namespace GothamSubway.Data
                         item.twentyTwoToTwentyThree +
                         item.twentyThreeToTwentyFour +
                         item.afterTwentyFour;
-                    
                 }
-               return queryDailyTotallist;
+
+                var queryMonthlyTotalList = from x in queryDailyTotalList
+                                            select new FootTrafficMonthlyTotalModel
+                                            {
+                                                date = x.date,
+                                                stationId = x.stationId,
+                                                transferId = x.transferId,
+                                                dailytotal = x.dailyTransferTotal,
+                                                monthlytotal = 0
+                                            };
+                foreach (var item in queryMonthlyTotalList)
+                {
+                    if (item.date.Month == 1)
+                    {
+                        item.monthlytotal += item.dailytotal;
+                    }
+                }
+               return queryDailyTotalList;
             }
         }
 
