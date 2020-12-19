@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="GothamSubway.Data.BaseDao&lt;T&gt;" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAEAAAAAAAAAAAAAAAAAAAAEAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>UEF\BaseDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.ElectricityDao" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAACAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\ElectricityDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.FootTrafficDao" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABACAAAAAAQAAAAAAAAAAAAAAEAAAAACQAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\FootTrafficDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.RevenueDao" Collapsed="true">
+    <Position X="2.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\RevenueDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.SatisfactionCategoryDao" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>UEF\Dao\SatisfactionCategoryDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.SatisfactionDao" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\SatisfactionDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.StationDao" Collapsed="true">
+    <Position X="2.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\StationDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.SubwayCardDao" Collapsed="true">
+    <Position X="2.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\SubwayCardDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.TransferDao" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UEF\Dao\TransferDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GothamSubway.Data.SingleKeyDao&lt;T, K&gt;" Collapsed="true">
+    <Position X="2.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
+      <FileName>UEF\SingleKeyDao.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="맑은 고딕" Size="9" />
+</ClassDiagram>

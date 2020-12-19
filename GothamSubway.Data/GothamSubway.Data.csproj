@@ -124,6 +124,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>GothamSubway.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="GothamSubway.edmx.diagram">
       <DependentUpon>GothamSubway.edmx</DependentUpon>
     </None>

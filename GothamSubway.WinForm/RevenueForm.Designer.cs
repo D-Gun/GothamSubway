@@ -73,13 +73,14 @@ namespace GothamSubway.WinForm
             this.tblMain.ColumnCount = 2;
             this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57F));
             this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43F));
-            this.tblMain.Location = new System.Drawing.Point(685, 26);
+            this.tblMain.Location = new System.Drawing.Point(783, 33);
+            this.tblMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tblMain.Name = "tblMain";
             this.tblMain.RowCount = 3;
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tblMain.Size = new System.Drawing.Size(285, 67);
+            this.tblMain.Size = new System.Drawing.Size(326, 86);
             this.tblMain.TabIndex = 4;
             // 
             // gothamMapControl
@@ -89,13 +90,12 @@ namespace GothamSubway.WinForm
             this.gothamMapControl.Appearance.Options.UseBackColor = true;
             this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.tablePanel1.SetColumn(this.gothamMapControl, 6);
-            this.gothamMapControl.Location = new System.Drawing.Point(586, 118);
-            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
-            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.Location = new System.Drawing.Point(669, 153);
+            this.gothamMapControl.MaximumSize = new System.Drawing.Size(480, 481);
+            this.gothamMapControl.MinimumSize = new System.Drawing.Size(480, 481);
             this.gothamMapControl.Name = "gothamMapControl";
             this.tablePanel1.SetRow(this.gothamMapControl, 1);
-            this.gothamMapControl.Size = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.Size = new System.Drawing.Size(480, 481);
             this.gothamMapControl.TabIndex = 2;
             // 
             // chartControl1
@@ -110,6 +110,10 @@ namespace GothamSubway.WinForm
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
             xyDiagram1.AxisX.WholeRange.StartSideMargin = 0D;
+            xyDiagram1.AxisY.Label.TextPattern = "{V:#,#}";
+            xyDiagram1.AxisY.Title.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            xyDiagram1.AxisY.Title.Text = "수입(천원)";
+            xyDiagram1.AxisY.Title.Visibility = DevExpress.Utils.DefaultBoolean.True;
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -117,7 +121,8 @@ namespace GothamSubway.WinForm
             this.chartControl1.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.BottomOutside;
             this.chartControl1.Legend.Direction = DevExpress.XtraCharts.LegendDirection.LeftToRight;
             this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(3, 64);
+            this.chartControl1.Location = new System.Drawing.Point(3, 83);
+            this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chartControl1.Name = "chartControl1";
             this.tablePanel1.SetRow(this.chartControl1, 1);
             series1.ArgumentDataMember = "Month";
@@ -156,7 +161,7 @@ namespace GothamSubway.WinForm
         series3};
             sideBySideBarSeriesLabel1.TextPattern = "{V}";
             this.chartControl1.SeriesTemplate.Label = sideBySideBarSeriesLabel1;
-            this.chartControl1.Size = new System.Drawing.Size(576, 483);
+            this.chartControl1.Size = new System.Drawing.Size(660, 621);
             this.chartControl1.TabIndex = 3;
             // 
             // yearSelectorControl1
@@ -164,12 +169,13 @@ namespace GothamSubway.WinForm
             this.yearSelectorControl1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.tablePanel1.SetColumn(this.yearSelectorControl1, 3);
             this.tablePanel1.SetColumnSpan(this.yearSelectorControl1, 2);
-            this.yearSelectorControl1.Location = new System.Drawing.Point(294, 566);
-            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(108, 28);
-            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(108, 28);
+            this.yearSelectorControl1.Location = new System.Drawing.Point(336, 729);
+            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(123, 36);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(123, 36);
             this.yearSelectorControl1.Name = "yearSelectorControl1";
             this.tablePanel1.SetRow(this.yearSelectorControl1, 2);
-            this.yearSelectorControl1.Size = new System.Drawing.Size(108, 28);
+            this.yearSelectorControl1.Size = new System.Drawing.Size(123, 36);
             this.yearSelectorControl1.TabIndex = 5;
             // 
             // labelControl1
@@ -179,10 +185,11 @@ namespace GothamSubway.WinForm
             this.labelControl1.Appearance.Options.UseFont = true;
             this.tablePanel1.SetColumn(this.labelControl1, 2);
             this.tablePanel1.SetColumnSpan(this.labelControl1, 3);
-            this.labelControl1.Location = new System.Drawing.Point(197, 8);
+            this.labelControl1.Location = new System.Drawing.Point(225, 12);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 0);
-            this.labelControl1.Size = new System.Drawing.Size(246, 45);
+            this.labelControl1.Size = new System.Drawing.Size(308, 54);
             this.labelControl1.TabIndex = 6;
             this.labelControl1.Text = "지하철 여객 수입";
             // 
@@ -205,12 +212,13 @@ namespace GothamSubway.WinForm
             this.tablePanel1.Controls.Add(this.chartControl1);
             this.tablePanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tablePanel1.Location = new System.Drawing.Point(0, 0);
+            this.tablePanel1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 80F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1022, 611);
+            this.tablePanel1.Size = new System.Drawing.Size(1168, 786);
             this.tablePanel1.TabIndex = 7;
             // 
             // labelControl2
@@ -218,10 +226,11 @@ namespace GothamSubway.WinForm
             this.labelControl2.Appearance.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
             this.tablePanel1.SetColumn(this.labelControl2, 2);
-            this.labelControl2.Location = new System.Drawing.Point(197, 570);
+            this.labelControl2.Location = new System.Drawing.Point(225, 733);
+            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 2);
-            this.labelControl2.Size = new System.Drawing.Size(64, 21);
+            this.labelControl2.Size = new System.Drawing.Size(80, 28);
             this.labelControl2.TabIndex = 7;
             this.labelControl2.Text = "기준년도";
             // 
@@ -229,11 +238,12 @@ namespace GothamSubway.WinForm
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
             this.Appearance.Options.UseBackColor = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1022, 611);
+            this.ClientSize = new System.Drawing.Size(1168, 786);
             this.Controls.Add(this.tablePanel1);
             this.Controls.Add(this.tblMain);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "RevenueForm";
             this.Text = "RevenueForm";
             ((System.ComponentModel.ISupportInitialize)(this.revenueBindingSource)).EndInit();
