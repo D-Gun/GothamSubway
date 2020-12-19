@@ -26,20 +26,18 @@ namespace GothamSubway.WinForm
             if (DesignMode)
                 return;
             initStation();
-            
         }
 
         private void initStation()
         {
             stringYear = 2019;
-            gothamMapControl.ButtonClicked += 
+            gothamMapControl.ButtonClicked +=
                 new EventHandler<GothamMapControl1.ButtonClickedEventArgs>(gothamMapControl_ButtonClicked);//맵컨트롤 이벤트 핸들러 subscribe
             gothamMapControl.InitButton();//유저컨트롤 버튼 강제 발동 이벤트
 
-            yearSelectorControl1.SelectComboBox += 
+            yearSelectorControl1.SelectComboBox +=
                 new EventHandler<YearSelectorControl.SelectComboBoxEventArgs>(yearSelectorControl1_SelectComboBox); // 콤보박스 이벤트 핸들러 subscribe
             yearSelectorControl1.Initialize(Dao.FootTraffic.GetAllYears());
-
 
             var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
             footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
@@ -47,7 +45,7 @@ namespace GothamSubway.WinForm
 
         public int stringYear { get; set; }//콤보박스 기준년도 프로퍼티 선언
         public int stationNumber { get; set; }//지하철역 버튼 태그 프로퍼티 선언
-   
+
 
         private void gothamMapControl_ButtonClicked(object sender, GothamMapControl1.ButtonClickedEventArgs e)
         {
@@ -55,8 +53,6 @@ namespace GothamSubway.WinForm
 
             dataBinding();
         }
-
-        
 
         private void yearSelectorControl1_SelectComboBox(object sender, YearSelectorControl.SelectComboBoxEventArgs e)
         {
@@ -66,8 +62,8 @@ namespace GothamSubway.WinForm
         }
         private void dataBinding()
         {
-            var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
-            footTrafficTotalModelBindingSource.DataSource = monthlyTransfer;
+            var dailyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
+            footTrafficTotalModelBindingSource.DataSource = dailyTransfer;
         }
     }
 }
