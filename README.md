@@ -18,18 +18,62 @@
 ## 출력 기능
 
 ### 월별 승하차 승객 수
+
+<div>
+<a href="./Document/주요기능/승하차_연도별.png" target="_blank">
+<img src="./Document/주요기능/승하차_연도별.png" width="32%">
+</a>
+<a href="./Document/주요기능/승하차_월별_역별.png" target="_blank">
+<img src="./Document/주요기능/승하차_월별_역별.png" width="32%">
+</a>
+</div>
+
 - 년도별, 역별
 
 ### 선택기간 승하차 승객 수
+
+<div>
+<a href="./Document/주요기능/기간별_승하차_기간설정.png" target="_blank">
+<img src="./Document/주요기능/기간별_승하차_기간설정.png" width="32%">
+</a>
+<a href="./Document/주요기능/기간별_승하차_연도별.png" target="_blank">
+<img src="./Document/주요기능/기간별_승하차_연도별.png" width="32%">
+</a>
+<a href="./Document/주요기능/기간별_승하차_유효성검사.png" target="_blank">
+<img src="./Document/주요기능/기간별_승하차_유효성검사.png" width="32%">
+</a>
+</div>
+
 - 선택된 기간 기준, 일별, 시간별
 
 ### 지하철역별 여객수입
+
+
+<a href="./Document/주요기능/수입_연도별.png" target="_blank">
+<img src="./Document/주요기능/수입_연도별.png" width="32%">
+</a>
+
 - 월별, 역별, 회사별(카드회사)
 
 ### 분류별 만족도
+
+<div>
+<a href="./Document/주요기능/만족도_연도별.png" target="_blank">
+<img src="./Document/주요기능/만족도_연도별.png" width="32%">
+</a>
+<a href="./Document/주요기능/만족도_카테고리별.png" target="_blank">
+<img src="./Document/주요기능/만족도_카테고리별.png" width="32%">
+</a>
+</div>
+
 - 군구별, 성별, 연령별, 학력별, 직업별, 월평균소득별
 
 ### 지하철 전체 전력 사용량 및 전기요금
+
+<a href="./Document/주요기능/전력량_연도별.png" target="_blank">
+<img src="./Document/주요기능/전력량_연도별.png" width="32%">
+</a>
+
 - 년도별
 
 ## 입력 기능
@@ -90,42 +134,125 @@
 
 # Point of Interest
 
-# DB 테이블의 속성 변경 등 업데이트 내역이 EntityFramework에 반영되지 않은 문제 [#24](https://github.com/dlehd333/DKClinic/issues/24)
+# TablePanel 사용법에 관한 이슈 [#31](https://github.com/dlehd333/GothamSubway/issues/31)
 
-## 증상
-- 문진표 저장을 누를 시 에러 발생
+## 증상(문제)
 
-## 원인
-- EntityFramework로 불러온 데이터베이스의 문진표 테이블 PK컬럼의 IDENTITY_INSERT 속성이 OFF로 되어있었다
-
-## 결과
-- 처음에는 DB에 있는 문진표 테이블 PK컬럼의 IDENTITY_INSERT 속성을 ON으로 변경했다. 하지만 같은 오류가 발생했다.
-- 확인 결과, 처음에 DB 스키마 설계 시 테이블 PK에 IDENTITY_INSERT 속성을 ON으로 바꾸지 않았고, 그 상태로 EntityFramework로 불러와, EntityFramework상에는 IDENTITY_INSERT 속성이 OFF로 저장되어 있었다.
-- 그래서, EntityFramework 다이어그램에서 우클릭으로 제공하는 '데이터베이스에서 모델 업데이트'메뉴를 실행, 업데이트 마법사를 이용해 DB의 정보를 업데이트하여 문제를 해결함
-![update](https://user-images.githubusercontent.com/69996028/100321023-6b69d600-3005-11eb-8bb2-52bb1a5326c3.png)
-
----
-
-# 외래키로 연결된 여러 테이블의 값을 동시에 삽입하는 트랜잭션 진행중에 에러가 발생하는 문제 [#24](https://github.com/dlehd333/DKClinic/issues/24)
-
-## 증상
-- 새로운 Customer(환자)가 문진표를 입력하면, 에러가 발생
+- TablePanel을 사용해 Form의 공간할당이 원하는 대로 되지 않는 문제
 
 ## 원인
-- 신규 환자가 문진표 입력이 완료되면 Customer(고객), Questionnare(문진표), Response(문진표응답) 총 3개의 테이블에 데이터가 삽입되는데, 이 때 신규 환자는 등록 전에는 CustomerID가 없어, Customer테이블에서 키값의 최대값을 가져와 등록했는데 이 값이 실제 IDENTITY 컬럼을 통해 저장되는 내용과 맞지 않아 오류가 발생했다
-- 여러 테이블의 데이터가 동시에 저장되는 트랜잭션을 끊지 않고 IDENTITY 컬럼의 값을 미리 구해서 저장하거나 다른 방법이 필요했다.
+
+- DevExpress의 TablePanel을 사용해 Form의 공간 할당을 하려고 했는데, 해당 패널에 컨트롤을 넣으면 무조건 왼쪽 위로 강제 정렬되고 이동이 안된다.
+- Anchor를 해제해 봤지만 왼쪽 위에서 왼쪽 가운데로 바뀌었을 뿐, 이동이 안된다.
+
+## 결과(해결방안)
+
+- DevExpress의 메뉴얼을 통해 내가 TableLayoutPanel을 잘못 사용하고 있었음을 알았다. [메뉴얼링크](https://docs.devexpress.com/WindowsForms/114044/controls-and-libraries/form-layout-managers/layout-and-data-layout-controls/table-layout)
+- TableLayout 자체가 단순히 패널을 여러개로 나누는 것이 아니라, 엑셀처럼 패널을 셀 단위로 나누고 컨트롤을 셀의 일정 부분(n행 n열)에 넣는 방식이었다.
+- 메뉴얼의 예제를 참고하여 세세하게 셀을 나누고, 원하는 부분에 컨트롤을 넣어 셀을 할당해주었다
+- 결과적으로 원하는 형태의 레이아웃을 완성했다
+
+## 참고할 코드나 스크린샷
+
+![이미지](https://user-images.githubusercontent.com/69996028/102478598-1e779d80-40a1-11eb-9743-fd3a2c8bbc7c.png)
+
+
+# 서로 다른 숫자 형식간의 나눗셈에 관한 이슈 [#37](https://github.com/dlehd333/GothamSubway/issues/37)
+
+## 증상(문제)
+
+- 증감률을 계산하려고 했는데, 계산된 데이터에 계속 0이 출력되는 문제
+
+## 원인
+
+- 증감률 계산을 하는 함수를 설정한 다음, 전기 사용량과 요금의 증감률을 계산하려고 했는데, 증감률에 계속해서 0이 입력되었다.
+- 단계별 디버깅을 통해 확인해보려 하였으나, 중단점을 잘못 찍어 원하는 결과를 찾아보지 못했다.
 
 ## 결과
-- 처음에는 C#에서 IDENTITY 컬럼의 값을 구하는 법을 찾고 있었는데, 검색 하던 도중 다른 방법을 발견했다
-- EF가 ID값을 찾아 할당하는 것이 아니라 테이블 개체 자체를 할당하는 기능을 지원하며, EF로 생성된 Entity 모델에 생성되어 있는 외래키로 연결된 하위 모델을 이용해 연결할 수 있다는 것을 알게 되었다.
-- 그래서 Entity 모델의 개체를 생성할 때 상위 테이블 개체를 연결해주면, 한번에 SaveChange를 진행해도 Insert된 개체에 대해 자동으로 ID키가 연결되어 에러가 발생하지 않고 트랜젝션도 깨지지 않게 된다.
-- 그래서 개체를 생성할 때, 상위 테이블 개체를 연결해주는 작업을 진행했다.
+
+- 나눗셈을 할 때 사용되는 숫자가 모두 int형이면 결과값이 int형이 출력되어 소수점이 증발한다(ex. 10/3.7 = 2)
+- 나눗셈에 사용되는 숫자 중 최소 1개를 double형으로 캐스팅해야 한다.
+- 나누는 변수를 double형으로 캐스팅 하여 해결하였다.
+
+## 참고할 코드나 스크린샷
 
 ```csharp
-public Questionnare CreateQuestionnare { get; set; }
-
-// before
-CreateQuestionnare = new Questionnare();
-// after
-CreatedQuestionnare = new Questionnare { Customer = ConnectedCustomer };
+items[i].UsageYoYRate = (items[i].Usage - previousItem.Usage) / previousItem.Usage * 100.0;                                                                    ↓
+items[i].UsageYoYRate = (items[i].Bill - previousItem.Usage) / (double)previousItem.Usage * 100.0;
 ```
+
+
+# 지하철 노선도 버튼 전달 값 변경 시 값 전달이 되지 않는 문제 [#40](https://github.com/dlehd333/GothamSubway/issues/40)
+
+## 증상(문제)
+
+- 지하철 노선도 버튼 전달 값 변경 시 값 전달이 되지 않는 문제
+
+## 원인
+
+- TransferByMonthForm내에서 사용되는 유저 컨트롤의 이벤트 핸들러가 할당되어 있지 않았음.
+- 기존에 할당되어 있었으나 내용이 왜 초기화 되어 있는지 원인을 알아내지 못함.
+- 디자인 코드의 내용이 자동으로 계속 변경되면서 이벤트 핸들러가 누락된 것으로 추청됨.
+
+## 결과(해결방안)
+
+- 폼 코드에 직접 이벤트 핸들러를 수동으로 등록하여 해결함
+
+## 참고할 코드나 스크린샷
+
+```csharp
+//Codes from TransferByMonthForm.cs
+protected override void OnLoad(EventArgs e) // 폼 로드 시 이벤트
+{
+    base.OnLoad(e);
+
+    gothamMapControl.ButtonClicked +=
+        new EventHandler<GothamMapControl1.ButtonClickedEventArgs>(gothamMapControl_ButtonClicked);//맵컨트롤 이벤트 핸들러 할당
+}
+```
+
+# 만족도 페이지 동적 차트 구성에 관한 문제 [#44](https://github.com/dlehd333/GothamSubway/issues/44)
+
+## 증상(문제)
+
+- 작업해야 할 만족도 페이지는 여객수입 페이지와 다르게, 카테고리에 따라 출력할 시리즈의 개수가 바뀌는 문제
+
+## 원인
+
+- 원하는 형태로 데이터를 출력하기 위해 Entity의 모델화 및 동적 시리즈 생성 등 거쳐야 할 과정이 난해했다
+- 차트가 익숙하지 않아서 차트(시리즈) 구성에도 애를 먹었다
+
+## 결과(해결방안)
+
+- 수동으로 시리즈를 추가하는 방식 대신 데이터에 맞게 자동으로 시리즈를 생성하는 SeriesTemplate 속성을 발견하여 사용했다
+- SeriesTemplate 속성의 하위 속성인 FilterCriteria(FilterString)에서 Or 조건을 추가하면 원하는 카테고리에 맞게 동적으로 시리즈가 생성되는 것을 확인했다
+- 이를 이용해 모델화 시켜 바인딩한 데이터를 필터링하여 카테고리 및 연도에 맞는 개별 시리즈가 생성되어 출력되도록 하는 데 성공했다
+
+## 참고할 코드나 스크린샷
+
+![이미지](https://user-images.githubusercontent.com/69996028/102607415-9ad6b300-416b-11eb-9b02-76aa9a28c16a.png)
+![이미지](https://user-images.githubusercontent.com/69996028/102607569-d83b4080-416b-11eb-9b40-66ab2c10f4cc.png)
+
+
+# DevExpress 버전이 맞지 않는 문제 [#49](https://github.com/dlehd333/GothamSubway/issues/49)
+
+## 증상(문제)
+
+- 추가 작업을 위해 다른 환경에서 작업시 프로젝트가 DevExpress를 인식하지 못하는 문제
+
+## 원인
+
+- 1차 원인은 DevExpress가 12월4일에 20.2.4로 업데이트 되면서 기존에 작업하던 버전과 맞지 않아 생긴 문제였다
+- 2차로 다른 팀원이 이미 문제 인식 전날 밤에 DevExpress 버전을 바꿔서 작업을 하고 master에 Merge했다
+- 그로 인해 다른 사람들과 버전이 맞지 않아 프로젝트의 일관성을 침해당하고 작업이 어려워지게 되었다
+
+## 결과(해결방안)
+
+- 처음에는 버전 정보가 적힌 licenses.licx 파일 및 .csproj 파일의 버전 정보를 수정하였지만 해결되지 않았다
+- 그래서 기존에 사용하던 버전(20.2.3)에 맞는 설치파일을 구해 DevExpress를 재설치하고, DevExpress에서 제공하는 Project Converter를 이용해 프로젝트를 이전 버전으로 다시 Convert하여 동작하는 것을 확인했다
+- 하지만 그래도 작동하지 않는 사람이 생겨, 해당 인원은 로컬의 내용을 삭제하고 Github에서 프로젝트를 다시 복제하여 문제를 해결했다
+
+## 참고할 코드나 스크린샷
+
+![이미지](https://user-images.githubusercontent.com/69996028/102691115-72bf8080-424d-11eb-84e3-86706a82023a.png)
+![이미지](https://user-images.githubusercontent.com/69996028/102691117-75ba7100-424d-11eb-8b3c-cb033886fdc7.png)
