@@ -73,6 +73,16 @@ namespace GothamSubway.WinForm.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap NewIntroImage {
+            get {
+                object obj = ResourceManager.GetObject("NewIntroImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap 만족도_투명_ {
             get {
                 object obj = ResourceManager.GetObject("만족도_투명_", resourceCulture);
