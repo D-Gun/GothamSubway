@@ -235,7 +235,7 @@ protected override void OnLoad(EventArgs e) // 폼 로드 시 이벤트
 ## 참고할 코드나 스크린샷
 
 ![이미지](https://user-images.githubusercontent.com/69996028/102607415-9ad6b300-416b-11eb-9b02-76aa9a28c16a.png)
-![이미지](https://user-images.githubusercontent.com/69996028/102607569-d83b4080-416b-11eb-9b40-66ab2c10f4cc.png)
+![이미지](https://user-images.githubusercontent.com/69996028/102692846-883aa780-4259-11eb-86af-900c97aa2cb4.png)
 
 ---
 
