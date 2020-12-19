@@ -169,6 +169,7 @@
       <DependentUpon>YearSelectorControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficMonthlyTotalModel.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.Revenue.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.ElectricityItem.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficTotalModel.datasource" />
