@@ -35,9 +35,6 @@ namespace GothamSubway.WinForm
 
         private void Resume()
         {
-            if (CheckDate() == false)
-                return;
-
             footTrafficDurationAverageModelBindingSource.DataSource = Dao.FootTraffic.GetDurationAverageModel(SelectedStartDate, SelectedEndDate);
 
             chartControl1.Series[0].FilterString = $"[StationId] = {SelectedStation} And [TransferId] = 1";
@@ -57,6 +54,8 @@ namespace GothamSubway.WinForm
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
+            if (CheckDate() == false)
+                return;
             SelectedStartDate = dtoStartDate.DateTimeOffset.Date;
             SelectedEndDate = dtoEndDate.DateTimeOffset.Date;
             Resume();
