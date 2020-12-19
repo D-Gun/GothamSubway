@@ -174,6 +174,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficDurationAverageModel.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficDurationSumModel.datasource" />
+    <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficMonthlyTotalModel.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.Revenue.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.ElectricityItem.datasource" />
     <None Include="Properties\DataSources\GothamSubway.Data.FootTrafficTotalModel.datasource" />
@@ -217,6 +218,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\NewIntroImage.JPG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
