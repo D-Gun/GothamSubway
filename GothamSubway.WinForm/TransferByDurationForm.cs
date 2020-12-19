@@ -27,7 +27,6 @@ namespace GothamSubway.WinForm
             MinimumDate = Dao.FootTraffic.GetMinimumDate();
             MaximumDate = Dao.FootTraffic.GetMaximumDate();
 
-
             footTrafficDurationSumModelBindingSource.DataSource = Dao.FootTraffic.GetDurationSumModel();
 
             gothamMapControl.ButtonClicked += GothamMapControl_ButtonClicked;
@@ -36,6 +35,9 @@ namespace GothamSubway.WinForm
 
         private void Resume()
         {
+            if (CheckDate() == false)
+                return;
+
             footTrafficDurationAverageModelBindingSource.DataSource = Dao.FootTraffic.GetDurationAverageModel(SelectedStartDate, SelectedEndDate);
 
             chartControl1.Series[0].FilterString = $"[StationId] = {SelectedStation} And [TransferId] = 1";
@@ -60,34 +62,29 @@ namespace GothamSubway.WinForm
             Resume();
         }
 
-        private void CheckDate()
+        private bool CheckDate()
         {
-            if (dtoStartDate.DateTimeOffset.DateTime < MinimumDate)
-            {
-                Utility.Mbox("알림", $"입력 가능한 최소 날짜는 {MinimumDate.ToShortDateString()}입니다");
-                dtoStartDate.DateTimeOffset = SelectedStartDate;
-            }
-            if (dtoEndDate.DateTimeOffset.DateTime > MaximumDate)
-            {
-                Utility.Mbox("알림", $"입력 가능한 최대 날짜는 {MaximumDate.ToShortDateString()}입니다");
-                dtoEndDate.DateTimeOffset = SelectedEndDate;
-            }
             if (dtoStartDate.DateTimeOffset > dtoEndDate.DateTimeOffset)
             {
                 Utility.Mbox("알림", "날짜 입력이 잘못되었습니다. 종료 날짜는 시작 날짜보다 빠를 수 없습니다.");
                 dtoStartDate.DateTimeOffset = SelectedStartDate;
                 dtoEndDate.DateTimeOffset = SelectedEndDate;
+                return false;
             }
-        }
+            if (dtoStartDate.DateTimeOffset.DateTime < MinimumDate)
+            {
+                Utility.Mbox("알림", $"입력 가능한 최소 날짜는 {MinimumDate.ToShortDateString()}입니다");
+                dtoStartDate.DateTimeOffset = SelectedStartDate;
+                return false;
+            }
+            if (dtoEndDate.DateTimeOffset.DateTime > MaximumDate)
+            {
+                Utility.Mbox("알림", $"입력 가능한 최대 날짜는 {MaximumDate.ToShortDateString()}입니다");
+                dtoEndDate.DateTimeOffset = SelectedEndDate;
+                return false;
+            }
 
-        private void dtoStartDate_EditValueChanged(object sender, EventArgs e)
-        {
-            CheckDate();
-        }
-
-        private void dtoEndDate_EditValueChanged(object sender, EventArgs e)
-        {
-            CheckDate();
+            return true;
         }
     }
 }
