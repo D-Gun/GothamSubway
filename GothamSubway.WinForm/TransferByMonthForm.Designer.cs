@@ -63,6 +63,8 @@ namespace GothamSubway.WinForm
             // 
             this.chartControl1.AnimationStartMode = DevExpress.XtraCharts.ChartAnimationMode.OnDataChanged;
             this.chartControl1.BorderOptions.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            this.tablePanel1.SetColumn(this.chartControl1, 0);
+            this.tablePanel1.SetColumnSpan(this.chartControl1, 10);
             this.chartControl1.DataSource = this.footTrafficMonthlyTotalModelBindingSource;
             xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
             xyDiagram1.AxisX.WholeRange.EndSideMargin = 0D;
@@ -74,9 +76,14 @@ namespace GothamSubway.WinForm
             xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
             this.chartControl1.Diagram = xyDiagram1;
             this.chartControl1.Legend.Name = "Default Legend";
-            this.chartControl1.Location = new System.Drawing.Point(7, 123);
+
+            this.chartControl1.Location = new System.Drawing.Point(3, 97);
+
+            
             this.chartControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+
             this.chartControl1.Name = "chartControl1";
+            this.tablePanel1.SetRow(this.chartControl1, 1);
             series1.ArgumentDataMember = "date";
             series1.FilterString = "[transferId] = 1";
             series1.Name = "승차";
@@ -92,16 +99,21 @@ namespace GothamSubway.WinForm
         series2};
             areaSeriesView3.Transparency = ((byte)(0));
             this.chartControl1.SeriesTemplate.View = areaSeriesView3;
-            this.chartControl1.Size = new System.Drawing.Size(673, 536);
+
+            this.chartControl1.Size = new System.Drawing.Size(585, 417);
+
+
             this.chartControl1.TabIndex = 2;
             // 
             // yearSelectorControl1
             // 
-            this.tablePanel1.SetColumn(this.yearSelectorControl1, 5);
-            this.yearSelectorControl1.Location = new System.Drawing.Point(587, 706);
-            this.yearSelectorControl1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(123, 42);
-            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(123, 42);
+
+            this.tablePanel1.SetColumn(this.yearSelectorControl1, 8);
+            this.tablePanel1.SetColumnSpan(this.yearSelectorControl1, 2);
+            this.yearSelectorControl1.Location = new System.Drawing.Point(482, 523);
+            this.yearSelectorControl1.MaximumSize = new System.Drawing.Size(108, 33);
+            this.yearSelectorControl1.MinimumSize = new System.Drawing.Size(108, 33);
+
             this.yearSelectorControl1.Name = "yearSelectorControl1";
             this.tablePanel1.SetRow(this.yearSelectorControl1, 2);
             this.yearSelectorControl1.Size = new System.Drawing.Size(123, 42);
@@ -109,14 +121,17 @@ namespace GothamSubway.WinForm
             // 
             // gothamMapControl
             // 
-            this.gothamMapControl.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gothamMapControl.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.gothamMapControl.Appearance.Options.UseBackColor = true;
             this.gothamMapControl.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tablePanel1.SetColumn(this.gothamMapControl, 6);
-            this.gothamMapControl.Location = new System.Drawing.Point(687, 152);
-            this.gothamMapControl.MaximumSize = new System.Drawing.Size(480, 481);
-            this.gothamMapControl.MinimumSize = new System.Drawing.Size(480, 481);
+
+            this.tablePanel1.SetColumn(this.gothamMapControl, 10);
+            this.gothamMapControl.Location = new System.Drawing.Point(594, 119);
+            this.gothamMapControl.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.gothamMapControl.MaximumSize = new System.Drawing.Size(420, 374);
+            this.gothamMapControl.MinimumSize = new System.Drawing.Size(420, 374);
+
+            
             this.gothamMapControl.Name = "gothamMapControl";
             this.tablePanel1.SetRow(this.gothamMapControl, 1);
             this.gothamMapControl.Size = new System.Drawing.Size(480, 481);
@@ -126,9 +141,10 @@ namespace GothamSubway.WinForm
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("맑은 고딕", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.tablePanel1.SetColumn(this.labelControl1, 4);
-            this.labelControl1.Location = new System.Drawing.Point(470, 713);
-            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+
+            this.tablePanel1.SetColumn(this.labelControl1, 7);
+            this.labelControl1.Location = new System.Drawing.Point(402, 525);
+
             this.labelControl1.Name = "labelControl1";
             this.tablePanel1.SetRow(this.labelControl1, 2);
             this.labelControl1.Size = new System.Drawing.Size(80, 28);
@@ -140,16 +156,17 @@ namespace GothamSubway.WinForm
             this.tablePanel1.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.tablePanel1.Appearance.Options.UseBackColor = true;
             this.tablePanel1.Columns.AddRange(new DevExpress.Utils.Layout.TablePanelColumn[] {
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 42.65F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 57.35F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F),
-            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 50F)});
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 8F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 8F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 8F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 8F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 8F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 7F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 7F),
+            new DevExpress.Utils.Layout.TablePanelColumn(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 54F)});
             this.tablePanel1.Controls.Add(this.labelControl2);
             this.tablePanel1.Controls.Add(this.labelControl1);
             this.tablePanel1.Controls.Add(this.gothamMapControl);
@@ -162,8 +179,12 @@ namespace GothamSubway.WinForm
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 15F),
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 70F),
-            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 15F)});
-            this.tablePanel1.Size = new System.Drawing.Size(1168, 786);
+
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 5F),
+            new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Relative, 10F)});
+            this.tablePanel1.Size = new System.Drawing.Size(1022, 611);
+
+            
             this.tablePanel1.TabIndex = 6;
             // 
             // labelControl2
@@ -171,10 +192,11 @@ namespace GothamSubway.WinForm
             this.labelControl2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelControl2.Appearance.Font = new System.Drawing.Font("맑은 고딕", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl2.Appearance.Options.UseFont = true;
-            this.tablePanel1.SetColumn(this.labelControl2, 4);
-            this.tablePanel1.SetColumnSpan(this.labelControl2, 3);
-            this.labelControl2.Location = new System.Drawing.Point(470, 32);
-            this.labelControl2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+
+            this.tablePanel1.SetColumn(this.labelControl2, 6);
+            this.tablePanel1.SetColumnSpan(this.labelControl2, 5);
+            this.labelControl2.Location = new System.Drawing.Point(362, 23);
+
             this.labelControl2.Name = "labelControl2";
             this.tablePanel1.SetRow(this.labelControl2, 0);
             this.labelControl2.Size = new System.Drawing.Size(345, 54);
