@@ -19,7 +19,7 @@ namespace GothamSubway.WinForm
             InitializeComponent();
         }
 
-        protected override void OnLoad(EventArgs e) // 폼 로드 시gridview생성 이벤트
+        protected override void OnLoad(EventArgs e) // 폼 로드 이벤트
         {
             base.OnLoad(e);
 
@@ -39,8 +39,6 @@ namespace GothamSubway.WinForm
                 new EventHandler<YearSelectorControl.SelectComboBoxEventArgs>(yearSelectorControl1_SelectComboBox); // 콤보박스 이벤트 핸들러 subscribe
             yearSelectorControl1.Initialize(Dao.FootTraffic.GetAllYears());
 
-            //var dailyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
-            //footTrafficTotalModelBindingSource.DataSource = dailyTransfer;
             var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
             footTrafficMonthlyTotalModelBindingSource.DataSource = monthlyTransfer;
         }
@@ -63,9 +61,7 @@ namespace GothamSubway.WinForm
             dataBinding();
         }
         private void dataBinding()
-        {
-            //var dailyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
-            //footTrafficTotalModelBindingSource.DataSource = dailyTransfer;
+        {           
             var monthlyTransfer = Dao.FootTraffic.GetMonthlyFootTraffics(Convert.ToInt32(stringYear), stationNumber);
             footTrafficMonthlyTotalModelBindingSource.DataSource = monthlyTransfer;
         }
