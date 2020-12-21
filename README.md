@@ -79,7 +79,11 @@
 
 ## 입력 기능
 
--
+<a href="./Document/주요기능/입력기능.png" target="_blank">
+<img src="./Document/주요기능/입력기능.png" width="32%">
+</a>
+
+- 행 구조에 맞는 엑셀 파일을 이용헤 서버에 값을 입력
 
 # 사용 기술
 
