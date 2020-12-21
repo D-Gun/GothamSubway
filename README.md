@@ -81,8 +81,8 @@
 
 - Excel(.xls).csv 파일 DB 저장 기능
 
-<a href="./Document/임포터.jpg" target="_blank">
-<img src="./Document/임포터.jpg" width="32%">
+<a href="./Document/주요기능/임포터.jpg" target="_blank">
+<img src="./Document/주요기능/임포터.jpg" width="32%">
 </a>
 
 - 해당 형식의 파일 선택 후 서버(DB)에 저장 가능
