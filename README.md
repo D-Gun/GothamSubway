@@ -268,3 +268,52 @@ protected override void OnLoad(EventArgs e) // 폼 로드 시 이벤트
 
 ![이미지](https://user-images.githubusercontent.com/69996028/102691115-72bf8080-424d-11eb-84e3-86706a82023a.png)
 ![이미지](https://user-images.githubusercontent.com/69996028/102691117-75ba7100-424d-11eb-8b3c-cb033886fdc7.png)
+
+---
+
+# 백그라운드 프로세스에 Excel 프로그램이 남는 문제 [#56](https://github.com/dlehd333/GothamSubway/issues/56)
+
+## 증상(문제)
+
+- 엑셀 파일 읽기 작업 진행 중 비정상 종료시 백그라운드 프로세스에 Excel이 남아있는 문제
+
+## 원인
+
+- ImportForm에서 엑셀 파일을 읽어올 때 문제가 발생하거나, 작업 중간에 종료하면 윈도우 백그라운드 프로세스에 Excel이 남아있는 문제가 생긴다
+- 그래서 엑셀 파일의 임시데이터가 남아있거나, 컴퓨터를 껏다 켜면 프로세스에 남아있던 엑셀이 실행되는 등의 문제가 발생한다
+
+## 결과(해결방안)
+
+- 엑셀 파일을 읽어오는 중에는 종료가 되지 않도록 막고, 작업 중지 기능을 추가함.
+- 에러가 발생하거나 작업이 중지될 경우 엑셀 파일을 열기 위해 사용한 핸들러를 해제해 주도록 조치함.
+
+## 참고할 코드나 스크린샷
+
+```c#
+// 프로그램 종료 시
+protected override void OnClosing(CancelEventArgs e)
+{
+    _pause.Reset(); // ManualResetEvent 쓰레드로 작업을 일시 정지
+    if (bgwLoader.IsBusy || bgwInsert.IsBusy) // 작업중에는 종료 취소
+    {
+        Utility.Mbox("경고", "작업이 진행중입니다.\n종료하시려면 작업을 완료하시거나 중지해 주세요");
+        e.Cancel = true;
+    }
+    _pause.Set();
+    base.OnClosing(e);
+}
+// BackgroundWorker의 작업이 끝났을 때(오류 발생 및 취소)
+private void bgwLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+{
+    if (e.Error != null || e.Cancelled == true)
+    {
+        ReleaseObject(range);
+        ReleaseObject(worksheet);
+        ReleaseObject(workbook);
+        application.Quit();
+        ReleaseObject(application);
+        return;
+    }
+    // ....
+}
+```
