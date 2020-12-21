@@ -39,38 +39,44 @@ namespace GothamSubway.Importer
             this.bgwLoader = new System.ComponentModel.BackgroundWorker();
             this.lblProgress = new System.Windows.Forms.Label();
             this.bgwInsert = new System.ComponentModel.BackgroundWorker();
-            this.lblProgress2 = new System.Windows.Forms.Label();
             this.rbtSatisfaction2 = new System.Windows.Forms.RadioButton();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnPause = new System.Windows.Forms.Button();
+            this.psbWorking = new System.Windows.Forms.ProgressBar();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewer)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvViewer
             // 
+            this.dgvViewer.AllowUserToAddRows = false;
+            this.dgvViewer.AllowUserToDeleteRows = false;
             this.dgvViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvViewer.Location = new System.Drawing.Point(13, 13);
             this.dgvViewer.Name = "dgvViewer";
+            this.dgvViewer.ReadOnly = true;
             this.dgvViewer.RowTemplate.Height = 23;
             this.dgvViewer.Size = new System.Drawing.Size(632, 396);
             this.dgvViewer.TabIndex = 0;
             // 
             // btnLoadFile
             // 
-            this.btnLoadFile.Location = new System.Drawing.Point(689, 386);
+            this.btnLoadFile.Location = new System.Drawing.Point(651, 173);
             this.btnLoadFile.Name = "btnLoadFile";
             this.btnLoadFile.Size = new System.Drawing.Size(99, 23);
             this.btnLoadFile.TabIndex = 1;
-            this.btnLoadFile.Text = "Load File";
+            this.btnLoadFile.Text = "파일 읽기";
             this.btnLoadFile.UseVisualStyleBackColor = true;
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
             // 
             // btnSaveDB
             // 
-            this.btnSaveDB.Location = new System.Drawing.Point(689, 415);
+            this.btnSaveDB.Location = new System.Drawing.Point(651, 202);
             this.btnSaveDB.Name = "btnSaveDB";
             this.btnSaveDB.Size = new System.Drawing.Size(99, 23);
             this.btnSaveDB.TabIndex = 2;
-            this.btnSaveDB.Text = "Save Database";
+            this.btnSaveDB.Text = "서버에 저장";
             this.btnSaveDB.UseVisualStyleBackColor = true;
             this.btnSaveDB.Click += new System.EventHandler(this.btnSaveDB_Click);
             // 
@@ -127,7 +133,7 @@ namespace GothamSubway.Importer
             // lblProgress
             // 
             this.lblProgress.AutoSize = true;
-            this.lblProgress.Location = new System.Drawing.Point(651, 110);
+            this.lblProgress.Location = new System.Drawing.Point(6, 17);
             this.lblProgress.Name = "lblProgress";
             this.lblProgress.Size = new System.Drawing.Size(0, 12);
             this.lblProgress.TabIndex = 6;
@@ -139,14 +145,6 @@ namespace GothamSubway.Importer
             this.bgwInsert.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwInsert_DoWork);
             this.bgwInsert.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bgwInsert_ProgressChanged);
             this.bgwInsert.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwInsert_RunWorkerCompleted);
-            // 
-            // lblProgress2
-            // 
-            this.lblProgress2.AutoSize = true;
-            this.lblProgress2.Location = new System.Drawing.Point(651, 133);
-            this.lblProgress2.Name = "lblProgress2";
-            this.lblProgress2.Size = new System.Drawing.Size(0, 12);
-            this.lblProgress2.TabIndex = 7;
             // 
             // rbtSatisfaction2
             // 
@@ -164,21 +162,51 @@ namespace GothamSubway.Importer
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(12, 420);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(677, 12);
+            this.label1.Size = new System.Drawing.Size(745, 12);
             this.label1.TabIndex = 9;
             this.label1.Text = "종류에 적합하지 않은 형태의 엑셀 파일을 사용하시어 진행할 경우, 데이터의 손상이 생길 수 있음을 유념해 주시기 바랍니다.";
+            // 
+            // btnPause
+            // 
+            this.btnPause.Location = new System.Drawing.Point(651, 231);
+            this.btnPause.Name = "btnPause";
+            this.btnPause.Size = new System.Drawing.Size(99, 23);
+            this.btnPause.TabIndex = 10;
+            this.btnPause.Text = "작업 중지";
+            this.btnPause.UseVisualStyleBackColor = true;
+            this.btnPause.Click += new System.EventHandler(this.btnPause_Click);
+            // 
+            // psbWorking
+            // 
+            this.psbWorking.Location = new System.Drawing.Point(8, 32);
+            this.psbWorking.Name = "psbWorking";
+            this.psbWorking.Size = new System.Drawing.Size(123, 23);
+            this.psbWorking.TabIndex = 11;
+            this.psbWorking.Visible = false;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lblProgress);
+            this.groupBox1.Controls.Add(this.psbWorking);
+            this.groupBox1.Location = new System.Drawing.Point(654, 101);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(137, 66);
+            this.groupBox1.TabIndex = 12;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "진행률";
             // 
             // ImportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnPause);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.rbtSatisfaction2);
-            this.Controls.Add(this.lblProgress2);
-            this.Controls.Add(this.lblProgress);
             this.Controls.Add(this.rbtElectricity);
             this.Controls.Add(this.rbtSatisfaction);
             this.Controls.Add(this.rbtFootTraffic);
@@ -188,6 +216,8 @@ namespace GothamSubway.Importer
             this.Name = "ImportForm";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.dgvViewer)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -205,9 +235,11 @@ namespace GothamSubway.Importer
         private System.ComponentModel.BackgroundWorker bgwLoader;
         private System.Windows.Forms.Label lblProgress;
         private System.ComponentModel.BackgroundWorker bgwInsert;
-        private System.Windows.Forms.Label lblProgress2;
         private System.Windows.Forms.RadioButton rbtSatisfaction2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnPause;
+        private System.Windows.Forms.ProgressBar psbWorking;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

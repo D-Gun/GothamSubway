@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -15,15 +16,60 @@ namespace GothamSubway.Importer
     {
         List<List<string>> rows;
         private int _checkedRadioButton;
+        
+        Excel.Application application;
+        Workbook workbook;
+        Worksheet worksheet;
+        Range range;
+
+        private ManualResetEvent _pause = new ManualResetEvent(false);
+
         public ImportForm()
         {
             InitializeComponent();
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            base.OnLoad(e);
+
+            if (DesignMode)
+                return;
+
             _checkedRadioButton = 0;
+
+            bgwLoader.WorkerSupportsCancellation = true;
+            bgwInsert.WorkerSupportsCancellation = true;
+        }
+        protected override void OnClosing(CancelEventArgs e)
+        {
+            _pause.Reset();
+
+            if (bgwLoader.IsBusy || bgwInsert.IsBusy)
+            {
+                Utility.Mbox("경고", "작업이 진행중입니다.\n종료하시려면 작업을 완료하시거나 중지해 주세요");
+                e.Cancel = true;
+            }
+
+            _pause.Set();
+
+            base.OnClosing(e);
         }
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
             if (CheckRadioButtonChecked() == false)
                 return;
+
+            if(bgwLoader.IsBusy || bgwInsert.IsBusy)
+            {
+                _pause.Reset();
+                Utility.Mbox("경고", "작업이 진행중입니다.\n종료하시려면 작업을 완료하시거나 중지해 주세요");
+                _pause.Set();
+                return;
+            }
+
+            _pause.Set();
+
+            psbWorking.Visible = true;
 
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
                 bgwLoader.RunWorkerAsync(openFileDialog1.FileName);
@@ -33,18 +79,38 @@ namespace GothamSubway.Importer
             if (CheckRadioButtonChecked() == false)
                 return;
 
+            if (bgwLoader.IsBusy || bgwInsert.IsBusy)
+            {
+                _pause.Reset();
+                Utility.Mbox("경고", "작업이 진행중입니다.\n종료하시려면 작업을 완료하시거나 중지해 주세요");
+                _pause.Set();
+                return;
+            }
+
+            if (rows.Count == 0 || dgvViewer.Rows.Count == 0)
+            {
+                _pause.Reset();
+                Utility.Mbox("오류", "LoadFile을 먼저 실행해 주세요");
+                _pause.Set();
+                return;
+            }
+
+            _pause.Set();
+
+            psbWorking.Visible = true;
+
             bgwInsert.RunWorkerAsync(_checkedRadioButton);
         }
         private bool CheckRadioButtonChecked()
         {
             if (_checkedRadioButton == 0)
             {
-                MessageBox.Show("저장 방식을 선택해 주세요");
+                Utility.Mbox("오류", "저장방식을 먼저 선택해 주세요");
                 return false;
             }
             return true;
         }
-        static void ReleaseObject(object obj)
+        private void ReleaseObject(object obj)
         {
             try
             {
@@ -84,6 +150,7 @@ namespace GothamSubway.Importer
             RadioButton checkedRadioButton = sender as RadioButton;
             _checkedRadioButton = int.Parse(checkedRadioButton.Tag.ToString());
 
+            dgvViewer.Rows.Clear();
             dgvViewer.Columns.Clear();
 
             foreach (string column in ImportColumns.GetColumns(_checkedRadioButton))
@@ -95,26 +162,37 @@ namespace GothamSubway.Importer
         }
         private void bgwLoader_DoWork(object sender, DoWorkEventArgs e)
         {
-            rows = new List<List<string>>();
-
-            Excel.Application application = new Excel.Application();
-            Workbook workbook = application.Workbooks.Open((string)e.Argument);
-            Worksheet worksheet = workbook.Sheets[1];
+            application = new Excel.Application();
+            workbook = application.Workbooks.Open((string)e.Argument);
+            worksheet = workbook.Sheets[1];
             application.Visible = false;
-            Range range = worksheet.UsedRange;
+            range = worksheet.UsedRange;
+
+            rows = new List<List<string>>();
 
             // 첫째줄은 안받음
             for (int i = 2; i <= range.Rows.Count; ++i)
             {
-                rows.Add(new List<string>());
+                _pause.WaitOne();
 
-                for (int j = 1; j <= range.Columns.Count; ++j)
+                if (bgwLoader.CancellationPending)
                 {
-                    if (range.Cells[i, j] != null && range.Cells[i, j].Value2 != null)
-                        rows[i - 2].Add((range.Cells[i, j] as Range).Value2.ToString());
+                    e.Cancel = true;
+                    return;
                 }
 
-                bgwLoader.ReportProgress(0, (i - 1).ToString());
+                if (e.Cancel == false)
+                {
+                    rows.Add(new List<string>());
+
+                    for (int j = 1; j <= range.Columns.Count; ++j)
+                    {
+                        if (range.Cells[i, j] != null && range.Cells[i, j].Value2 != null)
+                            rows[i - 2].Add((range.Cells[i, j] as Range).Value2.ToString());
+                    }
+
+                    bgwLoader.ReportProgress((i - 1) * 100 / range.Rows.Count, (i-1).ToString());
+                }
             }
 
             ReleaseObject(range);
@@ -126,16 +204,33 @@ namespace GothamSubway.Importer
         private void bgwLoader_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             lblProgress.Text = $"읽어들인 행 : {(string)e.UserState}";
+            psbWorking.Value = e.ProgressPercentage;
         }
         private void bgwLoader_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            _pause.Reset();
+
+            psbWorking.Visible = false;
+
+            if (e.Error != null || e.Cancelled == true)
+            {
+                ReleaseObject(range);
+                ReleaseObject(worksheet);
+                ReleaseObject(workbook);
+                application.Quit();
+                ReleaseObject(application);
+                return;
+            }
+
+            psbWorking.Value = psbWorking.Maximum;
+
             dgvViewer.Rows.Clear();
 
             foreach (List<string> row in rows.GetRange(0, (rows.Count > 100 ? 100 : rows.Count)))
             {
-                dgvViewer.Rows.Add(row.GetRange(0, dgvViewer.ColumnCount).ToArray());
-                dgvViewer.Rows[dgvViewer.Rows.Count - 2].Cells[0].Value = 
-                    ParsingDateTime(dgvViewer.Rows[dgvViewer.Rows.Count - 2].Cells[0].Value.ToString()).ToShortDateString();
+                dgvViewer.Rows.Add(row.GetRange(0, (dgvViewer.ColumnCount >= row.Count ? row.Count : dgvViewer.ColumnCount)).ToArray());
+                dgvViewer.Rows[dgvViewer.Rows.Count - 1].Cells[0].Value = 
+                    ParsingDateTime(dgvViewer.Rows[dgvViewer.Rows.Count - 1].Cells[0].Value.ToString()).ToShortDateString();
             }
 
             Utility.Mbox("알림", "불러오기가 완료되었습니다.\n읽은 파일의 내용을 확인해주세요.\n잘못 입력된 파일은 데이터베이스의 손상으로 이어질 수 있습니다.");
@@ -148,45 +243,61 @@ namespace GothamSubway.Importer
             {
                 using (var context = DbContextCreator.Create())
                 {
-                    for(int i =0; i < rows.Count; ++i)
+                    List<Station> stations = context.Stations.ToList();
+
+                    for (int i =0; i < rows.Count; ++i)
                     {
-                        Station station = context.Stations.Where(x => x.Name == rows[i][1]).FirstOrDefault();
-                        if (station == null)
+                        if (bgwInsert.CancellationPending)
                         {
-                            // 역이 없을 경우 추가
-                            station.Name = rows[i][1];
-                            context.Stations.Add(station);
+                            e.Cancel = true;
+                            return;
                         }
-
-                        FootTraffic footTraffic = new FootTraffic()
+                        if (e.Cancel == false)
                         {
-                            Date = ParsingDateTime(rows[i][0]),
-                            Station = station,
-                            Transfer = context.Transfers.Where(x => x.Name == rows[i][2]).FirstOrDefault(),
-                            BeforeSix = int.Parse(rows[i][3]),
-                            SixToSeven = int.Parse(rows[i][4]),
-                            SevenToEight = int.Parse(rows[i][5]),
-                            EightToNine = int.Parse(rows[i][6]),
-                            NineToTen = int.Parse(rows[i][7]),
-                            TenToEleven = int.Parse(rows[i][8]),
-                            ElevenToTwelve = int.Parse(rows[i][9]),
-                            TwelveToThirteen = int.Parse(rows[i][10]),
-                            ThirteenToFourteen = int.Parse(rows[i][11]),
-                            FourteenToFifteen = int.Parse(rows[i][12]),
-                            FifteenToSixteen = int.Parse(rows[i][13]),
-                            SixteenToSeventeen = int.Parse(rows[i][14]),
-                            SeventeenToEighteen = int.Parse(rows[i][15]),
-                            EighteenToNineteen = int.Parse(rows[i][16]),
-                            NineteenToTwenty = int.Parse(rows[i][17]),
-                            TwentyToTwentyOne = int.Parse(rows[i][18]),
-                            TwnetyOneToTwentyTwo = int.Parse(rows[i][19]),
-                            TwentyTwoToTwentyThree = int.Parse(rows[i][20]),
-                            TwentyThreeToTwentyFour = int.Parse(rows[i][21]),
-                            AfterTwentyFour = int.Parse(rows[i][22])
-                        };
+                            _pause.WaitOne();
 
-                        context.FootTraffics.Add(footTraffic);
-                        bgwInsert.ReportProgress(0, i.ToString());
+                            Station station = stations.Find(x => x.Name == rows[i][1]);
+
+                            if (station == null)
+                            {
+                                // 역이 없을 경우 추가
+                                station = new Station();
+                                station.Name = rows[i][1];
+                                context.Stations.Add(station);
+                                stations.Add(station);
+                            }
+
+                            string transferName = rows[i][2];
+                            FootTraffic footTraffic = new FootTraffic()
+                            {
+                                Date = ParsingDateTime(rows[i][0]),
+                                Station = station,
+                                Transfer = context.Transfers.Where(x => x.Name == transferName).FirstOrDefault(),
+                                BeforeSix = int.Parse(rows[i][3]),
+                                SixToSeven = int.Parse(rows[i][4]),
+                                SevenToEight = int.Parse(rows[i][5]),
+                                EightToNine = int.Parse(rows[i][6]),
+                                NineToTen = int.Parse(rows[i][7]),
+                                TenToEleven = int.Parse(rows[i][8]),
+                                ElevenToTwelve = int.Parse(rows[i][9]),
+                                TwelveToThirteen = int.Parse(rows[i][10]),
+                                ThirteenToFourteen = int.Parse(rows[i][11]),
+                                FourteenToFifteen = int.Parse(rows[i][12]),
+                                FifteenToSixteen = int.Parse(rows[i][13]),
+                                SixteenToSeventeen = int.Parse(rows?[i][14]),
+                                SeventeenToEighteen = int.Parse(rows[i][15]),
+                                EighteenToNineteen = int.Parse(rows[i][16]),
+                                NineteenToTwenty = int.Parse(rows[i][17]),
+                                TwentyToTwentyOne = int.Parse(rows[i][18]),
+                                TwnetyOneToTwentyTwo = int.Parse(rows[i][19]),
+                                TwentyTwoToTwentyThree = int.Parse(rows[i][20]),
+                                TwentyThreeToTwentyFour = int.Parse(rows[i][21]),
+                                AfterTwentyFour = int.Parse(rows[i][22])
+                            };
+
+                            context.FootTraffics.Add(footTraffic);
+                            bgwInsert.ReportProgress((i + 1) * 100 / rows.Count, (i + 1).ToString());
+                        }
                     }
 
                     context.SaveChanges();
@@ -198,50 +309,66 @@ namespace GothamSubway.Importer
                 {
                     int maxFirstId = (context.SatisfactionCategories.Max(x => x.SatisfactionCategoryId)) / 100;
 
+                    List<SatisfactionCategory> satisfactionCategories = context.SatisfactionCategories.ToList();
+
                     for(int i =0; i < rows.Count; ++i)
                     {
-                        // 카테고리 검사
-                        SatisfactionCategory first = context.SatisfactionCategories
-                            .Where(x => x.Item == rows[i][1]).FirstOrDefault();
-                        if (first == null)
+                        _pause.WaitOne();
+
+                        if (bgwInsert.CancellationPending)
                         {
-                            // 카테고리1이 없을 때
-                            first = new SatisfactionCategory();
-                            first.Item = rows[i][1];
-                            first.SatisfactionCategoryId = maxFirstId * 100;
-                            maxFirstId += 1;
-                            context.SatisfactionCategories.Add(first);
+                            e.Cancel = true;
+                            return;
                         }
-
-                        int upperId = first.SatisfactionCategoryId;
-
-                        SatisfactionCategory second = context.SatisfactionCategories
-                            .Where(x => x.Item == rows[i][2]).FirstOrDefault();
-                        if(second == null || (second != null && second.UpperId != upperId))
+                        if (e.Cancel == false)
                         {
-                            // 카테고리2가 없을 때, 또는 카테고리2가 있는데 카테고리1이 다를 때
-                            second.Item = rows[i][2];
-                            second.UpperId = upperId;
-                            SatisfactionCategory upper = context.SatisfactionCategories.Where(x => x.UpperId == upperId).FirstOrDefault();
-                            if(upper == null)
-                                second.SatisfactionCategoryId = upperId + 1;
-                            else
-                                second.SatisfactionCategoryId = upper.SatisfactionCategoryId + 1;
-                            second.SatisfactionCategory2 = first;
-                            context.SatisfactionCategories.Add(second);
+                            // 카테고리 검사
+                            SatisfactionCategory first = satisfactionCategories.Find(x => x.Item == rows[i][1]);
+                            if (first == null)
+                            {
+                                // 카테고리1이 없을 때
+                                first = new SatisfactionCategory();
+                                first.Item = rows[i][1];
+                                first.SatisfactionCategoryId = maxFirstId * 100;
+                                maxFirstId += 1;
+                                context.SatisfactionCategories.Add(first);
+                                satisfactionCategories.Add(first);
+                            }
+
+                            int upperId = first.SatisfactionCategoryId;
+
+                            SatisfactionCategory second = satisfactionCategories.Find(x => x.Item == rows[i][2]);
+                            if (second == null || (second != null && second.UpperId != upperId))
+                            {
+                                // 카테고리2가 없을 때, 또는 카테고리2가 있는데 카테고리1이 다를 때
+                                second = new SatisfactionCategory();
+                                second.Item = rows[i][2];
+                                second.UpperId = upperId;
+                                SatisfactionCategory upper = satisfactionCategories
+                                    .OrderByDescending(x => x.SatisfactionCategoryId).Where(x => x.UpperId == upperId).FirstOrDefault();
+                                if (upper == null)
+                                    second.SatisfactionCategoryId = upperId + 1;
+                                else
+                                    second.SatisfactionCategoryId = upper.SatisfactionCategoryId + 1;
+                                second.SatisfactionCategory2 = first;
+                                context.SatisfactionCategories.Add(second);
+                                satisfactionCategories.Add(second);
+                            }
+
+                            // Satisfaction
+                            Satisfaction satisfaction = new Satisfaction()
+                            {
+                                Year = ParsingDateTime(rows[i][0]),
+                                SatisfactionCategory = second,
+                                Excellent = decimal.Parse(rows[i][3]),
+                                Good = decimal.Parse(rows[i][4]),
+                                Soso = decimal.Parse(rows[i][5]),
+                                Bad = decimal.Parse(rows[i][6]),
+                                Terrible = decimal.Parse(rows[i][7])
+                            };
+                            context.Satisfactions.Add(satisfaction);
+                            bgwInsert.ReportProgress((i + 1) * 100 / rows.Count, (i + 1).ToString());
                         }
-
-                        // Satisfaction
-                        Satisfaction satisfaction = new Satisfaction()
-                        {
-                            Year = ParsingDateTime(rows[i][0]),
-                            SatisfactionCategory = second,
-                            Excellent = decimal.Parse(rows[i][3]),
-                            Good = decimal.Parse(rows[i][4]),
-                            Soso = decimal.Parse(rows[i][5]),
-                            Bad = decimal.Parse(rows[i][6]),
-                            Terrible = decimal.Parse(rows[i][7])
-                        };
                     }
 
                     context.SaveChanges();
@@ -250,21 +377,27 @@ namespace GothamSubway.Importer
             else if ((int)e.Argument == 3)
             {
                 // 날짜 전력사용량 전기요금
-
                 using (var context = DbContextCreator.Create())
                 {
-
-                    List<Electricity> electricities = new List<Electricity>();
-
                     for (int i = 0; i < rows.Count; ++i)
                     {
-                        Electricity electricity = new Electricity();
-                        electricity.Month = ParsingDateTime(rows[i][0]);
-                        electricity.Usage = int.Parse(rows[i][1]);
-                        electricity.Bill = int.Parse(rows[i][2]);
+                        _pause.WaitOne();
 
-                        context.Electricities.Add(electricity);
-                        bgwInsert.ReportProgress(0, i.ToString());
+                        if (bgwInsert.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+                        if (e.Cancel == false)
+                        {
+                            Electricity electricity = new Electricity();
+                            electricity.Month = ParsingDateTime(rows[i][0]);
+                            electricity.Usage = int.Parse(rows[i][1]);
+                            electricity.Bill = int.Parse(rows[i][2]);
+
+                            context.Electricities.Add(electricity);
+                            bgwInsert.ReportProgress((i + 1) * 100 / rows.Count, (i + 1).ToString());
+                        }
                     }
 
                     context.SaveChanges();
@@ -279,18 +412,54 @@ namespace GothamSubway.Importer
 
                 using (var context = DbContextCreator.Create())
                 {
+                    List<Station> stations = context.Stations.ToList();
+                    List<SubwayCard> subwayCards = context.SubwayCards.ToList();
+
                     for (int i = 0; i < rows.Count; i++)
                     {
-                        Revenue revenue = new Revenue()
-                        {
-                            Station = context.Stations.Where(x => x.Name == rows[i][1]).FirstOrDefault(),
-                            SubwayCard = context.SubwayCards.Where(x => x.CompanyName == rows[i][2]).FirstOrDefault(),
-                            Month = ParsingDateTime(rows[i][0]),
-                            Income = int.Parse(rows[i][3])
-                        };
+                        _pause.WaitOne();
 
-                        context.Revenues.Add(revenue);
-                        bgwInsert.ReportProgress(0, i.ToString());
+                        if (bgwInsert.CancellationPending)
+                        {
+                            e.Cancel = true;
+                            return;
+                        }
+
+                        if (e.Cancel == false)
+                        {
+                            Station station = stations.Find(x => x.Name == rows[i][1]);
+
+                            if (station == null)
+                            {
+                                // 역이 없을 경우 추가
+                                station = new Station();
+                                station.Name = rows[i][1];
+                                context.Stations.Add(station);
+                                stations.Add(station);
+                            }
+
+                            SubwayCard subwayCard = subwayCards.Find(x => x.CompanyName == rows[i][2]);
+
+                            if (subwayCard == null)
+                            {
+                                // 카드사가 없을 경우 추가
+                                subwayCard = new SubwayCard();
+                                subwayCard.CompanyName = rows[i][2];
+                                context.SubwayCards.Add(subwayCard);
+                                subwayCards.Add(subwayCard);
+                            }
+
+                            Revenue revenue = new Revenue()
+                            {
+                                Station = station,
+                                SubwayCard = subwayCard,
+                                Month = ParsingDateTime(rows[i][0]),
+                                Income = int.Parse(rows[i][3])
+                            };
+
+                            context.Revenues.Add(revenue);
+                            bgwInsert.ReportProgress((i + 1) * 100 / rows.Count, (i + 1).ToString());
+                        }
                     }
 
                     context.SaveChanges();
@@ -299,11 +468,17 @@ namespace GothamSubway.Importer
         }
         private void bgwInsert_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            lblProgress2.Text = $"변환된 행 : {(string)e.UserState}";
+            //lblProgress2.Text = $"변환된 행 : {(string)e.UserState}";
+            lblProgress.Text = $"변환된 행 : {(string)e.UserState}";
+            psbWorking.Value = e.ProgressPercentage;
         }
         private void bgwInsert_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            MessageBox.Show("완료");
+            psbWorking.Visible = false;
+
+            _pause.Reset();
+
+            Utility.Mbox("알림","완료되었습니다");
         }
         internal class ImportColumns
         {
@@ -341,6 +516,21 @@ namespace GothamSubway.Importer
             {
                 return new List<string>() { "날짜(월)", "역명", "카드사", "수입" };
             }
+        }
+        private void btnPause_Click(object sender, EventArgs e)
+        {
+            if (!bgwLoader.IsBusy && !bgwInsert.IsBusy)
+                return;
+
+            _pause.Reset();
+
+            if (Utility.MboxYesNo("안내", "작업을 중지하시겠습니까?"))
+            {
+                bgwLoader.CancelAsync();
+                bgwInsert.CancelAsync();
+            }
+
+            _pause.Set();
         }
     }
 }
